@@ -80,9 +80,9 @@ device_name | 字符串 | 设备名称
 **返回值**
 
 值 | 说明
--- | --
-> 0 | 返回Device在SDK中的ID：XID
-< 0 | 错误
+--- | ---
+`> 0` | 返回Device在SDK中的ID：XID
+`< 0` | 错误
 
 > XID不同于设备id，是SDK给该实例分配的标识ID。以后的控制都通过该ID定位设备。
 
@@ -105,9 +105,9 @@ xid | 整形 | SDK分配的设备实例ID
 **返回值**
 
 值 | 说明
--- | --
-= 0 | 成功释放实例
-< 0 | 错误
+--- | ---
+`= 0` | 成功释放实例
+`< 0` | 错误
 
 ### **3. SetXDeviceInfoByXID**
 
@@ -131,9 +131,9 @@ device_key | 整形 | 云端返回的设备密钥
 **返回值**
 
 值 | 说明
--- | --
-= 0 | 调用成功
-< 0 | 调用失败
+--- | ---
+`= 0` | 调用成功
+`< 0` | 调用失败
 
 ### **4. AddXDeviceDataPointByXID**
 
@@ -157,9 +157,9 @@ default_value | 可变类型 | 初始化值
 **返回值**
 
 值 | 说明
--- | --
-= 0 | 成功
-< 0 | 失败
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
 
 ### **5. SetXDeviceDataPointByXID**
 
@@ -184,9 +184,9 @@ len | 整形 | 值的长度
 **返回值**
 
 值 | 说明
--- | --
-= 0 | 成功
-< 0 | 失败
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
 
 ### **6. StatXDevice**
 
@@ -209,9 +209,9 @@ xid | 整形 | 实例ID
 **返回值**
 
 值 | 说明
--- | --
-= 0 | 成功
-< 0 | 失败
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
 
 ### **7. StopXDevice**
 
@@ -232,9 +232,9 @@ xid | 整形 | 实例ID
 **返回值**
 
 值 | 说明
--- | --
-= 0 | 成功
-< 0 | 失败
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
 
 ### **8. SetLogCallback**
 
@@ -255,7 +255,7 @@ lpLogCallback | 函数指针 | 回调函数。回调函数类型定义见后面�
 **返回值**
 
 值 | 说明
--- | --
+--- | ---
 na | na
 
 ### **9. SetXDeviceCallback**
@@ -280,7 +280,7 @@ na | na
 **返回值**
 
 值 | 说明
--- | --
+--- | ---
 na | na
 
 
@@ -396,36 +396,37 @@ data | 可变类型 | 值，不同的类型，返回的值不同
 ### **2. 数据端点类型**
 
 定义 | 枚举值 | 说明
-------- | -- | ---
-DATAPOINT_TYPE_BOOL | 0 | 布尔
-DATAPOINT_TYPE_BYTE | 1 | 单字节
-DATAPOINT_TYPE_INT16 | 2 | 短整形
-DATAPOINT_TYPE_INT32 | 3 | 长整形
+------- | --- | ---
+`DATAPOINT_TYPE_BOOL` | 0 | 布尔
+`DATAPOINT_TYPE_BYTE` | 1 | 单字节
+`DATAPOINT_TYPE_INT16` | 2 | 短整形
+`DATAPOINT_TYPE_INT32` | 3 | 长整形
 
 ### **3. 设备运行状态回调**
 
 定义 | 枚举值 | 说明
 ---- | ----- | ---
-E_DEVICE_INIT | 1 | 设备初始化完毕
-E_DEVICE_CONNECTING | 2 | 设备正在连接云端服务器
-E_DEVICE_ACTIVATE | 3 | 设备激活成功。`param0:(int)device_id, param1:(const char *)device_key`
-E_DEVICE_CONNECT | 4 | 设备连接云端完成
-E_DEVICE_DISCONNECT | 5 | 设备从云端断开。`param0:(int)reason, param1:(int)more reason`
-E_APP_CONNECTED | 10 | 有APP从内网连接上这个设备了；`param0:(int)session_id`
-E_APP_DISCONNECT | 11 | 内网APP与这个设备的连接断开；`param0:(int)session_id`
+`E_DEVICE_INIT` | 1 | 设备初始化完毕
+`E_DEVICE_CONNECTING` | 2 | 设备正在连接云端服务器
+`E_DEVICE_ACTIVATE` | 3 | 设备激活成功。`param0:(int)device_id, param1:(const char *)device_key`
+`E_DEVICE_CONNECT` | 4 | 设备连接云端完成
+`E_DEVICE_DISCONNECT` | 5 | 设备从云端断开。`param0:(int)reason, param1:(int)more reason`
+`E_APP_CONNECTED` | 10 | 有APP从内网连接上这个设备了；`param0:(int)session_id`
+`E_APP_DISCONNECT` | 11 | 内网APP与这个设备的连接断开；`param0:(int)session_id`
 
 ### **4. 设备发送数据状态回调**
 
 定义 | 枚举值 | 说明
 ---- | ----- | ---
-E_DEVICE_SEND_PIPE | 100 | 设备发送透传指令结果。`param0：(int)messgeid; param1:(int)result;`
-E_DEVICE_SEND_PIPE_SYNC | 101 | 设备发送透传SYNC。`param0：(int)messgeid; param1:(int)result;`
-E_DEVICE_SEND_LOCAL_PIPE | 102 | 设备发送本地透传指令结果，`param0：(int)messgeid; param1:(int)result;`
+`E_DEVICE_SEND_PIPE` | 100 | 设备发送透传指令结果。`param0：(int)messgeid; param1:(int)result;`
+`E_DEVICE_SEND_PIPE_SYNC` | 101 | 设备发送透传SYNC。`param0：(int)messgeid; param1:(int)result;`
+`E_DEVICE_SEND_LOCAL_PIPE` | 102 | 设备发送本地透传指令结果，`param0：(int)messgeid; param1:(int)result;`
 
 ### **5. 设备接收数据回调**
+
 定义 | 枚举值 | 说明
 ---- | ----- | ---
-E_DEVICE_RECV_PIPE | 200 | 设备接收透传指令。`param0:(int)app_id;param1:(int)data len;param2:(const char *)data;`
-E_DEVICE_RECV_PIPE_SYNC | 201 | 预留
-E_DEVICE_RECV_PIPE_LOCAL | 202 | 设备接收本地APP发送的透传指令。`param0:(int)session_id;param1:(int)data len;param2:(const char *)data;`
-E_DEVICE_RECV_ACCESS_KEY | 203 | 设备收到APP设置的ACCESS_KEY。`param0:(int)session_id;param1:(int)access_key;`
+`E_DEVICE_RECV_PIPE` | 200 | 设备接收透传指令。`param0:(int)app_id;param1:(int)data len;param2:(const char *)data;`
+`E_DEVICE_RECV_PIPE_SYNC` | 201 | 预留
+`E_DEVICE_RECV_PIPE_LOCAL` | 202 | 设备接收本地APP发送的透传指令。`param0:(int)session_id;param1:(int)data len;param2:(const char *)data;`
+`E_DEVICE_RECV_ACCESS_KEY` | 203 | 设备收到APP设置的ACCESS_KEY。`param0:(int)session_id;param1:(int)access_key;`
