@@ -1,3 +1,4 @@
+
 Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 
@@ -19,7 +20,7 @@ unsigned char XlinkSystemInit(char * product_id, char * product_key, XLINK_USER_
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | product_id | 产品id，长度为32字节，由云智易云平台产生；|
 | product_key | 产品id，长度为32字节，由云智易云平台产生；|
@@ -27,7 +28,7 @@ unsigned char XlinkSystemInit(char * product_id, char * product_key, XLINK_USER_
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
 1 | 成功
 0 | 失败
@@ -44,16 +45,16 @@ void XlinkSystemSetWifiStatus(unsigned char status);
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | status | 1表示wifi模块链接上路由器，否则与路由器断开。|
 
 #### 返回值：
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
 | none |  |
 
-###1.3设置设备默认名称
+### 1.3设置设备默认名称
 
 ```
 void XlinkSystemSetDeviceName(char *NameStr);
@@ -65,14 +66,14 @@ void XlinkSystemSetDeviceName(char *NameStr);
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-NameStr | wifi设备名称。
+| NameStr | wifi设备名称。|
 
 #### 返回值：
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 ### 1.4通过公网发送数据给指定APP
 
@@ -86,14 +87,14 @@ x_int32 XlinkSendTcpPipe(unsigned char * data, unsigned int datalen, x_uint32 to
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | data | 发送的数据 |
 | Datalen | 数据长度（wifi SDK通信默认只能发送小于1000字节） |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
 | > 0 | 发送字节数 |
 
@@ -109,14 +110,14 @@ x_int32 XlinkSendTcpPipe2(unsigned char * data, unsigned int  datalen);
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | data | 发送的数据；|
 | datalen | 数据长度（wifi SDK通信默认只能发送小于1000字节）。|
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
 | > 0 | 发送字节数 |
 
@@ -132,7 +133,7 @@ x_int32 XlinkSendUdpPipe(unsigned char *data, unsigned int  datalen,xlink_addr *
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | data | 发送的数据 |
 | datalen | 数据长度（wifi SDK通信默认只能发送小于1000字节） |
@@ -140,7 +141,7 @@ x_int32 XlinkSendUdpPipe(unsigned char *data, unsigned int  datalen,xlink_addr *
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
 | > 0 | 发送字节数 |
 
@@ -150,21 +151,21 @@ x_int32 XlinkSendUdpPipe(unsigned char *data, unsigned int  datalen,xlink_addr *
 void XlinkSystemLoop(xsdk_time_t c_time, x_int32 timeout_ms);
 ```
 
-#### 功能： 
+#### 功能：
 
 系统主循环,需要在任务中循环调用此函数
 
-#### 参数： 
+#### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | c_time | 当前时间 |
 | timeout_ms | 超时时间 |
 
 #### 返回值：
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 ### 1.8获取服务器时间
 
@@ -172,22 +173,22 @@ void XlinkSystemLoop(xsdk_time_t c_time, x_int32 timeout_ms);
 void XlinkGetServerTime(void);
 ```
 
-#### 功能： 
+#### 功能：
 
 * 启动获取时间任务功能，得到时间后会取消此任务。
 * 获得时间通过用户初始化的回调函数输出。如果需要再次获取时间，需要再次调用此函数。
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 ### 1.9获取本地模糊时间
 
@@ -201,15 +202,15 @@ int  XlinkGetSystemTime(XLINK_SYS_TIME *pTime);
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
 | pTime | 本地时间结构指针，返回本地时间 |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none | |
+| none | --- |
 
 ### 1.10开启扫描发现模式
 
@@ -217,21 +218,21 @@ int  XlinkGetSystemTime(XLINK_SYS_TIME *pTime);
 XLINK_FUNC void XlinkPorcess_UDP_Enable(void);
 ```
 
-#### 功能： 
+#### 功能：
 
 此API需要在初始化协议栈后调用，如果没调用此函数，设备将永远无法被手机APP通过本地扫描到。
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 ### 1.11关闭扫描发现模式
 
@@ -239,21 +240,21 @@ XLINK_FUNC void XlinkPorcess_UDP_Enable(void);
 XLINK_FUNC void XlinkPorcess_UDP_Disable(void);
 ```
 
-#### 功能： 
+#### 功能：
 
 关闭被手机APP扫描发现。
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 ### 1.12复位SDK
 
@@ -261,23 +262,23 @@ XLINK_FUNC void XlinkPorcess_UDP_Disable(void);
 XLINK_FUNC void XlinkReSetSDK(void);
 ```
 
-#### 功能： 
+#### 功能：
 
 清除清空SDK保存任何数据，重置为出厂设置。
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
-### 1.13查看SDK版本 
+### 1.13查看SDK版本
 
 ```
 char *XlinkSystemVersion(void);
@@ -289,13 +290,13 @@ char *XlinkSystemVersion(void);
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
 | char * | SDK版本信息的指针 |
 
@@ -311,15 +312,15 @@ int XlinkSystemTcpLoop(void);
 
 #### 参数：
 
-| 参数 | 说明 | 
+| 参数 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 #### 返回值：
 
-| 值 | 说明 | 
+| 值 | 说明 |
 | --- | --- |
-| none |  |
+| none | --- |
 
 
 ## 2.结构体说明
@@ -358,3 +359,4 @@ typedef struct XLINK_USER_CONFIG {
 } XLINK_USER_CONFIG;```
 
 
+Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
