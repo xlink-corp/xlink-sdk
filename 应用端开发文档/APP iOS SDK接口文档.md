@@ -88,12 +88,13 @@ onRecvLocalPipeData、onRecvPipeData和onRecvPipeSyncData三个函数的区别�
 **五. XLinkExportObject类方法说明**
 
 start
-函数：-(int)start;
-说明：开始初始化操作监听的app本地UDP端口用于SDK监听WiFi设备数据回包，从休眠恢复之后，需要再次调用stop和start
-参数：无
-返回值：
-    0：成功
-    其他失败
+
+	函数：-(int)start;
+	说明：开始初始化操作监听的app本地UDP端口用于SDK监听WiFi设备数据回包，从休眠恢复之后，需要再次调用stop和start
+	参数：无
+	返回值：
+    	0：成功
+    	其他失败
 
 2. loginWithAppID
 函数：-(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
@@ -502,11 +503,13 @@ SDK不提供存储设备,SDK有提供了设备序列化接口:DeviceEntity的get
     说明：Device SessionId错误;
 
 24. CODE_FUNC_DEVICE_CONNECTING
-    值：-15;
+    
+	值：-15;
     说明：Device已在连接状态;
 
 25. CODE_STATE_OFFLINE
-    值：-101;
+    
+	值：-101;
     说明：APP下线;
 
 26. CODE_STATE_NO_WIFI
