@@ -185,10 +185,10 @@ INVALID_POINT|-11|非法的数据端点（1.该设备数据端点索引越界；
 
 **1.说明:**
 	
-	①.使用APPID和AuthKey登录到CM服务器。APPID和AuthKey的获取，请查看demo代码
-	②.获取到的APPID和AuthKey，由外部APP缓存维护。
-	③.该方法不用重复调用，调用一次后，会自己断线重连
-	④.只有login成功后，才能使用跟云端有关的服务
+	a.使用APPID和AuthKey登录到CM服务器。APPID和AuthKey的获取，请查看demo代码
+	b.获取到的APPID和AuthKey，由外部APP缓存维护。
+	c.该方法不用重复调用，调用一次后，会自己断线重连
+	d.只有login成功后，才能使用跟云端有关的服务
 	
 **2.参数：**
 	
@@ -268,9 +268,9 @@ INVALID_POINT|-11|非法的数据端点（1.该设备数据端点索引越界；
 
 **1.说明：**
 	    
-	①.停止SDK，释放SDK所有占用的资源,在APP退出,或者不再使用SDK时调用。
-	②.该函数会清空initDevice()后设备列表;
-	③.清空addXlinkNetListener监听器列表；
+	a.停止SDK，释放SDK所有占用的资源,在APP退出,或者不再使用SDK时调用。
+	b.该函数会清空initDevice()后设备列表;
+	c.清空addXlinkNetListener监听器列表；
                        
 #### 9.void addXlinkListener(XlinkNetListener listener)
 
@@ -391,9 +391,9 @@ INVALID_POINT|-11|非法的数据端点（1.该设备数据端点索引越界；
 
 **1.说明：**
 	
-	①.订阅设备(必须有公网环境)(如果在公网环境下使用
-	②.公网环境调用 XlinkAgent#connectDevice()会自动调用该函数;
-	③.设置设备密码后，订阅关系会清空
+	a.订阅设备(必须有公网环境)(如果在公网环境下使用
+	b.公网环境调用 XlinkAgent#connectDevice()会自动调用该函数;
+	c.设置设备密码后，订阅关系会清空
 	    
 **2.参数：**
 	
