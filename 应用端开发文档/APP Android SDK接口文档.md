@@ -48,12 +48,13 @@
 
 请先把文件夹内 xlink-wifi-sdk-vx.x.x.jar 文件拷贝到自己工程libs下
 
-     1.初始化SDK
+1.初始化SDK
 
-            在自定义Application 下的onCreate()函数调用：
-            XlinkAgent.init(applicationContext);//参数会被长期引用，最好使用application的context。
+在自定义Application 下的onCreate()函数调用：
+    
+    XlinkAgent.init(applicationContext);//参数会被长期引用，最好使用application的context。
 
-     2.设置监听器     
+2.设置监听器     
 
               请确保使用sdk的功能前最少设置一个通用监听器，
 
