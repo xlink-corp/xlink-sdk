@@ -113,7 +113,7 @@
 
 ## **五. XLinkExportObject类方法说明**
 
-### -(int)start
+#### -(int)start
 
 说明：
 
@@ -128,7 +128,7 @@
     0：成功
     其他失败
 
-### -(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
+#### -(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
 
 说明：
 
@@ -144,7 +144,7 @@
     0：成功;
     其他失败;
 
-### -(int)scanByDeviceProductID:(NSString*)productID;
+#### -(int)scanByDeviceProductID:(NSString*)productID;
 
 说明：
 
@@ -163,7 +163,7 @@
 
 	扫描结果通过onGotDeviceByScan异步返回。
 
-### -(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
+#### -(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
 
 说明：
 
@@ -184,7 +184,7 @@
 
 	设置结果通过onSetLocalDeviceAuthorizeCode返回。
 
-### -(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
+#### -(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
 
 说明：
 
@@ -205,7 +205,7 @@
 
     设置结果通过onSetDeviceAuthorizeCode返回
 
-### -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
+#### -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
 
 说明：
 
@@ -245,7 +245,7 @@
 
 	其发送结果通过onSendLocalPipeData回调返回。;
 
-### -(int)initDevice:(DeviceEntity*)device;
+#### -(int)initDevice:(DeviceEntity*)device;
 
 说明：
 
@@ -263,7 +263,7 @@
 备注：
 
 
-### -(int)probeDevice:(DeviceEntity*)device;
+#### -(int)probeDevice:(DeviceEntity*)device;
 
 说明：
 
@@ -283,7 +283,7 @@
 
     探测结果异步通过onDeviceProbe回调
 
-### -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
+#### -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
 
 说明：
 
@@ -317,7 +317,7 @@
 
 	无
 
-### -(void)initDeviceList:(NSArray*)devices;
+#### -(void)initDeviceList:(NSArray*)devices;
 
 说明：
 
@@ -331,7 +331,7 @@
 
 	无
 
-### -(NSArray*)getAllDevice;
+#### -(NSArray*)getAllDevice;
 
 说明：
 
@@ -347,7 +347,7 @@
 
 ## 六. XLinkExportObjectDelegate代理回调说明
 
-### -(void)onStart;
+#### -(void)onStart;
 
 说明：
 
@@ -361,7 +361,7 @@
 
 	无
 
-### -(void)onLogin:(int)result;
+#### -(void)onLogin:(int)result;
 
 说明：
 
@@ -379,7 +379,7 @@ result结果：
 
 备注：
 
-### -(void)onGotDeviceByScan:(DeviceEntity*)device;
+#### -(void)onGotDeviceByScan:(DeviceEntity*)device;
 
 说明：
 
@@ -393,7 +393,7 @@ result结果：
 
 	如果扫描到了多个设备，该回调会多次调用;
 
-### -(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 说明：
 
@@ -407,7 +407,7 @@ result结果：
 
 备注：
 
-### -(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 说明：
 
@@ -421,7 +421,7 @@ result结果：
 
 备注：
 
-### -(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 	发送本地透传消息结果回调
 
@@ -433,7 +433,7 @@ result结果：
 
 备注：
 
-### -(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 说明：
 
@@ -447,7 +447,7 @@ result结果：
 
 备注：
 
-### -(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
+#### -(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
 
 说明：
 
@@ -459,7 +459,7 @@ result结果：
 
 备注：
 
-### -(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
+#### -(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
 
 说明：
 
@@ -526,7 +526,7 @@ result结果：
 
 备注：
 
-### -(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
+#### -(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
 
 说明：
 
@@ -547,15 +547,15 @@ result结果：
 
 APP开发者只用关心几个属性即可；
 
-### -(BOOL)getInitStatus;
+#### -(BOOL)getInitStatus;
 
 	设备是否初始化过，初始化的概念就是设备有没有被设置过授权码，如果没有就需要先设置授权码才可以使用。
 
-### BOOLisCloud
+#### -(BOOL)isCloud
 
 	设备是云端设备还是本地设备，这个值的判定，由connectDevice时确定，如果是云端设备，相应的发送数据和控制指令的函数，是需要调用云端对应的函数，否则的话就需要调用对应的本地函数。
 
-### -(NSDictionary*)getDictionaryFormatWithProtocol:(int)protocol;
+#### -(NSDictionary*)getDictionaryFormatWithProtocol:(int)protocol;
 
 	将设备序列化成Dictionary，并且可以用JSON表示出来，JSON格式如下：
 	{
@@ -579,7 +579,7 @@ APP开发者只用关心几个属性即可；
 
     protocol：现在只支持1
 
-### -(NSString*)getLocalAddress;
+#### -(NSString*)getLocalAddress;
 
 	获取设备内网的通讯地址，如果设备是公网设备，将返回空；
 
