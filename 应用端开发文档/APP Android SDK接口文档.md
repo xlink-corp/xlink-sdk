@@ -170,279 +170,339 @@ XlinkCode常量|int实际值|说明|使用的函数
 
 ### SDK功能函数：
 
-#### 1.void init(Context mContext)
+### 1.void init(Context mContext)
 
-**1.说明：**
+#### 说明：
 
-	初始化xlink sdk,使用sdk前，必须调用
+* 初始化xlink sdk,使用sdk前，必须调用
 
-**2. 参数**
+#### 参数：
 
-    mContext ApplicationContext实例  
+| 参数 | 说明 |
+| --- | --- |
+mContext | ApplicationContext实例  
 
-#### 2.int start()
+### 2.int start()
 
-**1.说明：**
+#### 说明：
 
-	①.启动内网服务，绑定udp 如第一次使用 需要连接到和wifi设备同一局域网
-	②.该链接会自己重连维护
-	③.如果确保不使用局域网，该方法可以不调用（可判断是否是移动网络）
+* 启动内网服务，绑定udp 如第一次使用 需要连接到和wifi设备同一局域网
+* 该链接会自己重连维护
+* 如果确保不使用局域网，该方法可以不调用（可判断是否是移动网络）
 
-**2.返回值:**
+#### 返回值:
 
-	= 0：调用成功
-	< 0：调用失败,失败code请观看同步错误码;
+| 值 | 说明 |
+| --- | --- |  
+| = 0 | 调用成功
+| < 0 | 调用失败,失败code请观看同步错误码;
 
-**3.对应回调:**
+#### 对应回调:
 
-    XlinkNetListener onStart(int code) ，详情请参见XlinkNetListener 说明
+    XlinkNetListener onStart(int code) 
+ 
+>详情请参见XlinkNetListener 说明
 
-#### 3.int login(int appid, String authKey)
+### 3.int login(int appid, String authKey)
 
-**1.说明:**
+#### 说明：
 
-	a.使用APPID和AuthKey登录到CM服务器。APPID和AuthKey的获取，请查看demo代码
-	b.获取到的APPID和AuthKey，由外部APP缓存维护。
-	c.该方法不用重复调用，调用一次后，会自己断线重连
-	d.只有login成功后，才能使用跟云端有关的服务
+* 使用APPID和AuthKey登录到CM服务器。APPID和AuthKey的获取，请查看demo代码
+* 获取到的APPID和AuthKey，由外部APP缓存维护。
+* 该方法不用重复调用，调用一次后，会自己断线重连
+* 只有login成功后，才能使用跟云端有关的服务
 
-**2.参数：**
+#### 参数：
 
-	String：APPID
-	String：AuthKey
+| 参数 | 说明 |
+| --- | --- |
+| APPID | 通过HTTP接口获取到的连接云端的ID |
+| AuthKey | 连接云端认证码 |
 
-**3.返回值：**
+#### 返回值：
 
-	= 0：调用成功
-	< 0：调用失败,失败code参见 同步错误码;
+| 值 | 说明 |
+| --- | --- |  
+| = 0 | 调用成功
+| < 0 | 调用失败,失败code请观看同步错误码;
 
-**4.对应回调：**
+#### 对应回调:
 
-	XlinkNetListener onLogin(int code) ，详情请参见XlinkNetListener 说明
+	XlinkNetListener onLogin(int code)
 
-#### 4.boolean initDevice(XDevice device)
+>详情请参见XlinkNetListener 说明
 
-**1.说明：**
+### 4.boolean initDevice(XDevice device)
 
-	a.向SDK中初始化设备节点
-	b.APP可以缓存设备节点，在下次程序启动后，可以自行初始化设备节点到SDK，用于跳过Scan步骤。
-	c.SDK把设备节点放入内部队列，用于设备的定位和回调时的参数。
-	d.初始化设备时SDK不要向设备发送任何消息包，包括handshake。
+#### 说明：
 
-**2.参数：**
+* 向SDK中初始化设备节点
+* APP可以缓存设备节点，在下次程序启动后，可以自行初始化设备节点到SDK，用于跳过Scan步骤。
+* SDK把设备节点放入内部队列，用于设备的定位和回调时的参数。
+* 初始化设备时SDK不要向设备发送任何消息包，包括handshake。
 
-	  XDevice：Device实体对象
+#### 参数：
 
-**3.返回值：**
+| 参数 | 说明 |
+| --- | --- |
+ XDevice | Device实体对象
 
-	  true:向SDK添加设备成功
-	  false:添加设备失败，设备属性错误
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+true  | 向SDK添加设备成功
+false | 添加设备失败，设备属性错误
 
 
-#### 5.boolean setDataTemplate(String productID, String product)
+### 5.boolean setDataTemplate(String productID, String product)
 
-**1.说明：**
+#### 说明：
 
-	添加数据模版,在企业管理台定义的设备数据端点
+* 添加数据模版,在企业管理台定义的设备数据端点
 
-**2.参数:**
+#### 参数：
 
-	prodctID  产品id
-	product 数据端点描述 是jsonarray格式.
+| 值 | 说明 |
+| --- | --- |
+prodctID | 产品id
+product | 数据端点描述 是jsonarray格式.
 
-**3.返回值：**
+#### 返回值：
 
-	true  添加成功
-	false 添加失败（product 不是json array格式）
+| 值 | 说明 |
+| --- | --- |
+true  | 添加成功
+false | 添加失败（product 不是json array格式）
 
-#### 6.XDevice JsonToDevice(JSONObject jsonObject)
+### 6.XDevice JsonToDevice(JSONObject jsonObject)
 
-**1.说明：**
+#### 说明：
 
-	把jsonObject 序列化成Xdevice对象（除了scan，是获取XDevice实例的唯一接口）
+* 把jsonObject 序列化成Xdevice对象（除了scan，是获取XDevice实例的唯一接口）
 
-**2.参数：**
+#### 参数：
 
-    jsonObject ：设备的json对象
+| 参数 | 说明 |
+| --- | --- |
+jsonObject | 设备的json对象
 
-**3.返回值**
+#### 返回值：
 
-	①.XDevice : 序列化成功后的Device对象
-	②.NULL： jsonObject错误
+| 值 | 说明 |
+| --- | --- |
+XDevice | 序列化成功后的Device对象
+NULL | jsonObject错误
 
-#### 7.JSONObject   deviceToJson(XDevice device)
+### 7.JSONObject   deviceToJson(XDevice device)
 
-**1.说明：**
+#### 说明：
 
-	如果需要存储设备，通过此接口把device序列话成JSONObject对象，然后存储
+* 如果需要存储设备，通过此接口把device序列话成JSONObject对象，然后存储
 
-**2.参数：**
+#### 参数：
 
-    device XDevice实例
+| 参数 | 说明 |
+| --- | --- |
+device | XDevice实例
 
-#### 8.void  stop()
+### 8.void  stop()
 
-**1.说明：**
+#### 说明：
 
-	a.停止SDK，释放SDK所有占用的资源,在APP退出,或者不再使用SDK时调用。
-	b.该函数会清空initDevice()后设备列表;
-	c.清空addXlinkNetListener监听器列表；
+* 停止SDK，释放SDK所有占用的资源,在APP退出,或者不再使用SDK时调用。
+* 该函数会清空initDevice()后设备列表;
+* 清空addXlinkNetListener监听器列表；
 
-#### 9.void addXlinkListener(XlinkNetListener listener)
+### 9.void addXlinkListener(XlinkNetListener listener)
 
-**1.说明：**
+#### 说明：
 
-	添加XlinkNetListener 监听器，请确保全局至少有一个监听器。
+* 添加XlinkNetListener 监听器，请确保全局至少有一个监听器。
 
-#### 10.void debug(boolean debug)
+### 10.void debug(boolean debug)
 
-**1.说明：**
+#### 说明：
 
-	设置日志是否打印
+* 设置日志是否打印
 
-#### 11.boolean isConnectedOuterNet()
+### 11.boolean isConnectedOuterNet()
 
-**1.说明：**
+#### 说明：
 
-	判断是否连接上xlink服务器
+* 判断是否连接上xlink服务器
 
-**2.返回值：**
+#### 返回值：
 
-	true/已连接 false/未连接
+| 值 | 说明 |
+| --- | --- |
+true | 已连接 
+false | 未连接
 
-#### 12.boolean isConnectedLocal()
+### 12.boolean isConnectedLocal()
 
-	1.说明：判断sdk 是否启动本地内网服务
-	2.返回值：true/启用 false/未启用
+#### 说明：
+
+* 判断sdk 是否启动本地内网服务
+
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+true | 启用 
+false | 未启用
 
 ### 下面是操作设备的函数
 
-#### 1.int scanDeviceByProductID(String productId,ScanDeviceListener listener)
+### 1.int scanDeviceByProductID(String productId,ScanDeviceListener listener)
 
-**1.说明：**
+#### 说明：
 
-	通过productid扫描内网内所有对应的设备;需开启wifi 并连接到设备所在的wifi网络
+* 通过productid扫描内网内所有对应的设备;需开启wifi 并连接到设备所在的wifi网络
 
-**2.参数：**
+#### 参数：
+| 参数 | 说明 |
+| --- | --- |
+productid | 设备的产品id
+ScanDeviceListener | listener 监听器
 
-      String：productid  设备的产品id
-      ScanDeviceListener listener 监听器
+#### 返回值：
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功
+| < 0 | 调用失败,失败code参见 同步错误码;
 
-**3.返回值：**
-
-     = 0：调用成功
-     < 0：调用失败,失败code参见 同步错误码;
-
-**4.对应回调：**
+#### 对应回调:
 
    	ScanDeviceListener onGotDeviceByScan(XDevice device)
 
 
-#### 2. int connectDevice(XDevice device, String auth, ConnectDeviceListener connectListener)
+### 2. int connectDevice(XDevice device, String auth, ConnectDeviceListener connectListener)
 
-**1.说明：**
+#### 说明：
 
-	调用该函数用于连接设备，确定设备处于内网还是外网;
+* 调用该函数用于连接设备，确定设备处于内网还是外网;
 
-**2.参数：**
+#### 参数：
 
-    XDevice：Device实体兑现
-    auth ：设备授权码
-    connectListener： 监听器
+| 参数 | 说明 |
+| --- | --- |
+| XDevice | Device实体兑现 | 
+| auth | 设备授权码 | 
+| connectListener | 监听器 | 
 
-**3.返回值：**
+#### 返回值：
 
-    =0：调用成功，
-    < 0：调用失败,失败code参见 同步错误码;
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功 |
+| < 0 | 调用失败,失败code参见 同步错误码 |
 
-**4.返回结果：**
+#### 结果回调：
 
     ConnectDeviceListener  onConnectDevice(XDevice xDeivce, int ret)
 
-#### 3.int setDeviceAuthorizeCode(XDevice device, String oldAuthorize, String newAuthorize, SetDeviceAuthorizeListener listener)
+### 3.int setDeviceAuthorizeCode(XDevice device, String oldAuthorize, String newAuthorize, SetDeviceAuthorizeListener listener)
 
-**1.说明：**
+#### 说明：
 
-	修改设备密码，该方法是根据connectDevice所返回的设备网络环境 来发送数据。
+* 修改设备密码，该方法是根据connectDevice所返回的设备网络环境 来发送数据。
 
-**2.参数：**
+#### 参数：
 
-	XDevice：Device实体对象
-	String：Old device auth code
-	String：New device auth code
-	listener：监听器
+| 参数 | 说明 |
+| --- | --- |
+| XDevice | Device实体对象
+| oldAuthorize | Old device auth code
+| newAuthorize | New device auth code
+| listener | 监听器
 
-**3.返回值：**
+#### 返回值：
 
-	>0：调用成功，返回消息ID
-	< 0:  app本地错误;详情参见同步错误码;
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功 |
+| < 0 | 调用失败,失败code参见 同步错误码 |
 
-**4. 结果回调：**
+#### 结果回调：
 
 	onSetDeviceAuthorizeCode 跟setLocalDeviceAuthorizeCode方法一样
 
 
-#### 4.int setDataPoint(XDevice xdevice, int key, Object value,SetDataPointListener listener)
+### 4.int setDataPoint(XDevice xdevice, int key, Object value,SetDataPointListener listener)
 
-**1.说明：**
+#### 说明：
 
-	设置设备的数据端点
+* 设置设备的数据端点
 
-**2.参数：**
+#### 参数：
 
-	DeviceObject：Device实体对象
-	key：端点索引
-	value：端点值
+| 参数 | 说明 |
+| --- | --- |
+| DeviceObject| Device实体对象
+| key | 端点索引
+| value | 端点值
 
-**3.返回值：**
+#### 返回值：
 
-	>0：调用成功，返回消息ID
-	< 0:  app本地错误;详情参见同步错误码;
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功 |
+| < 0 | 调用失败,失败code参见 同步错误码 |
 
-**4.结果回调：**
+#### 结果回调：
 
 	SetDataPointListener onSetDataPoint();
 
-#### 5.int subscribeDevice(XDevice device, String authCode,SubscribeDeviceListener listener)
+### 5.int subscribeDevice(XDevice device, String authCode,SubscribeDeviceListener listener)
 
-**1.说明：**
+#### 说明：
 
-	a.订阅设备(必须有公网环境)(如果在公网环境下使用
-	b.公网环境调用 XlinkAgent#connectDevice()会自动调用该函数;
-	c.设置设备密码后，订阅关系会清空
+* 订阅设备(必须有公网环境)(如果在公网环境下使用
+* 公网环境调用 XlinkAgent#connectDevice()会自动调用该函数;
+* 设置设备密码后，订阅关系会清空
 
-**2.参数：**
+#### 参数：
 
-	DeviceObject：Device实体对象
-	authCode：设备授权码
-	listener： 监听器
+| 参数 | 说明 |
+| --- | --- |
+| DeviceObject | Device实体对象
+| authCode | 设备授权码
+| listener | 监听器
 
-**3.返回值:**
+#### 返回值：
 
-	= 0：调用成功；
-	< 0:  app本地错误;详情参见同步错误码;
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功；
+| < 0 | app本地错误;详情参见同步错误码;
 
-**4.结果回调：**
+#### 结果回调：
 
 	onSubscribeDevice()
 
-#### 6.int sendPipeData(XDevice device, byte[] data, SendPipeListener listener)
+### 6.int sendPipeData(XDevice device, byte[] data, SendPipeListener listener)
 
-**1.说明：**
+#### 说明：
 
-	向设备发送pipe数据包.
+* 向设备发送pipe数据包.
 
-**2.参数：**
+#### 参数：
 
-	DeviceObject：Device实体对象
-	byte[]：Pipe数据
+| 参数 | 说明 |
+| --- | --- |
+| DeviceObject | Device实体对象
+| byte[] | Pipe数据
 
-**3.返回值：**
+#### 返回值：
 
-	>0：调用成功，返回消息ID
-	< 0:  app本地错误;详情参见同步错误码;
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功；
+| < 0 | app本地错误;详情参见同步错误码;
 
-**4.结果回调：**
+
+#### 结果回调：
 
 	onSendPipeData
 
@@ -450,10 +510,13 @@ XlinkCode常量|int实际值|说明|使用的函数
 
 ### 1. onStart(int code)
 
-	1.说明：调用XlinkAgent.start()的回调
-	2.返回值 code:
+#### 说明：
 
-XlinkCode常量|int实际值|说明
+* 调用XlinkAgent.start()的回调
+
+#### 返回值：
+
+XlinkCode常量 | int实际值 | 说明
 ---- | ---- | ----
 `SUCCEED`|0|成功
 `LOCAL_CONNECT_ERROR`	|-1	|绑定端口失败
@@ -461,9 +524,11 @@ XlinkCode常量|int实际值|说明
 
 ### 2. onLogin(int code)  
 
-	1.说明：调用XlinkAgent.login的回调(如果已经login 服务器成功，是不会再回调该函数)
-	2.返回值 code:
+#### 说明：
 
+* 调用XlinkAgent.login的回调(如果已经login 服务器成功，是不会再回调该函数)
+
+#### 返回值 
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ----
 `SUCCEED`|0|登录服务器成功
@@ -478,13 +543,11 @@ XlinkCode 常量|int实际值|说明
 
 ### 3.  onDisconnect(int code)
 
-**1.说明：**
+#### 说明：
 
-	对应于login，当app从xlink服务掉线时，会回调该方法
-	云端连接会自己断线重连(网络异常，心跳异常才会，其他异常需要处理)，不用重复调用Login()方法
+* 对应于login，当app从xlink服务掉线时，会回调该方法。云端连接会自己断线重连(网络异常，心跳异常才会，其他异常需要处理)，不用重复调用Login()方法
 
-**2.返回值 code:**
-
+#### 返回值:
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ----
 `CLOUD_STATE_DISCONNECT`|-1|网络问题导致和服务器连接中端(不需要处理，会自动重连)
@@ -495,12 +558,11 @@ XlinkCode 常量|int实际值|说明
 
 ### 4. onLocalDisconnect(int code);
 
-**1.说明：**
+#### 说明：
 
-	本地服务断开
+* 本地服务断开
 
-**2.断开原因 code:**
-
+#### 返回值：
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ----
 `LOCAL_THREAD_ERROR`|-1|无物理网络
@@ -509,43 +571,47 @@ XlinkCode 常量|int实际值|说明
 
 ### 5. onRecvPipeData(XDevice device, byte[] data)
 
-**1.说明：**
+#### 说明：
 
-	收到局域网内设备推送的pipe数据 （跟设备直连，返回的数据）
+* 收到局域网内设备推送的pipe数据 （跟设备直连，返回的数据）
 
-**2.返回值 :**
+#### 参数 :
 
-	device：  该设备的 pipe数据
-	data：byte数据
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体
+| data | byte数据
 
 ### 6. onRecvPipeSyncData(XDevice device, byte[] data)
 
-**1.说明：**
+#### 说明：
 
-	收到服务器推送的同步pipe数据
+＊ 收到服务器推送的同步pipe数据
 
-**2.返回值 :**
+#### 参数 :
 
-	device：  该设备的 pipe数据
-	data：byte数据
+| 参数 | 说明 |
+| --- | --- |
+| device | 该设备的 pipe数据
+| data | byte数据
 
 ### 7. onDataPointUpdate(XDevice xDevice, int key,Object value, int channel,int type);
 
-**1.说明：**
+#### 说明：
 
-	设备数据节点发生改变，会回调此方法
+* 设备数据节点发生改变，会回调此方法
 
-**2.返回值 :**
+#### 参数 :
 
-	device：  设备实例
-	key：      端点索引
-	value     端点值
-	channel： 通道，区分是在局域网直连设备的更新端点，还是云端更新端点、channel ==XlinkCode.CHANGED_UPDATAPOINT_LOCAL  为本地局域网通道channel ==XlinkCode.CHANGED_UPDATAPOINT_CLOUD  为yun'd云端网络通道
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实例
+| key | 端点索引
+| value | 端点值
+| channel |  通道，区分是在局域网直连设备的更新端点，还是云端更新端点、`channel == XlinkCode.CHANGED_UPDATAPOINT_LOCAL`  为本地局域网通道`channel == XlinkCode.CHANGED_UPDATAPOINT_CLOUD`  为yun'd云端网络通道
+type | value的类型
 
-### 8.  type: value的类型，
-
-
-XlinkCode 常量|具体int值|说明
+type 定义|具体int值|说明
 ---- | ---- | ----
 `POINT_TYPE_BOOLEAN`|1|布尔值
 `POINT_TYPE_BYTE`|2|byte单字节
@@ -556,17 +622,18 @@ XlinkCode 常量|具体int值|说明
 
 ### 9.onDeviceStateChanged(XDevice xdevice, int state);
 
-**1.说明：**
+#### 说明：
 
-	设备当连接成功/掉线，如果设备有状态变化会回调该方法.
-	每当设备掉线，会自动调用connectDevice 一次。
+* 设备当连接成功/掉线，如果设备有状态变化会回调该方法.
+* 每当设备掉线，会自动调用connectDevice 一次。
 
-**2.返回值 :**
+#### 参数 :
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实例
+| state | 状态
 
-	device：  设备实例
-	state: 状态 :
-
-XlinkCode 常量|	int实际值|	说明
+state 定义 | int实际值 |	说明
 -----|-----|-----
 `DEVICE_CHANGED_CONNECTING`|	-1|	设备重新连接中
 `DEVICE_CHANGED_OFFLINE`|	-2|	设备掉线
@@ -721,7 +788,7 @@ String  getMacAddress
 
 ###返回码都在XlinkCode类下  
 
-#### 1.ConnectDeviceListener onConnectDevice(XDevice xDevice, int result);
+### 1.ConnectDeviceListener onConnectDevice(XDevice xDevice, int result);
 
 	连接设备监听器
 	retsult有:
@@ -739,15 +806,21 @@ XlinkCode 常量|	int返回值|	说明
 ...|	...	|...
 
 
-#### 2.ScanDeviceListener onGotDeviceByScan(XDevice device);
+### 2.ScanDeviceListener onGotDeviceByScan(XDevice device);
 
+#### 说明
 	扫描设备监听器
+	
+#### 参数
 	device：扫描到的设备对象;
 
-#### 3.SendPipeListener onSendLocalPipeData(XDevice device, int code,messageId);
+### 3.SendPipeListener onSendLocalPipeData(XDevice device, int code,messageId);
+
+#### 说明
 
 	发送pipe数据监听器
-	code有:
+	
+#### code定义
 
 XlinkCode 常量|	INT返回值|	说明
 -----|-----|-----
@@ -761,34 +834,42 @@ XlinkCode 常量|	INT返回值|	说明
 ...|	...|	...
 
 
-messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
+> messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
 
 
-#### 4.SetDataPointListener onSetDataPoint(XDevice xdevice, int code，int messageId);
+### 4.SetDataPointListener onSetDataPoint(XDevice xdevice, int code，int messageId);
 
+#### 说明
 	设置设备数据端点
-	返回的code 跟SendPipeListener 一样
-	messageId：跟调用sendPipe接口返回的 msgId 一一对应
+	
+#### code定义：
+> 跟SendPipeListener 一样
 
-#### 5.SetDeviceAuthorizeListener  onSetLocalDeviceAuthorizeCode(XDevice device, int code,messageId);
+> messageId：跟调用sendPipe接口返回的 msgId 一一对应
 
+### 5.SetDeviceAuthorizeListener  onSetLocalDeviceAuthorizeCode(XDevice device, int code,messageId);
+
+#### 说明：
 	设置设备密码
-	返回的code 跟SendPipeListener 一样，新增底下错误码；
+	
+#### code定义：
+> 返回的code 跟SendPipeListener 一样，新增以下错误码：
 
-新增
-XlinkCode|	INT值|	说明
-----|----|----
+XlinkCode | INT值 | 说明
+---- | ---- | ----
 `SERVER_CODE_INVALID_KEY`	|2|	设置密码失败，认证设备失败（oldAuth错误）
-messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
+> messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
 
 
-#### 6.SubscribeDeviceListener onSubscribeDevice(XDevice device, int code);
+### 6.SubscribeDeviceListener onSubscribeDevice(XDevice device, int code);
 
+#### 说明：
 	订阅设备
+	
+#### code定义：
 	返回的code 跟SendPipeListener  一样
 
 
 
-完!
 
 ©2016 云智易物联云平台（http://www.xlink.cn）

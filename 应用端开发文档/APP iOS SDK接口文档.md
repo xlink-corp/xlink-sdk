@@ -119,181 +119,168 @@ libxlinksdklib. a库文件，是区分模拟器和实机的，并且debug和rele
 
 ## **五. XLinkExportObject类方法说明**
 
-#### -(int)start
+### 1. 启动SDK
 
-说明：
+```
+-(int)start
+```
 
-	开始初始化操作监听的app本地UDP端口用于SDK监听WiFi设备数据回包，从休眠恢复之后，需要再次调用stop和start
+#### 说明：
 
-参数：
+开始初始化操作监听的app本地UDP端口用于SDK监听WiFi设备数据回包，从休眠恢复之后，需要再次调用stop和start
 
-	无
+#### 参数：
 
-返回值：
+* 无
 
-    0：成功
-    其他失败
+#### 返回值：
 
-#### -(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
+| 值 | 说明 |
+| --- | --- |
+| 0 | 成功 |
+| 其他 | 失败 |
 
-说明：
+### 2. 初始化设备
 
-	APP登录到云端，登录到云端以后，才可以使用云端的功能。
+```
+-(int)initDevice:(DeviceEntity*)device;
+```
 
-参数：
+#### 说明：
 
-	appId云端分配的唯一APPID，通过HTTP接口注册获取到。
-    authStr云端分配的唯一APPID对应的AuthKey，通过HTTP接口注册获取到。
+* 初始化（更新）某个设备的基本信息，用在从APP缓存设置到SDK中时使用。
 
-返回值：
+#### 参数：
 
-    0：成功;
-    其他失败;
+| 参数 | 说明 |
+| --- | --- |
+device | 设备实体
 
-#### -(int)scanByDeviceProductID:(NSString*)productID;
+#### 返回值：
 
-说明：
-
-	通过产品ID扫描本地内网设备
-
-参数：
-
-	productID产品ID
-
-返回值：
-
-    0：成功;
-    其他失败。
-
-其他：
-
-	扫描结果通过onGotDeviceByScan异步返回。
-
-#### -(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
-
-说明：
-
-	设置内网中设备的授权码
-
-参数：
-
-    device设备实体;
-    oldAuth旧密码，如果设备本身并没有设置授权码的话，该参数置为@"";
-    newAuth新密码;
-
-返回值：
-
-	0：成功;
-    其它失败。
+| 值 | 说明 |
+| --- | --- |
+0 | 成功
+其它 | 失败
 
 备注：
 
-	设置结果通过onSetLocalDeviceAuthorizeCode返回。
+### 3. 连接到云端
 
-#### -(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
+#### 函数： 
 
-说明：
+	-(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
 
-	通过云端设置设备的授权码
+#### 说明：
 
-参数：
+* APP登录到云端，登录到云端以后，才可以使用云端的功能。
 
-    device设备实体;
-    oldAuth旧密码，如果设备本身并没有设置授权码的话，该参数置为@"";
-    newAuth新密码;
+#### 参数：
 
-返回值：
-
-    0：成功;
-    其它失败;
-
-备注：
-
-    设置结果通过onSetDeviceAuthorizeCode返回
-
-#### -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
-
-说明：
-
-	向内网中的设备发送透传数据
-
-参数：
-
-    device设备实体;
-    payload数据值，二进制的。
+| 参数 | 说明 |
+| appId | 云端分配的唯一APPID，通过HTTP接口注册获取到。|
+| authStr | 云端分配的唯一APPID对应的AuthKey，通过HTTP接口注册获取到。|
 
 返回值：
 
-    0：成功;
-    其它失败;
+| 值 | 说明 |
+| --- | --- |
+| 0 | 成功 |
+| 其他 | 失败 |
 
-备注：
+### 4. 通过产品ID扫描设备
 
-    其发送结果通过onSendLocalPipeData回调返回。
+```
+-(int)scanByDeviceProductID:(NSString*)productID;
+```
 
-### -(int)sendPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
+#### 说明：
 
-说明：
+* 通过产品ID扫描本地内网设备
 
-	通过云向设备发送透传数据
+#### 参数：
+| 参数 | 说明 |
+| --- | --- |
+| productID | 产品ID |
 
-参数：
+#### 返回值：
 
-	device设备实体;
-    payload数据值，二进制的;
+| 值 | 说明 |
+| --- | --- |
+| 0 | 成功 |
+| 其他 | 失败 |
 
-返回值：
+> 扫描结果通过onGotDeviceByScan异步返回。
 
-    0：成功;
-    其它失败;
+### 5. 通过本地通讯设置设备授权码
 
-备注：
+#### 函数：
 
-	其发送结果通过onSendLocalPipeData回调返回。;
+```
+-(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
+```
 
-#### -(int)initDevice:(DeviceEntity*)device;
+#### 说明：
 
-说明：
+* 设置内网中设备的授权码
 
-	初始化（更新）某个设备的基本信息，用在从APP缓存设置到SDK中时使用。
+#### 参数：
 
-参数：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体 |
+| oldAuth | 旧密码，如果设备本身并没有设置授权码的话，该参数置为@"" |
+| newAuth | 新密码 |
 
-	device设备实体
+#### 返回值：
 
-返回值：
+| 值 | 说明 |
+| --- | --- |
+| 0 | 成功 |
+| 其它 | 失败 |
 
-    0：成功;
-    其它失败;
+>设置结果通过onSetLocalDeviceAuthorizeCode返回。
 
-备注：
+### 6. 通过云端设置设备授权码
 
+#### 函数：
 
-#### -(int)probeDevice:(DeviceEntity*)device;
+```
+-(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
+```
 
-说明：
+#### 说明：
 
-	探测设备状态
+* 通过云端设置设备的授权码
 
-参数：
+#### 参数：
 
-	device设备实体
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| oldAuth | 旧密码，如果设备本身并没有设置授权码的话，该参数置为@"";
+| newAuth | 新密码; 
 
+#### 返回值：
 
-返回值：
+| 值 | 说明 |
+| --- | --- |
+| 0 | 成功; |
+| 其它 | 失败; |
 
-    0：成功;
-    其他失败;
+> 设置结果通过onSetDeviceAuthorizeCode返回
 
-备注：
+### 7. 连接一个设备
 
-    探测结果异步通过onDeviceProbe回调
+#### 函数：
+```
+ -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
+```
 
-#### -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
+#### 说明：
 
-说明：
-
-	探测结果异步通过onDeviceProbe回调
+* 控制设备之前，先要去连接设备；
+* 该函数会自动识别设备是本地可用还是云端可用；
 
 参数：
 
@@ -309,259 +296,414 @@ libxlinksdklib. a库文件，是区分模拟器和实机的，并且debug和rele
 
 	连接结果通过onConnectDevice回调
 
-### -(void)stop;
+### 8.发送本地透传数据
 
-说明：
+#### 函数：
 
-	释放SDK，清理本地资源。在退出程序，或者从休眠恢复之后，都需要再次调用stop和start
+```
+ -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
+```
 
-参数：
+#### 说明：
 
-	无
+* 向内网中的设备发送透传数据
+
+#### 参数：
+
+| 参数 | 说明 |
+| --- | --- |
+device | 设备实体;
+payload | 数据值，二进制的。
+
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+0 | 成功
+其它 | 失败
+
+> 其发送结果通过onSendLocalPipeData回调返回。
+
+### 9. 通过云端发送透传数据
+
+#### 函数：
+
+```
+-(int)sendPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
+```
+
+#### 说明：
+
+* 通过云向设备发送透传数据
+
+#### 参数：
+
+| 参数 | 说明 |
+| --- | --- |
+device | 设备实体
+payload | 数据值，二进制的
+
+#### 返回值：
+| 值 | 说明 |
+| --- | --- |
+0 | 成功
+其它 | 失败
+
+> 其发送结果通过onSendLocalPipeData回调返回。
+
+### 10. 探测云端设备状态
+
+#### 函数：
+```
+ -(int)probeDevice:(DeviceEntity*)device;
+```
+
+##### 说明：
+
+* 探测设备状态
+
+#### 参数：
+
+| 参数 | 说明 |
+| --- | --- |
+device ｜ 设备实体
+
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+0 | 成功
+其他 | 失败
+>探测结果异步通过onDeviceProbe回调
+
+### 11. 获取SDK中所有设备列表
+
+#### 函数：
+```
+ -(NSArray*)getAllDevice;
+```
+
+#### 说明：
+
+* 得到所有缓存的设备列表，返回的NSArray中包含的是DeviceEntity对象
+
+### 参数：
+
+* 无
+
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+NSArray | DeviceEntity * 实体的队列
+
+### 12. 释放SDK
+
+#### 函数：
+
+```
+-(void)stop;
+```
+
+#### 说明：
+
+* 释放SDK，清理本地资源。在退出程序，或者从休眠恢复之后，都需要再次调用stop和start
+
+#### 参数：
+
+* 无
 
 返回值：
 
-	无
-
-#### -(void)initDeviceList:(NSArray*)devices;
-
-说明：
-
-	初始化设备列表，用在程序重启后，将app缓存的设备列表，初始化到SDK中，用于通讯和其他功能。
-
-参数：
-
-	devicesDeviceEntity实体的队列
-
-返回值：
-
-	无
-
-#### -(NSArray*)getAllDevice;
-
-说明：
-
-	得到所有缓存的设备列表，返回的NSArray中包含的是DeviceEntity对象
-
-参数：
-
-	无
-
-返回值：
-
-	DeviceEntity实体的队列;
+* 无
 
 ## 六. XLinkExportObjectDelegate代理回调说明
 
-#### -(void)onStart;
+### 1. onStart
 
-说明：
+#### 定义：
+```
+-(void)onStart;
+```
 
-	SDK的start接口结果回调
+#### 说明：
 
-参数：
-
-	无
-
-备注：
-
-	无
-
-#### -(void)onLogin:(int)result;
-
-说明：
-
-	登录状态回调
+* SDK的start接口结果回调
 
 参数：
 
-	无
+* 无
+
+### 2. onLogin
+
+#### 函数：
+
+```
+-(void)onLogin:(int)result;
+```
+
+#### 说明：
+
+* 登录状态回调
+
+参数：
+
+* 无
 
 result结果：
 
-	CODE_SUCCEED：登录成功;
-	CODE_SERVER_KICK_DISCONNECT：被踢下线;
-	CODE_STATE_OFFLINE：与服务器socket连接断开;
+| 定义 | 值 | 说明 |
+| --- | --- | --- |
+`CODE_SUCCEED` | 0 | 登录成功;
+`CODE_SERVER_KICK_DISCONNECT` | 13 | 被踢下线;
+`CODE_STATE_OFFLINE` | -101 | 与服务器socket连接断开;
 
-备注：
+### 3. onGotDeviceByScan
 
-#### -(void)onGotDeviceByScan:(DeviceEntity*)device;
+#### 函数：
 
-说明：
+```
+-(void)onGotDeviceByScan:(DeviceEntity*)device;
+```
 
-	SDK扫描到的设备结果回调;
+#### 说明：
 
-参数：
+* SDK扫描到的设备结果回调;
 
-	device设备实体;
+#### 参数：
 
-备注：
+| 参数 | 说明 |
+| --- | --- |
+device | 设备实体 
 
-	如果扫描到了多个设备，该回调会多次调用;
+> 如果扫描到了多个设备，该回调会多次调用;
 
-#### -(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+### 4. onSetLocalDeviceAuthorizeCode
 
-说明：
+#### 函数：
+```
+-(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+```
 
-	内网中设置用户访问授权码的结果回调。
+#### 说明：
 
-参数：
+* 内网中设置用户访问授权码的结果回调。
 
-	device设备实体;
-  result设置结果;
-  messageID消息ID，用于定位消息。APP可以忽略;
+#### 参数：
 
-备注：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| result | 设置结果;
+| messageID | 消息ID，用于定位消息。APP可以忽略;
 
-#### -(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+### 5. onSetDeviceAuthorizeCode
 
-说明：
+#### 函数：
 
-	云端设置授权结果回调
+```
+-(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+```
 
-参数：
+#### 说明：
 
-    device设备实体
-    result设置结果
-    messageID消息ID，用于定位消息。APP可以忽略
+* 云端设置授权结果回调
 
-备注：
+#### 参数：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体
+| result | 设置结果
+| messageID | 消息ID，用于定位消息。APP可以忽略
 
-#### -(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+### 6. onSendLocalPipeData
 
-	发送本地透传消息结果回调
+#### 函数：
 
-参数：
+```
+-(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+```
 
-    device设备实体;
-    result设置结果;
-    messageID消息ID，用于定位消息。APP可以忽略;
+#### 说明：
 
-备注：
+* 发送本地透传消息结果回调
 
-#### -(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### 参数：
 
-说明：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| result | 设置结果;
+| messageID | 消息ID，用于定位消息。APP可以忽略;
 
-	发送云端透传数据结果
+### 7. onSendPipeData
 
-参数：
+#### 函数：
 
-	device设备实体;
-    result设置结果;
-    messageID消息ID，用于定位消息。APP可以忽略;
+```
+-(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+```
 
-备注：
+#### 说明：
 
-#### -(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
+* 发送云端透传数据结果
 
-说明：
+#### 参数：
 
-	接收到设备发送过来的透穿消息
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| result | 设置结果;
+| messageID | 消息ID，用于定位消息。APP可以忽略;
 
-参数：
-	device设备实体;
-    data消息内容;
+### 8. onRecvLocalPipeData
 
-备注：
+#### 函数：
 
-#### -(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
+```
+-(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
+```
 
-说明：
+#### 说明：
 
-	接收到云端设备发送回来的透传数据
+* 接收到设备发送过来的透穿消息
 
-参数：
+#### 参数：
 
-    device设备实体;
-    data消息内容;
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| data | 消息内容;
 
-备注：
+### 9. onRecvPipeData
 
-### -(void)onRecvPipeSyncData:(DeviceEntity*)device withPayload:(NSData*)payload;
+#### 函数：
 
-说明：
+```
+-(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
+```
 
-	接收到云端设备发送的广播透传数据
+#### 说明：
 
-参数：
+* 接收到云端设备发送回来的透传数据
 
-	device设备实体;
-    data消息内容;
+#### 参数：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| data | 消息内容;
 
-备注：
+### 10. onRecvPipeSyncData
 
-### -(void)onDeviceProbe:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### 函数：
 
-说明：
+```
+-(void)onRecvPipeSyncData:(DeviceEntity*)device withPayload:(NSData*)payload;
+```
 
-	云端探测返回回调
+#### 说明：
 
-参数：
+* 接收到云端设备发送的广播透传数据
 
-    device设备实体;
-    result设置结果;
-    messageID消息ID，用于定位消息。APP可以忽略;
+#### 参数：
 
-备注：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| data | 消息内容;
 
-### -(void)onConnectDevice:(DeviceEntity*)device andResult:(int)result andTaskID:(int)taskID;
+### 11. onDeviceProbe
 
-说明：
+#### 函数：
 
-	连接设备结果回调
+```
+-(void)onDeviceProbe:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+```
 
-参数：
+#### 说明：
 
-    device设备实体;
-    result设置结果;
-    messageID消息ID，用于定位消息。APP可以忽略;
+* 云端探测返回回调
 
-* 备注：
+#### 参数：
 
-### -(void)onDeviceStateChanged:(DeviceEntity*)device andState:(int)state;
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| result | 设置结果;
+| messageID | 消息ID，用于定位消息。APP可以忽略;
 
-说明：
+### 12. onConnectDevice
 
-	设备上下线状态回调
+#### 函数：
+```
+-(void)onConnectDevice:(DeviceEntity*)device andResult:(int)result andTaskID:(int)taskID;
+```
+#### 说明：
 
-参数：
+* 连接设备结果回调
 
-    device设备实体;
-    state状态;
+#### 参数：
 
-备注：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| result | 设置结果;
+| messageID | 消息ID，用于定位消息。APP可以忽略;
 
-#### -(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
+### 13. onDeviceStateChanged
 
-说明：
+#### 函数：
 
-	数据端点数据回调;
+````
+-(void)onDeviceStateChanged:(DeviceEntity*)device andState:(int)state;
+````
 
-参数：
+#### 说明：
 
-    device设备实体;
-    index端点索引;
-    dataBuff索引值;
-    channel通道：云端还是本地;
+* 设备上下线状态回调
 
-备注：
+#### 参数：
 
-	纯透传APP，改功能用不到；
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体
+| state | 状态
+
+### 14. onDataPointUpdata
+
+#### 函数：
+
+```
+-(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
+```
+
+#### 说明：
+
+* 数据端点数据回调;
+
+#### 参数：
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体
+| index | 端点索引
+| dataBuff | 索引值
+| channel | 通道：云端还是本地
+
+> 纯透传APP，该功能用不到；
 
 ## 七. DeviceEntity属性说明代理回调说明
 
 APP开发者只用关心几个属性即可；
 
-#### -(BOOL)getInitStatus;
+### -(BOOL)getInitStatus;
 
 	设备是否初始化过，初始化的概念就是设备有没有被设置过授权码，如果没有就需要先设置授权码才可以使用。
 
-#### -(BOOL)isCloud
+### -(BOOL)isCloud
 
 	设备是云端设备还是本地设备，这个值的判定，由connectDevice时确定，如果是云端设备，相应的发送数据和控制指令的函数，是需要调用云端对应的函数，否则的话就需要调用对应的本地函数。
 
-#### -(NSDictionary*)getDictionaryFormatWithProtocol:(int)protocol;
+### -(NSDictionary*)getDictionaryFormatWithProtocol:(int)protocol;
 
 	将设备序列化成Dictionary，并且可以用JSON表示出来，JSON格式如下：
 	{
@@ -585,7 +727,7 @@ APP开发者只用关心几个属性即可；
 
     protocol：现在只支持1
 
-#### -(NSString*)getLocalAddress;
+### -(NSString*)getLocalAddress;
 
 	获取设备内网的通讯地址，如果设备是公网设备，将返回空；
 
