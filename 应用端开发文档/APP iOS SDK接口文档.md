@@ -203,7 +203,9 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
     0：成功;
     其它失败;
-* 备注：
+
+备注：
+
     其发送结果通过onSendLocalPipeData回调返回。
 
 ### -(int)sendPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
