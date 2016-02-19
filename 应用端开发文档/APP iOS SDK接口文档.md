@@ -178,6 +178,7 @@ device | 设备实体
 #### 参数：
 
 | 参数 | 说明 |
+| --- | --- |
 | appId | 云端分配的唯一APPID，通过HTTP接口注册获取到。|
 | authStr | 云端分配的唯一APPID对应的AuthKey，通过HTTP接口注册获取到。|
 
