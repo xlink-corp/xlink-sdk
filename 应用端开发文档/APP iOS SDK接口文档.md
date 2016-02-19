@@ -111,7 +111,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
 ## **五. XLinkExportObject类方法说明**
 
-### -(int)start
+#### -(int)start
 
 	开始初始化操作监听的app本地UDP端口用于SDK监听WiFi设备数据回包，从休眠恢复之后，需要再次调用stop和start
 参数：
@@ -123,7 +123,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
     0：成功
     其他失败
 
-### -(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
+#### -(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
 
 	APP登录到云端，登录到云端以后，才可以使用云端的功能。
 
@@ -137,7 +137,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
     0：成功;
     其他失败;
 
-### -(int)scanByDeviceProductID:(NSString*)productID;
+#### -(int)scanByDeviceProductID:(NSString*)productID;
 
 	通过产品ID扫描本地内网设备
 
@@ -154,7 +154,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 	
 	扫描结果通过onGotDeviceByScan异步返回。
 
-### -(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
+#### -(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
 
 	设置内网中设备的授权码
 
@@ -173,7 +173,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 	
 	设置结果通过onSetLocalDeviceAuthorizeCode返回。
 
-### -(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
+#### -(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
 
 	通过云端设置设备的授权码
 
@@ -190,7 +190,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
     设置结果通过onSetDeviceAuthorizeCode返回
 
-### -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
+#### -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
 
 	向内网中的设备发送透传数据
 
@@ -208,7 +208,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
     其发送结果通过onSendLocalPipeData回调返回。
 
-### -(int)sendPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
+#### -(int)sendPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
 	
 	通过云向设备发送透传数据
 
@@ -225,7 +225,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
    
 	其发送结果通过onSendLocalPipeData回调返回。;
 
-### -(int)initDevice:(DeviceEntity*)device;
+#### -(int)initDevice:(DeviceEntity*)device;
 
 	初始化（更新）某个设备的基本信息，用在从APP缓存设置到SDK中时使用。
 
@@ -241,7 +241,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 备注：
 
 
-### -(int)probeDevice:(DeviceEntity*)device;
+#### -(int)probeDevice:(DeviceEntity*)device;
 
 	探测设备状态
 
@@ -259,7 +259,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
     探测结果异步通过onDeviceProbe回调
 
-### -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
+#### -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
 
 	探测结果异步通过onDeviceProbe回调
 
@@ -277,7 +277,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
 	连接结果通过onConnectDevice回调
 
-### -(void)stop;
+#### -(void)stop;
 	
 	释放SDK，清理本地资源。在退出程序，或者从休眠恢复之后，都需要再次调用stop和start
 
@@ -289,7 +289,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 	
 	无
 
-### -(void)initDeviceList:(NSArray*)devices;
+#### -(void)initDeviceList:(NSArray*)devices;
 
 	初始化设备列表，用在程序重启后，将app缓存的设备列表，初始化到SDK中，用于通讯和其他功能。
 
@@ -301,7 +301,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 	
 	无
 
-### -(NSArray*)getAllDevice;
+#### -(NSArray*)getAllDevice;
 
 	得到所有缓存的设备列表，返回的NSArray中包含的是DeviceEntity对象
 
@@ -315,7 +315,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
 ## 六. XLinkExportObjectDelegate代理回调说明
 
-### -(void)onStart;
+#### -(void)onStart;
 
 	SDK的start接口结果回调
 
@@ -327,7 +327,7 @@ XLINKSDK暂只对Xcode下的开发进行支持；
 
 	无
 
-### -(void)onLogin:(int)result;
+#### -(void)onLogin:(int)result;
 
 	登录状态回调
 
@@ -343,7 +343,7 @@ result结果：
 
 备注：
 
-### -(void)onGotDeviceByScan:(DeviceEntity*)device;
+#### -(void)onGotDeviceByScan:(DeviceEntity*)device;
 
 	SDK扫描到的设备结果回调;
 
@@ -356,7 +356,7 @@ result结果：
 
 	如果扫描到了多个设备，该回调会多次调用;
 
-### -(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 参数：
     device设备实体;
@@ -365,7 +365,7 @@ result结果：
 
 备注：
 
-### -(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 	云端设置授权结果回调
 
@@ -377,7 +377,7 @@ result结果：
 
 备注：
 
-### -(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 	发送本地透传消息结果回调
 
@@ -389,7 +389,7 @@ result结果：
 
 备注：
 
-### -(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 
 	发送云端透传数据结果
 
@@ -401,7 +401,7 @@ result结果：
 
 备注：
 
-### -(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
+#### -(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
 
 	接收到设备发送过来的透穿消息
 
@@ -411,7 +411,7 @@ result结果：
 
 备注：
 
-### -(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
+#### -(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
 
 	接收到云端设备发送回来的透传数据
 
@@ -422,7 +422,7 @@ result结果：
 
 备注：
 
-### -(void)onRecvPipeSyncData:(DeviceEntity*)device withPayload:(NSData*)payload;
+#### -(void)onRecvPipeSyncData:(DeviceEntity*)device withPayload:(NSData*)payload;
 	
 	接收到云端设备发送的广播透传数据
 
@@ -433,7 +433,7 @@ result结果：
 
 备注：
 
-### -(void)onDeviceProbe:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
+#### -(void)onDeviceProbe:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 	
 	云端探测返回回调
 
@@ -445,7 +445,7 @@ result结果：
 
 备注：
 
-### -(void)onConnectDevice:(DeviceEntity*)device andResult:(int)result andTaskID:(int)taskID;
+#### -(void)onConnectDevice:(DeviceEntity*)device andResult:(int)result andTaskID:(int)taskID;
 	
 	连接设备结果回调
 
@@ -457,7 +457,7 @@ result结果：
 
 * 备注：
 
-### -(void)onDeviceStateChanged:(DeviceEntity*)device andState:(int)state;
+#### -(void)onDeviceStateChanged:(DeviceEntity*)device andState:(int)state;
 	
 	设备上下线状态回调
 
@@ -468,7 +468,7 @@ result结果：
 
 备注：
 
-### -(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
+#### -(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
 
 	数据端点数据回调;
 
@@ -487,15 +487,15 @@ result结果：
 
 APP开发者只用关心几个属性即可；
 
-### -(BOOL)getInitStatus;
+#### -(BOOL)getInitStatus;
 
 	设备是否初始化过，初始化的概念就是设备有没有被设置过授权码，如果没有就需要先设置授权码才可以使用。
 
-### BOOLisCloud
+#### -(BOOL)isCloud
 
 	设备是云端设备还是本地设备，这个值的判定，由connectDevice时确定，如果是云端设备，相应的发送数据和控制指令的函数，是需要调用云端对应的函数，否则的话就需要调用对应的本地函数。
 
-### -(NSDictionary*)getDictionaryFormatWithProtocol:(int)protocol;
+#### -(NSDictionary*)getDictionaryFormatWithProtocol:(int)protocol;
 
 	将设备序列化成Dictionary，并且可以用JSON表示出来，JSON格式如下：
 	{
@@ -519,7 +519,7 @@ APP开发者只用关心几个属性即可；
 
     protocol：现在只支持1
 
-### -(NSString*)getLocalAddress;
+#### -(NSString*)getLocalAddress;
 
 	获取设备内网的通讯地址，如果设备是公网设备，将返回空；
 
