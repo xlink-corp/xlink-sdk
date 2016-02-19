@@ -9,14 +9,14 @@ Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 ### 1. SDK功能概述
 
-	云智易android sdk 帮助开发者基于android系统上和xlink模块智能设备进行通讯。
+云智易android sdk 帮助开发者基于android系统上和xlink模块智能设备进行通讯。
 
 ### 2.集成准备
 
-	注册云智易厂商帐号http://app.xlink.cn/login.html
-	新建产品，定义设备的数据端点
-	新建Access Key 生成自己的帐号体系
-	获取到产品ID,Access Key,Access Key Secret
+* 注册云智易厂商帐号http://app.xlink.cn/login.html
+* 新建产品，定义设备的数据端点
+* 新建Access Key 生成自己的帐号体系
+* 获取到产品ID,Access Key,Access Key Secret
 
 ### 3.配置程序(参考Demo程序AndroidManifest.xml文件)
 
@@ -40,28 +40,33 @@ Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 ### 4.混淆打包
 
-	如果的项目使用了Proguard混淆打包，为了避免SDK被二次混淆导致无法正常使用SDK，
-	请务必在proguard-project.txt中添加以下代码：
+如果的项目使用了Proguard混淆打包，为了避免SDK被二次混淆导致无法正常使用SDK，请务必在proguard-project.txt中添加以下代码：
+
 	-libraryjars libs/xlink-wifi-sdk-v*.jar #（集体请查看jar名称）
 	-dontwarn io.xlink.wifi.sdk.**
 	-keep class io.xlink.wifi.sdk.**{
 	         *;
 	}
 
-## 二.配置SDK  (可参考Demo程序MyApp.java文件)
+## 二.配置SDK  
+(可参考Demo程序MyApp.java文件)
 
-	请先把文件夹内 xlink-wifi-sdk-v***.jar 文件拷贝到自己工程libs下
+请先把文件夹内 xlink-wifi-sdk-v***.jar 文件拷贝到自己工程libs下。
 
 ### 1.初始化SDK
+在自定义Application 下的onCreate()函数调用：
 
-	在自定义Application 下的onCreate()函数调用：
-    XlinkAgent.init(applicationContext);//参数会被长期引用，最好使用application的context。
+	  XlinkAgent.init(applicationContext);
+
+参数会被长期引用，最好使用application的context。
 
 ### 2.设置监听器     
 
-	请确保使用sdk的功能前最少设置一个通用监听器，
+请确保使用sdk的功能前最少设置一个通用监听器：
+
 	XlinkAgent.getInstance().addXlinkListener(XlinkNetListener);
-	该监听器的功能有：(具体回调请参见XlinkNetListener说明)
+
+该监听器的功能有：(具体回调请参见XlinkNetListener说明)
 
 value
 
@@ -79,13 +84,16 @@ onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设
 
 注意事项:
 
-	当不需要该监听器时，可以调用XlinkAgent.getInstance().removeListener(XlinkNetListener)进行移除
+当不需要该监听器时，可以调用
+		 
+	XlinkAgent.getInstance().removeListener(XlinkNetListener)
+进行移除。
 
 ### 3.设置设备数据模版
 
-	如果设备使用了数据端点，需要根据在后端定义的设备数据端点在SDK进行配置，这样SDK才能解析该设备端点         
+如果设备使用了数据端点，需要根据在后端定义的设备数据端点在SDK进行配置，这样SDK才能解析该设备端点。 
 
-### 列：如下面表格样的数据端点：
+例如下面表格样的数据端点：
 
 索引（key）|变量名|  备注  |数据类型（type）
 ----|----|----|-----
@@ -103,40 +111,43 @@ onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设
 
 通过函数：
 
-    XlinkAgent.setDataTemplate(“该设备的产品id”, prodctid_value);
-	进行设置数据端点（可参考demo程序MyApp.java）
+	XlinkAgent.setDataTemplate(“设备的产品id”, prodctid_value);
+
+进行设置数据端点（可参考demo程序MyApp.java）
 
 ### 注意事项:
 
-1. 扫描,操作设备之前需先设置该设备的数据端点；(必须设置，不然解析不出数据端点)
-2. 如该设备未定义数据端点也需要这样设置： XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
-3. 该设备的产品id 可在企业管理平台查看；
-4. SDK支持多产品ID；
+* 扫描,操作设备之前需先设置该设备的数据端点；(必须设置，不然解析不出数据端点)
+* 如该设备未定义数据端点也需要这样设置： XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
+* 该设备的产品id 可在企业管理平台查看；
+* SDK支持多产品ID；
 
 ## 三.登录/注册 厂商自己的用户体系
 
 ### 1. 概述
 
-	通过厂商自己的用户体系 uid + password换取该用户在云智易平台的唯一appId appAuthkey;
-	获取到 appId 后，能调用 XlinkAgent.getInstance().login(appid,authkey);
-	才能使用云端网络和设备功能。
+通过厂商自己的用户体系 uid + password换取该用户在云智易平台的唯一appId appAuthkey。获取到 appId 后，能调用：
+
+	XlinkAgent.getInstance().login(appid,authkey);
+
+才能使用云端网络和设备功能。
 
 ### 2.使用
 
-	在企业管理平台/开发者服务/Access key下新建Access key
-	得到Access Key ID和Access Key Secret
-	查看 云智易RESTful Service-用户身份集成接口.pdf文件
-	并参考 Demo程序的注册登录流程(替换HttpAgent.java里面ACCESS_ID SECRET_KEY可直接使用)
+* 在企业管理平台/开发者服务/Access key下新建Access key，得到Access Key ID和Access Key Secret；
+* 查看 云智易RESTful Service-用户身份集成接口.pdf文件，并参考 Demo程序的注册登录流程(替换HttpAgent.java里面ACCESS_ID SECRET_KEY可直接使用)。
 
 ### 3.注意事项
 
-	1.如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）
-	2.我们提供重置密码接口，其中的找回密码之前的验证用户 也是由厂商自行实现
-	3.该注册之后的uid ,name password 不在云智易 SDK内通用，云智易唯一可识别的是 appID, appAuthey；这里的概念要区分开
+* 如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）；
+
+* 我们提供重置密码接口，其中的找回密码之前的验证用户 也是由厂商自行实现；
+
+* 该注册之后的uid ,name password 不在云智易 SDK内通用，云智易唯一可识别的是 appID, appAuthey；这里的概念要区分开。
 
 ## 四.XlinkAgent类 方法说明
 
-	同步错误码(有INT返回值的函数)：
+同步错误码(有INT返回值的函数)：
 
 XlinkCode常量|int实际值|说明|使用的函数
 ---- | ---- | ---- |-----
@@ -645,9 +656,12 @@ XlinkCode 常量|	int实际值|	说明
 
 #### ②. 如果使用 XlinkAgent  JsonToDevice(JSONObject jsonObject) 方法获取的设备实例需要调用：
 
-	XlinkAgent  initDevice(XDevice device) 向SDK添加设备；否则调用和设备相关的接口会返回错误码:NO_DEVICE
+	XlinkAgent  initDevice(XDevice device) 
+	向SDK添加设备；否则调用和设备相关的接口会返回错误码:NO_DEVICE
 
-#### ③. 如果需要扩展设备属性,可参考Demo程序io.xlink.wifi.js.bean/Device.java
+#### ③. 如果需要扩展设备属性,可参考Demo程序
+
+	io.xlink.wifi.js.bean/Device.java
 
 ### 5.设备的控制:
 
@@ -760,8 +774,9 @@ messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
 	设置设备密码
 	返回的code 跟SendPipeListener 一样，新增底下错误码；
 
-新增XlinkCode|	INT值|	说明
-	----|----|----
+新增
+XlinkCode|	INT值|	说明
+----|----|----
 `SERVER_CODE_INVALID_KEY`	|2|	设置密码失败，认证设备失败（oldAuth错误）
 messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
 
