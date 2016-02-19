@@ -1,3 +1,7 @@
+
+Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
+
+
 # XLINK SDK Android 集成文档
 
 
