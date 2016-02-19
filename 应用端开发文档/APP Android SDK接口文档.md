@@ -95,33 +95,7 @@ onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设
              
 转化成json串为：
 
-	String prodctid_value =
-		[
-		    {
-		        "key": 0,
-		        "type": "byte"
-		    },
-		    {
-		        "key": 1,
-		        "type": "bool"
-		    },
-		    {
-		        "key": 2,
-		        "type": "byte"
-		    },
-		    {
-		        "key": 3,
-		        "type": "int16"
-		    },
-		    {
-		        "key": 4,
-		        "type": "int32"
-		    },
-		    {
-		        "key": 5,
-		        "type": "string"
-		    }
-		]
+	[{"key":0,"type":"byte"},{"key":1,"type":"bool"},{"key":2,"type":"byte"},{"key":3,"type":"int16"},{"key":4,"type":"int32"},{"key":5,"type":"string"}]
              
 通过函数：
               
