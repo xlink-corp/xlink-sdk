@@ -1,8 +1,12 @@
-# XLINK SDK IOS 集成文档
+©2016  **云智易**物联云平台（http://www.xlink.cn）
+
+# XLINK iOS SDK集成文档
+
+本文档是面向智能硬件的APP开发者，通过Xlink iOS SDK接入云智易物联平台。
 
 ## **一. 开发前的准备**
 
-### 1. SDK功能概述
+### 1. 功能概述
 云智易（XLINK）iOS SDK帮助开发者在iOS系统上开发用于和XLINK模块进行通讯的APP程序。
 
 ### 2. 集成准备
@@ -25,7 +29,7 @@
 
 ### 1. 配置Xcode工程
 
-1. 配置头文件搜索路径:
+* 配置头文件搜索路径:
 	1. 进入Xcode工程属性页面，
 	* 进入BuildSettings标签，
 	* 切换All选项，
@@ -60,27 +64,29 @@
 
 ### 3. 注意事项
 
-	以上配置选项可以参考搭配SDK体统的Demo工程；
-	libxlinksdklib. a库文件，是区分模拟器和实机的，并且debug和release也是有区分，在配置工程时一定要注意。
+以上配置选项可以参考搭配SDK体统的Demo工程；
+
+libxlinksdklib. a库文件，是区分模拟器和实机的，并且debug和release也是有区分，在配置工程时一定要注意。
+
 
 ## **三. 登录/注册厂商自己的用户体系**
 
 ### 1.概述
 
-	通过厂商自己的用户体系uid+password换取用户在云智易平台唯一的AppID和AppAuthKey；
-	获得AppID后，才能调用XLinkExportObject的loginWithAppID登录云智易平台，使用云端通讯功能。
+通过厂商自己的用户体系uid+password换取用户在云智易平台唯一的AppID和AppAuthKey。
+获得AppID后，才能调用XLinkExportObject的loginWithAppID登录云智易平台，使用云端通讯功能。
 
 ### 2.使用
 
-	在企业管理平台/开发者服务/Accesskey下新建Accesskey，得到AccessKeyID和AccessKeySecret。
-	查看云智易RESTfulService-用户身份集成接口.pdf文件
-	并参考Demo程序中的HttpRequest类注册登录流程（替换HttpRequest.m中的accesskeyId和secretKey两个宏定义为自己的AccessKeyID和AccessKeySecret）。
+* 在企业管理平台/开发者服务/Accesskey下新建Accesskey，得到AccessKeyID和AccessKeySecret。
+* 查看云智易RESTfulService-用户身份集成接口.pdf文件，并参考Demo程序中的HttpRequest类注册登录流程（替换HttpRequest.m中的accesskeyId和secretKey两个宏定义为自己的AccessKeyID和AccessKeySecret）。
 
 ### 3.注意事项
 
-	如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）。
-	我们提供重置密码接口，其中的找回密码之前的验证用户也是由厂商自行实现。
-	该注册之后的uid、name、password不在云智易SDK内通用，云智易唯一可识别的是AppID,AppAuthKey，这里的概念要区分开。
+如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）。
+
+我们提供重置密码接口，其中的找回密码之前的验证用户也是由厂商自行实现。
+该注册之后的uid、name、password不在云智易SDK内通用，云智易唯一可识别的是AppID,AppAuthKey，这里的概念要区分开。
 
 ## **四. SDK通用调用流程**
 
@@ -654,3 +660,7 @@ APP开发者只用关心几个属性即可；
 `CODE_STATE_OFFLINE` | -101 | APP下线;
 `CODE_STATE_NO_WIFI` | -102 | 没有WIFI环境;
 `CODE_STATE_KICK_OFFLINE` | -103 | APP被踢下线;
+
+
+
+©2016  **云智易**物联云平台（http://www.xlink.cn）
