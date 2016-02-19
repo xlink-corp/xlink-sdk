@@ -1,58 +1,53 @@
 # XLINK SDK Android 集成文档
-云智易 • 发表于：2015年10月12日 10:34 • 更新于：2015年10月14日 19:27
-标签（空格分隔）： 未分类
 
-一.开发前的准备
+云智易android sdk 帮助开发者基于android系统上和xlink模块智能设备进行通讯。
 
-1. SDK功能概述
-    云智易android sdk 帮助开发者基于android系统上和xlink模块智能设备进行通讯。
-    
-2.集成准备
-    
-注册云智易厂商帐号http://app.xlink.cn/login.html
 
-新建产品，定义设备的数据端点
+### 一、开发前的准备
 
-新建Access Key 生成自己的帐号体系
 
-获取到产品ID,Access Key,Access Key Secret
-    
-3.配置程序(参考Demo程序AndroidManifest.xml文件)
+1、集成准备
+* 注册云智易厂商帐号http://app.xlink.cn/login.html
+* 新建产品，定义设备的数据端点
+* 新建Access Key 生成自己的帐号体系
+* 获取到产品ID,Access Key,Access Key Secret
 
-3.1.在AndroidManifest.xml文件中application 标签下配置添加：
-        
-      <!-- XLINK 内网服务 -->
-     <service android:name="io.xlink.wifi.sdk.XlinkUdpService" />               
-      <!-- XLINK 公网服务 --> 
-     <service android:name="io.xlink.wifi.sdk.XlinkTcpService" />
-         
-3.2. 添加sdk所需要权限
+2、配置程序(参考Demo程序AndroidManifest.xml文件)
 
-      <!-- 联网权限 -->                  
-      <uses-permission android:name="android.permission.INTERNET" />
-      
-      <!-- 网络状态 -->                 
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-      
-      <!-- wifi状态 -->                  
-      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-      
-      <!-- wifi状态改变 -->
-      <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
-          
-4.混淆打包
- 
+在AndroidManifest.xml文件中application 标签下配置添加：
+
+    <!-- XLINK 内网服务 -->
+    <service android:name="io.xlink.wifi.sdk.XlinkUdpService" />               
+    <!-- XLINK 公网服务 -->
+    <service android:name="io.xlink.wifi.sdk.XlinkTcpService" />
+
+添加sdk所需要权限
+
+    <!-- 联网权限 -->                  
+    <uses-permission android:name="android.permission.INTERNET" />                 
+    <!-- 网络状态 -->                 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />        
+    <!-- wifi状态 -->                  
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- wifi状态改变 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+混淆打包
+
 如果的项目使用了Proguard混淆打包，为了避免SDK被二次混淆导致无法正常使用SDK，
-    
 请务必在proguard-project.txt中添加以下代码：
-    
+
     -libraryjars libs/xlink-wifi-sdk-v*.jar #（集体请查看jar名称）
-     -dontwarn io.xlink.wifi.sdk.**
-     -keep class io.xlink.wifi.sdk.**{
-                 *;
-         }
-                 
-二.配置SDK  (可参考Demo程序MyApp.java文件)
+
+    -dontwarn io.xlink.wifi.sdk.**
+    -keep class io.xlink.wifi.sdk.**{
+                             *;
+    }
+
+
+
+
+### 二.配置SDK  (可参考Demo程序MyApp.java文件)
 
 请先把文件夹内 xlink-wifi-sdk-v***.jar 文件拷贝到自己工程libs下
     
@@ -85,8 +80,11 @@ value
                  
 注意事项:
 
-当不需要该监听器时，可以调用XlinkAgent.getInstance().removeListener(XlinkNetListener)进行移除 
+当不需要该监听器时，可以调用以下方式进行移除：
+
+    XlinkAgent.getInstance().removeListener(XlinkNetListener)
                     
+
 3.设置设备数据模版
     
 如果设备使用了数据端点，需要根据在后端定义的设备数据端点在SDK进行配置，这样SDK才能解析该设备端点         
@@ -105,7 +103,7 @@ value
              
 转化成json串为：
 
-    String prodctid_value =[ {"key":0,type:"byte"}, {"key":1,type:"bool"}, {"key":2,type:"byte"},{"key":3,type:"int16"},{"key":4,type:"int32"}, {"key":5,type:"string"}]
+    String prodctid_value =[ {"key":0,type:"byte"}, {"key":1,type:"bool"},   {"key":2,type:"byte"},{"key":3,type:"int16"},{"key":4,type:"int32"}, {"key":5,type:"string"}]
              
 通过函数：
               
@@ -115,27 +113,27 @@ value
               
 注意事项:
 
-1.扫描,操作设备之前需先设置该设备的数据端点；(必须设置，不然解析不出数据端点)
+* 扫描,操作设备之前需先设置该设备的数据端点；(必须设置，不然解析不出数据端点)
+* 如该设备未定义数据端点也需要这样设置：
 
-2.如该设备未定义数据端点也需要这样设置：
+    XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
 
-XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
+* 该设备的产品id 可在企业管理平台查看；
+* SDK支持多产品ID；
 
-3.该设备的产品id 可在企业管理平台查看；
+               
+               
+### 三、登录/注册 厂商自己的用户体系
 
-4.SDK支持多产品ID；
-                 
-三.登录/注册 厂商自己的用户体系
-
-1. 概述
+1、概述
 
 通过厂商自己的用户体系 uid + password换取该用户在云智易平台的唯一appId appAuthkey;
 
-获取到 appId 后，能调用 XlinkAgent.getInstance().login(appid,authkey);
-
-才能使用云端网络和设备功能。
+获取到 appId 后，能调用如下方法才能使用云端网络和设备功能：
+    
+    XlinkAgent.getInstance().login(appid,authkey);
            
-2.使用
+2、使用
 
 在企业管理平台/开发者服务/Access key下新建Access key
 
@@ -145,22 +143,23 @@ XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
 
 并参考 Demo程序的注册登录流程(替换HttpAgent.java里面ACCESS_ID SECRET_KEY可直接使用)
            
-3.注意事项
+3、注意事项
 
-1.如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）
+* 如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）
 
-2.我们提供重置密码接口，其中的找回密码之前的验证用户 也是由厂商自行实现
+* 我们提供重置密码接口，其中的找回密码之前的验证用户 也是由厂商自行实现
 
-3.该注册之后的uid ,name password 不在云智易 SDK内通用，云智易唯一可识别的是 appID, appAuthey；这里的概念要区分开
-         
-四.XlinkAgent类 方法说明
+* 该注册之后的uid ,name password 不在云智易 SDK内通用，云智易唯一可识别的是 appID, appAuthey；这里的概念要区分开。
+  
+       
+### 四、XlinkAgent类的方法说明
 
 同步错误码(有INT返回值的函数)：
         
 XlinkCode类
         
 XlinkCode常量|int实际值|说明|使用的函数
----- | ---- | ---- 
+---- | ---- | ---- | ---- 
 XlinkCode.SUCCEED|0|调用方法成功|ALL
 NO_INIT|-1|未初始化SDK/未调用init(Context mContext)函数|ALL
 NO_HANDSHAKE|-2|未和设备在局域网内连接成功|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData()
@@ -471,7 +470,7 @@ SDK功能函数：
 
        onSendPipeData
                        
-五.XlinkNetListener 回调说明：
+### 五、XlinkNetListener 回调说明：
 
 1. onStart(int code)
 
@@ -486,9 +485,9 @@ LOCAL_CONNECT_ERROR	|-1	|绑定端口失败
             
 2. onLogin(int code)  
 
-1.说明：调用XlinkAgent.login的回调(如果已经login 服务器成功，是不会再回调该函数)
-2.返回值 code: 
-              
+说明：调用XlinkAgent.login的回调(如果已经login 服务器成功，是不会再回调该函数)
+返回值code: 
+
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ---- 
 SUCCEED|0|登录服务器成功
@@ -501,12 +500,12 @@ SERVER_CODE_UNAVAILABLE_ID|3|非法的 appid
 SERVER_CODE_SERVER_ERROR|4|服务器内部错误
 ...	...	...
         
-2.  onDisconnect(int code)
+2. onDisconnect(int code)
 
-1.说明：
+说明：
     对应于login，当app从xlink服务掉线时，会回调该方法
     云端连接会自己断线重连(网络异常，心跳异常才会，其他异常需要处理)，不用重复调用Login()方法
-2.返回值 code:
+返回值 code:
               
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ---- 
@@ -516,11 +515,11 @@ CLOUD_SERVICE_KILL|-3|XlinkTcpServrce服务被异常杀死（如360等安全软�
 CLOUD_USER_EXTRUSION|-4|该app id在其他地方登录(提示用户，帐号被挤)
             
             
-2. onLocalDisconnect(int code);
+3. onLocalDisconnect(int code);
 
-1.说明：本地服务断开
+说明：本地服务断开
        
-2.断开原因 code:
+断开原因 code:
               
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ---- 
@@ -528,32 +527,32 @@ LOCAL_THREAD_ERROR|-1|无物理网络
 LOCAL_SERVICE_KILL|-2|XlinkUdpServrce服务被异常杀死（如360等安全软件),需要重新调用start函数。
 ...|...|...
             
-3. onRecvPipeData(XDevice device, byte[] data)
+4. onRecvPipeData(XDevice device, byte[] data)
 
-1.说明：
+说明：
 
-       收到局域网内设备推送的pipe数据 （跟设备直连，返回的数据）
+    收到局域网内设备推送的pipe数据 （跟设备直连，返回的数据）
 
-1.返回值 :
+返回值 :
 
-       device：  该设备的 pipe数据
-       data：byte数据
+    device：  该设备的 pipe数据
+    data：byte数据
                        
-4. onRecvPipeSyncData(XDevice device, byte[] data)
+5. onRecvPipeSyncData(XDevice device, byte[] data)
 
-1.说明：
+说明：
 
-        收到服务器推送的同步pipe数据 
-1.返回值 :
+    收到服务器推送的同步pipe数据 
+    
+返回值 :
 
-       device：  该设备的 pipe数据
-
-       data：byte数据
+    device：  该设备的 pipe数据
+    data：byte数据
                        
-4. onDataPointUpdate(XDevice xDevice, int key,Object value, int channel,int type);
-1.说明：
+6. onDataPointUpdate(XDevice xDevice, int key,Object value, int channel,int type);
+说明：
        设备数据节点发生改变，会回调此方法
-1.返回值 :
+返回值 :
          1.  device：  设备实例
          2.  key：      端点索引
          3.  value     端点值
@@ -561,8 +560,7 @@ LOCAL_SERVICE_KILL|-2|XlinkUdpServrce服务被异常杀死（如360等安全软�
 channel ==XlinkCode.CHANGED_UPDATAPOINT_LOCAL  为本地局域网通道
 channel ==XlinkCode.CHANGED_UPDATAPOINT_CLOUD  为yun'd云端网络通道
 
-5.  type: value的类型，
-        
+type: value的类型：
     
 XlinkCode 常量|具体int值|说明
 ---- | ---- | ---- 
@@ -573,11 +571,13 @@ POINT_TYPE_INT|4|int32 (int)
 POINT_TYPE_STRING|5|string
 
 
-8.onDeviceStateChanged(XDevice xdevice, int state);
-1.说明：
-       设备当连接成功/掉线，如果设备有状态变化会回调该方法.
-       每当设备掉线，会自动调用connectDevice 一次。
-2.返回值 :
+7.onDeviceStateChanged(XDevice xdevice, int state);
+
+说明：
+    设备当连接成功/掉线，如果设备有状态变化会回调该方法.
+    每当设备掉线，会自动调用connectDevice 一次。
+    
+返回值 :
      1.  device：  设备实例
      2.  state: 状态 :
                      
@@ -588,7 +588,7 @@ DEVICE_CHANGED_OFFLINE|	-2|	设备掉线
 DEVICE_CHANGED_CONNECT_SUCCEED|	-3|	设备重新连接成功
 ...|	...|	...
         
-六.XLINK 设备的操作
+### 六、XLINK 设备的操作
         
 1.设备和用户的关系:
 ①.内网模式:
@@ -631,7 +631,6 @@ DEVICE_CHANGED_CONNECT_SUCCEED|	-3|	设备重新连接成功
 
 比如HF的Smartlink，庆科的Easylink等
 
-                                   
 
 ②.当用户第一次使用SDK时，通过扫描获取
 
