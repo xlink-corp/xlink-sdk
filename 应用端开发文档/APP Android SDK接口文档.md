@@ -1,9 +1,10 @@
 
-Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
+©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 
-# XLINK SDK Android 集成文档
+# XLINK Android SDK集成文档
 
+本文档是面向智能硬件的APP开发者，通过Xlink Android SDK接入云智易物联平台。
 
 ## 一.开发前的准备
 
@@ -18,7 +19,8 @@ Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
 * 新建Access Key 生成自己的帐号体系
 * 获取到产品ID,Access Key,Access Key Secret
 
-### 3.配置程序(参考Demo程序AndroidManifest.xml文件)
+### 3.配置程序
+(参考Demo程序AndroidManifest.xml文件)
 
 #### 3.1.在AndroidManifest.xml文件中application 标签下配置添加：
 
@@ -789,3 +791,5 @@ messageId  : 跟调用sendPipe接口返回的 msgId 一一对应
 
 
 完!
+
+©2016 云智易物联云平台（http://www.xlink.cn）
