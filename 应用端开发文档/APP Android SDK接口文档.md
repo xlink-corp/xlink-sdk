@@ -104,10 +104,10 @@ onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设
               
 ### 注意事项:
 
-1.扫描,操作设备之前需先设置该设备的数据端点；(必须设置，不然解析不出数据端点)
-2.如该设备未定义数据端点也需要这样设置： XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
-3.该设备的产品id 可在企业管理平台查看；
-4.SDK支持多产品ID；
+1. 扫描,操作设备之前需先设置该设备的数据端点；(必须设置，不然解析不出数据端点)
+2. 如该设备未定义数据端点也需要这样设置： XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
+3. 该设备的产品id 可在企业管理平台查看；
+4. SDK支持多产品ID；
                  
 ## 三.登录/注册 厂商自己的用户体系
 
