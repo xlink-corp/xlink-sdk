@@ -1,12 +1,12 @@
 
-Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
+©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 
-# C语言接口
+# C语言集成接口
 
 本文主要面向硬件开发者，介绍如何使用Xlink SDK静态库C语言接口接入云平台。
 
-## 1.API接口
+## 1.API说明
 
 ### 1.1初始化接口
 
@@ -359,4 +359,4 @@ typedef struct XLINK_USER_CONFIG {
 } XLINK_USER_CONFIG;```
 
 
-Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
+©2016  **云智易**物联云平台（http://www.xlink.cn）
