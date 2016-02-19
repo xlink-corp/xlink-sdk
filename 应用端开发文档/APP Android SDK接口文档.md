@@ -4,52 +4,45 @@
 ## 一.开发前的准备
 
 ### 1. SDK功能概述
-    云智易android sdk 帮助开发者基于android系统上和xlink模块智能设备进行通讯。
+    
+	云智易android sdk 帮助开发者基于android系统上和xlink模块智能设备进行通讯。
     
 ### 2.集成准备
     
 	注册云智易厂商帐号http://app.xlink.cn/login.html
-	
 	新建产品，定义设备的数据端点
-	
 	新建Access Key 生成自己的帐号体系
-	
 	获取到产品ID,Access Key,Access Key Secret
     
 ### 3.配置程序(参考Demo程序AndroidManifest.xml文件)
 
 #### 3.1.在AndroidManifest.xml文件中application 标签下配置添加：
         
-      <!-- XLINK 内网服务 -->
-     <service android:name="io.xlink.wifi.sdk.XlinkUdpService" />               
-      <!-- XLINK 公网服务 --> 
-     <service android:name="io.xlink.wifi.sdk.XlinkTcpService" />
+	<!-- XLINK 内网服务 -->
+	<service android:name="io.xlink.wifi.sdk.XlinkUdpService" />               
+	<!-- XLINK 公网服务 --> 
+	<service android:name="io.xlink.wifi.sdk.XlinkTcpService" />
          
 #### 3.2. 添加sdk所需要权限
 
-      <!-- 联网权限 -->                  
-      <uses-permission android:name="android.permission.INTERNET" />
-      
-      <!-- 网络状态 -->                 
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-      
-      <!-- wifi状态 -->                  
-      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-      
-      <!-- wifi状态改变 -->
-      <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+	<!-- 联网权限 -->                  
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- 网络状态 -->                 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<!-- wifi状态 -->                  
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<!-- wifi状态改变 -->
+	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
           
 ### 4.混淆打包
  
 	如果的项目使用了Proguard混淆打包，为了避免SDK被二次混淆导致无法正常使用SDK，
-    
 	请务必在proguard-project.txt中添加以下代码：
-    
-    -libraryjars libs/xlink-wifi-sdk-v*.jar #（集体请查看jar名称）
-     -dontwarn io.xlink.wifi.sdk.**
-     -keep class io.xlink.wifi.sdk.**{
-                 *;
-         }
+	-libraryjars libs/xlink-wifi-sdk-v*.jar #（集体请查看jar名称）
+	-dontwarn io.xlink.wifi.sdk.**
+	-keep class io.xlink.wifi.sdk.**{
+	         *;
+	}
                  
 ## 二.配置SDK  (可参考Demo程序MyApp.java文件)
 
@@ -58,15 +51,12 @@
 ### 1.初始化SDK
 
 	在自定义Application 下的onCreate()函数调用：
-
-        XlinkAgent.init(applicationContext);//参数会被长期引用，最好使用application的context。
+    XlinkAgent.init(applicationContext);//参数会被长期引用，最好使用application的context。
             
 ### 2.设置监听器     
 
 	请确保使用sdk的功能前最少设置一个通用监听器，
-
-      XlinkAgent.getInstance().addXlinkListener(XlinkNetListener);
-              
+	XlinkAgent.getInstance().addXlinkListener(XlinkNetListener);
 	该监听器的功能有：(具体回调请参见XlinkNetListener说明)
 
 value
@@ -136,7 +126,6 @@ onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设
 通过函数：
               
     XlinkAgent.setDataTemplate(“该设备的产品id”, prodctid_value);
-              
 	进行设置数据端点（可参考demo程序MyApp.java）
               
 ### 注意事项:
