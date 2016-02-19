@@ -1,25 +1,24 @@
 # XLINK SDK IOS 集成文档
 
-**云智易** • 发表于：2015年10月12日 16:30 • 更新于：2015年11月03日 09:34
 
 **一. 开发前的准备**
 
     1. SDK功能概述
         ● 云智易（XLINK）iOS SDK帮助开发者在iOS系统上开发用于和XLINK模块进行通讯的APP程序。
-
+        
     2. 集成准备
         ● 注册云智易厂商账号：http://app.xlink.cn/
         ● 新建产品，定义设备的数据端点。
         ※ 数据端点：用于对设备运行状态的监控和调试，除有特殊需求，一般开发者不用处理。
         ● 新建AccessKey生成自己的账号体系
         ※ 同时拥有AccessKeyID和AccessKeySecret才可以注册和使用云端账号。
-
+    
     3. 配置程序
         ● XLINKSDK采用原生ObjectC程序编写，提供的是静态链接库方式集成；
         ● XLINKSDK仅支持iOS系统，不支持OSX系统；
         ● XLINKSDK仅支持iOS7.0以上系统；
         ● XLINKSDK暂只对Xcode下的开发进行支持；
-
+        
 **二. 配置SDK**
 
     1. 配置Xcode工程
@@ -29,7 +28,7 @@
         ● 进入Xcode工程属性页面，进入BuildSettings标签，切换All选项，找到OtherLinkerFlags选项，加入-lxlinksdklib参数；
         c. 配置库文件搜索路径
         ● 进入Xcode工程属性页面，进入BuildSettings标签，切换All选项，找到LibrarySearchPaths选项，将libxlink/lib下针对模拟器和实体机加载的库的路径配置到SearhPaths中。
-
+    
     2. 初始化SDK
         a. 挂接delegate：
         ● 需要一个全局的对象作为XLINKShareObject的delegate接收器，一般情况下，我们会把App的AppDelegate作为全局delegate，如图：
@@ -148,7 +147,7 @@
             ● device设备实体
             ● payload数据值，二进制的。
         d. 返回值：
-            ● 0：成功
+            ● 0：成功 
             ● 其它失败
         e. 备注：
             ● 其发送结果通过onSendLocalPipeData回调返回。
@@ -511,3 +510,15 @@ APP开发者只用关心几个属性即可；
     27. CODE_STATE_KICK_OFFLINE
         ● 值：-103
         ● 说明：APP被踢下线
+
+
+
+
+
+
+
+
+
+
+
+
