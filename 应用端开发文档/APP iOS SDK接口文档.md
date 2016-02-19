@@ -29,11 +29,12 @@
         c. 配置库文件搜索路径
         ● 进入Xcode工程属性页面，进入BuildSettings标签，切换All选项，找到LibrarySearchPaths选项，将libxlink/lib下针对模拟器和实体机加载的库的路径配置到SearhPaths中。
     
-    2. 初始化SDK
+2. 初始化SDK
         a. 挂接delegate：
-        ● 需要一个全局的对象作为XLINKShareObject的delegate接收器，一般情况下，我们会把App的AppDelegate作为全局delegate，如图：
-		![](http://i.imgur.com/84l0Tzm.png)
-		b. 启动XLinkExportObject
+            ● 需要一个全局的对象作为XLINKShareObject的delegate接收器，一般情况下，我们会把App的AppDelegate作为全局delegate，如：
+		@interface AppDelegate ()<XlinkExportObjectDElegate>	
+	
+	b. 启动XLinkExportObject
             ● 调用函数[[XLinkExportObject shareObject] start];
         c. 编译程序
             ● 若Xcode编译时没有报错误，则表示SDK初始化成功，后续便可以进行实际的开发了。
