@@ -1,6 +1,6 @@
 # Windows SDK集成文档
 
-## **说明**
+## #### 说明
 
 - 该文档适用于使用云智易Windows SDK的开发人员。
 - 使用云智易Windows SDK可以将Windows系统作为设备接入到云智易物联网平台，已使用平台提供的相关功能。
@@ -45,8 +45,10 @@
 5. SetXDeviceDataPointByXID
 6. StatXDevice
 7. StopXDevice
-8. SetLogCallback
-9. SetXDeviceCallback
+8. SendDevicePipeDataByXID
+9. SendDeviceSyncPipeDataByXID
+10. SetLogCallback
+11. SetXDeviceCallback
 
 ## **回调概览**
 
@@ -59,15 +61,15 @@
 
 ### **1. QueryNewXDevice**
 
-**说明**
+#### 说明
 
 * 请求一个新的XDevice实例
 
-**函数**
+#### 函数
 
     int QueryNewXDevice(const char * server_host, const char * product_id, const char * product_key, const  char * mac, const char * device_name);
 
-**参数**
+#### 参数
 
 参数名 | 类型 | 说明
 ---- | --- | ----
@@ -77,7 +79,7 @@ product_key | 字符串 | 产品密钥
 mac | 字符串 | 设备MAC
 device_name | 字符串 | 设备名称
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -88,21 +90,21 @@ device_name | 字符串 | 设备名称
 
 ### **2. FreeXDeviceByXID**
 
-**说明**
+#### 说明
 
 * 释放一个Device实例
 
-**函数**
+#### 函数
 
     int FreeXDeviceByXID(int xid);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
 xid | 整形 | SDK分配的设备实例ID
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -111,16 +113,16 @@ xid | 整形 | SDK分配的设备实例ID
 
 ### **3. SetXDeviceInfoByXID**
 
-**说明**
+#### 说明
 
 * 设置一个实例的基本信息。该函数用在调用者已经激活过设备，已经获得了设备的DeviceID和DeviceKey，并且已经保存下来，需要直接让该设备上网前调用。
 * 调用该函数前，需要先调用QueryNewXDevice让SDK分配实例对象。得到XID
 
-**函数**
+#### 函数
 
     SetXDeviceInfoByXID(int xid, int device_id, const char * device_key);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -128,7 +130,7 @@ xid | 整形 | SDK分配的设备实例ID
 device_id | 整形 | 云端分配的设备ID
 device_key | 整形 | 云端返回的设备密钥
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -137,15 +139,15 @@ device_key | 整形 | 云端返回的设备密钥
 
 ### **4. AddXDeviceDataPointByXID**
 
-**说明**
+#### 说明
 
 * 向设备中添加一个数据端点，一般用在设备初始化完成，还没连接上云端之前使用。
 
-**函数**
+#### 函数
 
     int AddXDeviceDataPointByXID(int xid, int index, int type, const void * defaut_value);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -154,7 +156,7 @@ index | 整形 | 端点索引
 type | 整形 | 端点类型
 default_value | 可变类型 | 初始化值
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -163,15 +165,15 @@ default_value | 可变类型 | 初始化值
 
 ### **5. SetXDeviceDataPointByXID**
 
-**说明**
+#### 说明
 
 * 设置数据端点值，如果设备已经连接云端，数据短点值的变化会通知到云端，云端可以通过对应接口完成指定动作。如触发告警、通知等。
 
-**函数**
+#### 函数
 
     int SetXDeviceDataPointValueByXID(int xid, int index, int type, const void * value, int len);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -181,7 +183,7 @@ type | 整形 | 端点类型
 value | 可变类型 | 值，不同的类型，传入的类型不同
 len | 整形 | 值的长度
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -190,23 +192,23 @@ len | 整形 | 值的长度
 
 ### **6. StatXDevice**
 
-**说明**
+#### 说明
 
 * 启动一个设备，让设备连接到云端。
 * 若设备还未激活，设备会自动完成激活后连接的动作。
 * 设备的激活状态，连接状态将通过设置的状态回调（SetXDeviceCallback ）进行通知。
 
-**函数**
+#### 函数
 
     int StartXDevice(int xid);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
 xid | 整形 | 实例ID
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -215,60 +217,111 @@ xid | 整形 | 实例ID
 
 ### **7. StopXDevice**
 
-**说明**
+#### 说明
 
 * 让设备从云端断开
 
-**函数**
+#### 函数
 
     int StopXDevice(int xid);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
 xid | 整形 | 实例ID
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
 `= 0` | 成功
 `< 0` | 失败
 
-### **8. SetLogCallback**
+### **8. SendDevicePipeDataByXID**
 
-**说明**
+#### 说明
+
+* 向指定的APP发送透传消息
+
+#### 函数
+
+    int	SendDevicePipeDataByXID(int xid, int app_id, const char * value, int len);
+
+#### 参数
+
+参数 | 类型 | 说明
+---- | --- | ----
+xid | 整形 | 设备实例ID
+app_id | 整形 | 需要发送给的接收者ID
+value | 二进制数据 | 发送的数据
+len | 整形 | 发送的数据长度
+
+#### 返回值
+
+值 | 说明
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
+
+### **9. SendDeviceSyncPipeDataByXID**
+
+#### 说明
+
+* 向所有订阅过该设备的APP广播透传消息
+
+#### 函数
+
+    SendDeviceSyncPipeDataByXID(int xid, const char * value, int len);
+
+#### 参数
+
+参数 | 类型 | 说明
+---- | --- | ----
+xid | 整形 | 设备实例ID
+value | 二进制数据 | 发送的数据
+len | 整形 | 发送的数据长度
+
+#### 返回值
+
+值 | 说明
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
+
+### **10. SetLogCallback**
+
+#### 说明
 
 * 设置日志回调接口，可以让外围程序看到SDK运行日志。
 
-**函数**
+#### 函数
 
     void SetLogCallback(void * lpLogCallback);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
 lpLogCallback | 函数指针 | 回调函数。回调函数类型定义见后面说明。
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
 na | na
 
-### **9. SetXDeviceCallback**
+### **11. SetXDeviceCallback**
 
-**说明**
+#### 说明
 
 * 设置SDK回调，SDK的设备动作和操作都是异步完成的，所以必须设置回调才可以知道设备动作状态，以及操作的最终结果。
 
-**函数**
+#### 函数
 
     void SetXDeviceCallback(void * lpDeviceCallback, void * lpDeviceSendCallback, void * lpDeviceRecvCallback, void * lpDeviceDataPointCallback);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -277,7 +330,7 @@ na | na
 - lpDeviceRecvCallback | 函数指针 | 设备接收数据回调
 - lpDeviceDataPointCallback | 函数指针 | 设备数据端点变化回调
 
-**返回值**
+#### 返回值
 
 值 | 说明
 --- | ---
@@ -288,15 +341,15 @@ na | na
 
 ### **1. 设备运行状态回调**
 
-**说明**
+#### 说明
 
 * 设备的联网状态，激活状态等基本状态通过该回调通知
 
-**定义**
+#### 定义
 
     typedef void (CALLBACK * OnXDeviceCallbackPtr)(int nDeviceEvent, int xid, void * param0, void * param1);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -307,15 +360,15 @@ param1 | 可变类型 | 参数，不同的事件，值不同
 
 ### **2. 设备发送数据状态回调**
 
-**说明**
+#### 说明
 
 * 设备可以通过接口发送数据给指定的APP或者直接发送数据给云平台，发送数据是个异步的过程，结果通过该回调通知
 
-**定义**
+#### 定义
 
     typedef void (CALLBACK * OnXDeviceSendCallbackPtr)(int nSendEvent, int xid, void * param0, void * param1);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -326,15 +379,15 @@ param1：参数 | 可变类型 | 不同的事件，值不同
 
 ### **3. 设备接收数据回调**
 
-**说明**
+#### 说明
 
 * 当设备收到云端发送下来的数据或指令，通过该回调通知外部，用于做对应处理。
 
-**定义**
+#### 定义
 
     typedef void (CALLBACK * OnXDeviceRecvCallbackPtr)(int nRecvEvent, int xid, void * param0, void * param1, void * param2);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
@@ -345,15 +398,15 @@ param1：参数 | 可变类型 | 不同的事件，值不同
 
 ### **4. 设备数据端点变化回调**
 
-**说明**
+#### 说明
 
 * 当设备的数据端点发生变化，无论是本地或者云端引起的变化，都会通过该接口进行通知。
 
-**定义**
+#### 定义
 
     typedef void (CALLBACK * OnXDeviceDataPointCallbackPtr)(int xid, int index, int type, void * data);
 
-**参数**
+#### 参数
 
 参数 | 类型 | 说明
 ---- | --- | ----
