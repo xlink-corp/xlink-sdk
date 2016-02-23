@@ -1,6 +1,9 @@
+©2016  **云智易**物联云平台（http://www.xlink.cn）
+
+
 # Windows SDK集成文档
 
-## #### 说明
+## 说明
 
 - 该文档适用于使用云智易Windows SDK的开发人员。
 - 使用云智易Windows SDK可以将Windows系统作为设备接入到云智易物联网平台，已使用平台提供的相关功能。
@@ -483,3 +486,6 @@ data | 可变类型 | 值，不同的类型，返回的值不同
 `E_DEVICE_RECV_PIPE_SYNC` | 201 | 预留
 `E_DEVICE_RECV_PIPE_LOCAL` | 202 | 设备接收本地APP发送的透传指令。`param0:(int)session_id;param1:(int)data len;param2:(const char *)data;`
 `E_DEVICE_RECV_ACCESS_KEY` | 203 | 设备收到APP设置的ACCESS_KEY。`param0:(int)session_id;param1:(int)access_key;`
+
+
+©2016  **云智易**物联云平台（http://www.xlink.cn）
