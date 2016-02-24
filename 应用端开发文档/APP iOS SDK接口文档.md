@@ -30,21 +30,21 @@
 ### 1. 配置Xcode工程
 
 * 配置头文件搜索路径:
-	1. 进入Xcode工程属性页面，
+	* 进入Xcode工程属性页面，
 	* 进入BuildSettings标签，
 	* 切换All选项，
 	* 找到HeaderSearchPaths选项，
 	* 将libxlink/include目录加入SearchPaths；
 
 * 配置库引用:
-	1. 进入Xcode工程属性页面，
+	* 进入Xcode工程属性页面，
 	* 进入BuildSettings标签，
 	* 切换All选项，
 	* 找到OtherLinkerFlags选项，
 	* 加入-lxlinksdklib参数；
 
 * 配置库文件搜索路径:
-	1. 进入Xcode工程属性页面，
+	* 进入Xcode工程属性页面，
 	* 进入BuildSettings标签，
 	* 切换All选项，
 	* 找到LibrarySearchPaths选项，
