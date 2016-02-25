@@ -69,7 +69,7 @@ Content
     }
 
 | Variable | Required | Description
-| -- | -- | --
+| --- | --- | ---
 | email | Yes | Email Address
 | nickname | Yes | User Nickname，2-32 character length
 | corp_id | Yes | Enterprise ID
