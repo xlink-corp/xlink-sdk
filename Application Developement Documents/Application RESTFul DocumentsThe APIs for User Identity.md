@@ -1,7 +1,6 @@
 # The APIs for User Identity
 
-    Xlink platform provides RESTful APIs for user account registration, login, modify account information, resetting
-    passwords and other services.
+Xlink platform provides RESTful APIs for user account registration, login, modify account information, resetting passwords and other services.
 
 
 ## **Index**
@@ -18,19 +17,14 @@
 10. [Forgot Password](#ForgotPassword)
 11. [Appendix](#Appendix)
 
-##**Xlink APIs**
-
-### ***About Enterprise ID:***
-
-    Users' operations including register, verification, reset password required valid Enterprise ID, Enterprise ID can be found on Xlink console.
+##**Xlink User Service APIs**
 
 
 ### **<a name="RegisterwithEmail">1.Register With Email Address</a>**
 
-    User can register an Xlink account using email address, an activation email will be sent to user's email, user will be
-    able to activate the account via the url within the email.
+    User can register an Xlink account using email address, an activation email will be sent to user's email, 
+    user will be able to activate the account via the url within the email.
     User activation is optional and can be disable by enterprise user within Xlink console.
-
 
 
 **Request**
@@ -111,8 +105,8 @@ Content
 
 ### **<a name="RegisterWithPhone">3.Register With Mobile Phone Number</a>**
 
-
-    User can register with mobile phone number, a verification code will be sent to users' phone and user activate with the valid code.
+    User can register with mobile phone number, a verification code will be sent to users' phone and user activate with
+    the valid code.
     *Regional Support: Mainland China
 
 
@@ -165,7 +159,8 @@ Content
 
 ### **<a name="SMSVerificationCode">4.Send SMS Verification Code</a>**
 
-    Call for this API to send SMS text to user's mobile phone. User input the valid verification code to register and activate account, the SMS valid session is 120 second.
+    Call for this API to send SMS text to user's mobile phone. User input the valid verification code to register 
+    and activate account, the SMS valid session is 120 second.
 
 **Request**
 
