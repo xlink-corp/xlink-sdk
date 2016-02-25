@@ -4,7 +4,7 @@
     passwords and other services.
 
 
-#**At a Glance**
+## **Index**
 
 1. [Register with Email Address](#RegisterwithEmail)
 2. [Activate via Email](#ActivateViaEmail)
@@ -18,7 +18,7 @@
 10. [Forgot Password](#ForgotPassword)
 11. [Appendix](#Appendix)
 
-#**Xlink APIs**
+##**Xlink APIs**
 
 ### ***About Enterprise ID:***
 
