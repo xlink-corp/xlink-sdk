@@ -1,6 +1,6 @@
-# Device Sharing Interface
+# Device Sharing APIs
 
-* By calling device sharing interface, can allow user to manage sharing feature, including accept, deny, cancel,etc.
+With device sharing api, it allow user to manage sharing control, including accept, deny, cancel,etc.
 
 
 
@@ -19,8 +19,7 @@
 ### **<a name="device_share">1.Device Sharing</a>**
 
 
-	User can share devices to other users, allow other users to control certain devices. Sharer will be the manager, other user will be general users.
-	Only device manager can share.
+User can share devices to other users, allow other users to control certain devices. Sharer will be the manager, other user will be general users. Only device manager can share.
 
 
 
@@ -43,8 +42,7 @@
 
 ##### ***About Device Manager***
 
-    Only register and subscribe via Xlink Platform SDK can become a device manager.
-    User register a new device to become the device manager.
+Only register and subscribe via Xlink Platform SDK can become a device manager.User register a new device to become the device manager.
 
 ![](http://i.imgur.com/pYdAaZN.png)
 
@@ -94,7 +92,7 @@ Content
 
 
 
-    Device manager can cancel an invitation via this interface.
+	Device manager can cancel an invitation via this interface.
 
 
 **Request**
