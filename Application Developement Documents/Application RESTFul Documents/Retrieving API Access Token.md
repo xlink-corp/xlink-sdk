@@ -1,4 +1,4 @@
-# Retrieving API Access Token
+# API Access Token
 
 
     RESTful API Access Token is the key to access Xlink platform.
