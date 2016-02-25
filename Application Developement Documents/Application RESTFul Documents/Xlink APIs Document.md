@@ -6,17 +6,17 @@
 
 #**At a Glance**
 
-1. Register with Email Address
-2. Activate via Email
-3. Register with Mobile Phone Number
-4. Send SMS Verification Code
-5. Login and Validating Access Token
-6. Renew Access Token
-7. Retrieve User Information
-8. Edit User Information
-9. Change Password
-10. Forgot Password
-11. Appendix
+1. [Register with Email Address](#RegisterwithEmail)
+2. [Activate via Email](#ActivateViaEmail)
+3. [Register with Mobile Phone Number](#RegisterWithPhone)
+4. [Send SMS Verification Code](#SMSVerificationCode)
+5. [Login and Validating Access Token](#LoginAndValidating)
+6. [Renew Access Token](#RenewAccessToken)
+7. [Retrieve User Information](#RetrieveUserInformation)
+8. [Edit User Information](#EditUserInformation)
+9. [Change Password](#ChangePassword)
+10. [Forgot Password](#ForgotPassword)
+11. [Appendix](#Appendix)
 
 #**Xlink APIs**
 
@@ -25,7 +25,7 @@
     Users' operations including register, verification,  reset password required valid Enterprise ID, Enterprise ID can be found on Xlink console.
 
 
-### **1.Register With Email Address**
+### **<a name="RegisterwithEmail">1.Register With Email Address</a>**
     User can register an Xlink account using email address, an activation email will be sent to user's email, user will be able to activate the account via the url within the email.
     User activation is optional and can be disable by enterprise user within Xlink console.
 
@@ -36,6 +36,8 @@
 URL
 
     POST /v2/user_register
+
+![](http://i.imgur.com/IYW1aIs.png)
 
 Header
 
@@ -75,7 +77,7 @@ Content
 
 
 
-### **2.Activate Via Email**
+### **<a name="ActivateViaEmail">2.Activate via Email</a>**
 
 **Request**
 
@@ -105,7 +107,7 @@ Content
 
     无
 
-### **3.Register With Mobile Phone Number**
+### **<a name="RegisterWithPhone">3.Register With Mobile Phone Number</a>**
 
 
     User can register with mobile phone number, a verification code will be sent to users' phone and user activate with the valid code.
@@ -159,7 +161,7 @@ Content
 
 
 
-### **4.Send SMS Verification Code**
+### **<a name="SMSVerificationCode">4.Send SMS Verification Code</a>**
 
     Call for this API to send SMS text to user's mobile phone. User input the valid verification code to register and activate account, the SMS valid session is 120 second.
 
@@ -190,13 +192,13 @@ Content
 
 
 
-### **5.Login And Validating Access Token**
+### **<a name="LoginAndValidating">5.Login And Validating Access Token</a>**
 
 
     User login with username(email or phone number) and password to access to Xlink RESTful interface. An access token and a refresh token will be validated to user.  
     The token valid for 2 hours.
 
-
+![](http://i.imgur.com/UpYcWcb.png)
 
 **Request**
 
@@ -248,7 +250,7 @@ Content
 | expire_in| Yes | Valid Time,in unit of seconds
 
 
-### **6.Renew Access Token**
+### **<a name="RenewAccessToken">6.Renew Access Token</a>**
 
 
     Access Token only valid for 2 hours, developer can use this interface to refresh a new access token and a new refresh token. If the Access Token had expired before the refresh, user has to relogin.
@@ -286,7 +288,7 @@ Content
     }
 
 
-### **7.Retrieve User Information**
+### **<a name="RetrieveUserInformation">7.Retrieve User Information</a>**
 
     Use this interface to retrieve user personal information
 
@@ -339,7 +341,7 @@ Content
 | region_id | Yes | User Location Regional ID
 | is_vaild | Yes | If Activated
 
-### **8.Edit User Information**
+### **<a name="EditUserInformation">8.Edit User Information</a>**
 
 
     Edit user basic information, only support to change User Nickname for now.
@@ -373,7 +375,7 @@ Content
     无
 
 
-### **9.Change Password**
+### **<a name="ChangePassword">9.Change Password</a>**
 
     Change Password
 
@@ -406,7 +408,7 @@ Content
     无
 
 
-### **10.Forgot Password**
+### **<a name="ForgotPassword">10.Forgot Password</a>**
 
 
     User can reset password via email or mobile phone when password had lost/forgot.
@@ -415,7 +417,7 @@ Content
  **Process as follows**
 
 
-![](zhao_hui_mi_ma.jpg)
+![](http://i.imgur.com/3FA1lhI.png)
 
 
 
@@ -504,7 +506,7 @@ Content
     无
 
 
-### **11.Appendix**
+### **<a name="Appendix">11.Appendix</a>**
 
 **User Source**
 

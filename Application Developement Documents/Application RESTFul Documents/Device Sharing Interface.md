@@ -46,6 +46,8 @@
     Only register and subscribe via Xlink Platform SDK can become a device manager.
     User register a new device to become the device manager.
 
+![](http://i.imgur.com/pYdAaZN.png)
+
 **Request**
 
 
