@@ -1,7 +1,7 @@
-# Xlink Platfrom APIs Document
+# The APIs for User Identity
 
-    With an Xlink account, user will be able to retrieve an access token to access to Xlink RESTful interface.
-    User can register an Xlink account can be registered with user's mobile phone number or email.
+    Xlink platform provides RESTful APIs for user account registration, login, modify account information, resetting
+    passwords and other services.
 
 
 #**At a Glance**
@@ -22,11 +22,13 @@
 
 ### ***About Enterprise ID:***
 
-    Users' operations including register, verification,  reset password required valid Enterprise ID, Enterprise ID can be found on Xlink console.
+    Users' operations including register, verification, reset password required valid Enterprise ID, Enterprise ID can be found on Xlink console.
 
 
 ### **<a name="RegisterwithEmail">1.Register With Email Address</a>**
-    User can register an Xlink account using email address, an activation email will be sent to user's email, user will be able to activate the account via the url within the email.
+
+    User can register an Xlink account using email address, an activation email will be sent to user's email, user will be
+    able to activate the account via the url within the email.
     User activation is optional and can be disable by enterprise user within Xlink console.
 
 
@@ -35,7 +37,7 @@
 
 URL
 
-    POST /v2/user_register
+    POST https://api2.xlink.cn/v2/user_register
 
 ![](http://i.imgur.com/IYW1aIs.png)
 
