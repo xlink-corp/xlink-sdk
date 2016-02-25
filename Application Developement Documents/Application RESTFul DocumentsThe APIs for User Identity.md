@@ -22,8 +22,8 @@ Xlink platform provides RESTful APIs for user account registration, login, modif
 
 ### **<a name="RegisterwithEmail">1.Register With Email Address</a>**
 
-    User can register an Xlink account using email address, an activation email will be sent to user's email, 
-    user will be able to activate the account via the url within the email.
+    User can register an Xlink account using email address, an activation email will be sent 
+    to user's email, user will be able to activate the account via the url within the email.
     User activation is optional and can be disable by enterprise user within Xlink console.
 
 
@@ -159,8 +159,8 @@ Content
 
 ### **<a name="SMSVerificationCode">4.Send SMS Verification Code</a>**
 
-    Call for this API to send SMS text to user's mobile phone. User input the valid verification code to register 
-    and activate account, the SMS valid session is 120 second.
+    Call for this API to send SMS text to user's mobile phone. User input the valid verification 
+    code to register and activate account, the SMS valid session is 120 second.
 
 **Request**
 
@@ -191,8 +191,8 @@ Content
 
 ### **<a name="LoginAndValidating">5.Login And Validating Access Token</a>**
 
-
-    User login with username(email or phone number) and password to access to Xlink RESTful interface. An access token and a refresh token will be validated to user.  
+    User login with username(email or phone number) and password to access to Xlink RESTful interface. 
+    An access token and a refresh token will be validated to user.  
     The token valid for 2 hours.
 
 ![](http://i.imgur.com/UpYcWcb.png)
@@ -249,8 +249,9 @@ Content
 
 ### **<a name="RenewAccessToken">6.Renew Access Token</a>**
 
-
-    Access Token only valid for 2 hours, developer can use this interface to refresh a new access token and a new refresh token. If the Access Token had expired before the refresh, user has to relogin.
+    Access Token only valid for 2 hours, developer can use this interface to refresh a new 
+    access token and a new refresh token. If the Access Token had expired before the refresh, 
+    user has to relogin.
 
 
 **Request**
@@ -418,7 +419,8 @@ Content
 
 
 
-    Xlink had provided forgot password Email Template and password Reset Page. It can be found and customize in Xlink Console, in only required to set variable in Email Template page.
+    Xlink had provided forgot password Email Template and password Reset Page. 
+    It can be found and customize in Xlink Console, in only required to set variable in Email Template page.
 
 | Email Variable | Description |
 | --- | --- |
@@ -432,7 +434,8 @@ Content
 
     Request password reset process using user name.
     If user were registered by email, an URL with be sent by email to user to reset password.
-    If user were registered by mobile phone number, a 6-digit verification code will send to user by SMS, user can use the code to reset password.
+    If user were registered by mobile phone number, a 6-digit verification code will send to 
+    user by SMS, user can use the code to reset password.
 
 
 **Request**
@@ -465,7 +468,8 @@ Content
 
 ** B.Reset Password Via Verification Code**
 
-    Send a verification code to user by email/sms(depend on registration), user can reset password with the code.
+    Send a verification code to user by email/sms(depend on registration), 
+    user can reset password with the code.
 
 
 ** Request **
