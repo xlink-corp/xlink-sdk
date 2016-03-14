@@ -13,10 +13,9 @@
 
 ### 2.集成准备
 
-* 注册云智易厂商帐号http://app.xlink.cn/login.html
+* 注册云智易企业帐号http://admin.xlink.cn/#!/login
 * 新建产品，定义设备的数据端点
-* 新建Access Key 生成自己的帐号体系
-* 获取到产品ID,Access Key,Access Key Secret
+* 获取到产品PID,产品密钥,企业ID(corp_id)
 
 ### 3.配置程序
 (参考Demo程序AndroidManifest.xml文件)
@@ -78,10 +77,11 @@ onStart(int code);| 监听启动sdk成功/失败回调
 onLogin(int code);|监听login登录服务器成功/失败回调
 onLocalDisconnect(int code);|监听本地局域网断开回调
 onDisconnect(int code);|监听和云端服务器连接状态回调
-onRecvPipeData (XDevice device, byte[] data);|	收到设备发送Pipe数据
-onRecvPipeSyncData(XDevice device, byte[] data);|收到设备发送同步Pipe数据
+onRecvPipeData (XDevice device,byte flags, byte[] data);|	收到设备发送Pipe数据
+onRecvPipeSyncData(XDevice device, byte flags,byte[] data);|收到设备发送同步Pipe数据
 onDeviceStateChanged(XDevice xdevice, int state);|设备状态改变
 onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设备数据端点改变
+onEventNotify(EventNotify eventNotify)|应用内推送回调
 
 注意事项:
 
@@ -126,25 +126,22 @@ onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设
 ## 三.登录/注册 厂商自己的用户体系
 
 ### 1. 概述
+参考文档:[http://support.xlink.cn/hc/kb/article/89925/](http://support.xlink.cn/hc/kb/article/89925/) 调用HTTP接口进行用户注册和用户认证,注册用户可通过企业管理后台进行用户管理
+通过HTTP接口进行用户认证后, 可以获取该用户在云智易平台的唯一user_id access_token。获取到 user_id 后，调用：
 
-通过厂商自己的用户体系 uid + password换取该用户在云智易平台的唯一appId appAuthkey。获取到 appId 后，能调用：
-
-	XlinkAgent.getInstance().login(appid,authkey);
+	XlinkAgent.getInstance().login(user_id,access_token);
 
 才能使用云端网络和设备功能。
 
 ### 2.使用
 
-* 在企业管理平台/开发者服务/Access key下新建Access key，得到Access Key ID和Access Key Secret；
-* 查看 云智易RESTful Service-用户身份集成接口.pdf文件，并参考 Demo程序的注册登录流程(替换HttpAgent.java里面ACCESS_ID SECRET_KEY可直接使用)。
+* 在企业管理平台查看企业ID(COMPANY_ID),并参考文档:[http://support.xlink.cn/hc/kb/article/89925/](http://support.xlink.cn/hc/kb/article/89925/)和 Demo程序的注册登录流程(Demo里HttpManage.java对HTTP接口调用进行了封装,替换COMPANY_ID后可直接使用)。
 
 ### 3.注意事项
 
-* 如果使用邮箱或者手机号作为uid，其中的邮箱验证，短信验证由厂商自行实现（先判断验证，验证成功后，再调用云智易的接口进行注册）；
+* 用户也可使用邮箱进行注册，如果使用邮箱进行注册,调用注册接口进行邮箱注册后，会发出一封注册邮件到用户邮箱上，用户通过点击邮箱中的激活链接完成注册,才能正常使用。
 
-* 我们提供重置密码接口，其中的找回密码之前的验证用户 也是由厂商自行实现；
 
-* 该注册之后的uid ,name password 不在云智易 SDK内通用，云智易唯一可识别的是 appID, appAuthey；这里的概念要区分开。
 
 ## 四.XlinkAgent类 方法说明
 
@@ -203,12 +200,12 @@ mContext | ApplicationContext实例
  
 >详情请参见XlinkNetListener 说明
 
-### 3.int login(int appid, String authKey)
+### 3.int login(int user_id, String access_token)
 
 #### 说明：
 
-* 使用APPID和AuthKey登录到CM服务器。APPID和AuthKey的获取，请查看demo代码
-* 获取到的APPID和AuthKey，由外部APP缓存维护。
+* 使用user_id和access_token登录到CM服务器。user_id和access_token的获取，请查看demo代码及用户HTTP接口开发文档 
+* 获取到的user_id和access_token，由外部APP缓存维护。
 * 该方法不用重复调用，调用一次后，会自己断线重连
 * 只有login成功后，才能使用跟云端有关的服务
 
@@ -216,8 +213,8 @@ mContext | ApplicationContext实例
 
 | 参数 | 说明 |
 | --- | --- |
-| APPID | 通过HTTP接口获取到的连接云端的ID |
-| AuthKey | 连接云端认证码 |
+| user_id | 通过HTTP接口获取到的连接云端的用户ID |
+| access_token | 连接云端认证码 |
 
 #### 返回值：
 
@@ -375,9 +372,37 @@ ScanDeviceListener | listener 监听器
 #### 对应回调:
 
    	ScanDeviceListener onGotDeviceByScan(XDevice device)
+在扫描回调中, 可以通过device.getAccessKey()属性判断设备是否已设置设备授权码, 如果没设置,需要设置一下. 后面的用户通过判断是否设置AccessKey以及AccessKey是否一致,来控制是否需要把此设备添加到APP中
 
 
-### 2. int connectDevice(XDevice device, String auth, ConnectDeviceListener connectListener)
+### 2.int setDeviceAccessKey(XDevice device, final int accessKey, final SetDeviceAccessKeyListener listener)
+
+#### 说明：
+
+* 修改设备密码(授权码)，必须在内网环境才能设置
+* 已经设置过AccessKey的设备需要硬件复位清除AccessKey后才能重新设置
+
+#### 参数：
+
+| 参数 | 说明 |
+| --- | --- |
+| XDevice | Device实体对象
+| accessKey | 设备密码(授权码) 支持9位数字
+| listener | 监听器
+
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+| = 0 | 调用成功 |
+| < 0 | 调用失败,失败code参见 同步错误码 |
+
+#### 结果回调：
+
+	SetDeviceAccessKeyListener onSetLocalDeviceAccessKey(XDevice device, int code, int messageId)
+
+
+### 3. int connectDevice(XDevice device,final int accessKey, ConnectDeviceListener connectListener)
 
 #### 说明：
 
@@ -388,7 +413,7 @@ ScanDeviceListener | listener 监听器
 | 参数 | 说明 |
 | --- | --- |
 | XDevice | Device实体兑现 | 
-| auth | 设备授权码 | 
+| accessKey | 设备授权码 | 
 | connectListener | 监听器 | 
 
 #### 返回值：
@@ -401,32 +426,6 @@ ScanDeviceListener | listener 监听器
 #### 结果回调：
 
     ConnectDeviceListener  onConnectDevice(XDevice xDeivce, int ret)
-
-### 3.int setDeviceAuthorizeCode(XDevice device, String oldAuthorize, String newAuthorize, SetDeviceAuthorizeListener listener)
-
-#### 说明：
-
-* 修改设备密码，该方法是根据connectDevice所返回的设备网络环境 来发送数据。
-
-#### 参数：
-
-| 参数 | 说明 |
-| --- | --- |
-| XDevice | Device实体对象
-| oldAuthorize | Old device auth code
-| newAuthorize | New device auth code
-| listener | 监听器
-
-#### 返回值：
-
-| 值 | 说明 |
-| --- | --- |
-| = 0 | 调用成功 |
-| < 0 | 调用失败,失败code参见 同步错误码 |
-
-#### 结果回调：
-
-	onSetDeviceAuthorizeCode 跟setLocalDeviceAuthorizeCode方法一样
 
 
 ### 4.int setDataPoint(XDevice xdevice, int key, Object value,SetDataPointListener listener)
@@ -454,20 +453,21 @@ ScanDeviceListener | listener 监听器
 
 	SetDataPointListener onSetDataPoint();
 
-### 5.int subscribeDevice(XDevice device, String authCode,SubscribeDeviceListener listener)
+### 5.int subscribeDevice(XDevice device, int accessKey, SubscribeDeviceListener listener)
 
 #### 说明：
 
 * 订阅设备(必须有公网环境)(如果在公网环境下使用
 * 公网环境调用 XlinkAgent#connectDevice()会自动调用该函数;
 * 设置设备密码后，订阅关系会清空
+* 解除订阅关系请调用HTTP接口(/v2/user/{user_id}/unsubscribe) 参考:[http://support.xlink.cn/hc/kb/article/89925/](http://support.xlink.cn/hc/kb/article/89925/)
 
 #### 参数：
 
 | 参数 | 说明 |
 | --- | --- |
 | DeviceObject | Device实体对象
-| authCode | 设备授权码
+| accessKey | 设备授权码
 | listener | 监听器
 
 #### 返回值：
@@ -553,7 +553,7 @@ XlinkCode 常量|int实际值|说明
 `CLOUD_STATE_DISCONNECT`|-1|网络问题导致和服务器连接中端(不需要处理，会自动重连)
 `CLOUD_KEEPALIVE_ERROR`|-2|和服务器心跳异常，导致从服务器掉线(不需要处理，会自动重连)
 `CLOUD_SERVICE_KILL`|-3|XlinkTcpServrce服务被异常杀死（如360等安全软件）.（需要重新调用login函数）
-`CLOUD_USER_EXTRUSION`|-4|该app id在其他地方登录(提示用户，帐号被挤)
+`CLOUD_USER_EXTRUSION`|-4|该用户在其他地方登录(提示用户，帐号被挤)
 
 
 ### 4. onLocalDisconnect(int code);
@@ -569,7 +569,7 @@ XlinkCode 常量|int实际值|说明
 `LOCAL_SERVICE_KILL`|-2|XlinkUdpServrce服务被异常杀死（如360等安全软件),需要重新调用start函数。
 ...|...|...
 
-### 5. onRecvPipeData(XDevice device, byte[] data)
+### 5.  onRecvPipeData(XDevice device, byte flags, byte[] data);
 
 #### 说明：
 
@@ -580,9 +580,10 @@ XlinkCode 常量|int实际值|说明
 | 参数 | 说明 |
 | --- | --- |
 | device | 设备实体
+|flags|标识|
 | data | byte数据
 
-### 6. onRecvPipeSyncData(XDevice device, byte[] data)
+### 6. onRecvPipeSyncData(XDevice device, byte flags, byte[] data);
 
 #### 说明：
 
@@ -593,6 +594,7 @@ XlinkCode 常量|int实际值|说明
 | 参数 | 说明 |
 | --- | --- |
 | device | 该设备的 pipe数据
+|flags|标识|
 | data | byte数据
 
 ### 7. onDataPointUpdate(XDevice xDevice, int key,Object value, int channel,int type);
@@ -652,19 +654,21 @@ state 定义 | int实际值 |	说明
 #### ②.公网模式:
 
 	设备激活后，设备有属性 deviceID,该属性是每个设备在云智易后台唯一不重复的标识
-	在公网环境，调用XlinkAgent connectDevice()函数连接设备成功后，SDK会自动把当前appId 跟 deviceID 进行订阅绑定;
-	当有了订阅关系，公网环境下就无需调用XlinkAgent connectDevice()函数，可直接进行设备的操作。
+	在公网环境，调用XlinkAgent connectDevice()函数连接设备成功后，SDK会自动把当前user 跟 deviceID 进行订阅绑定;
 
 #### ③.设备密码:
 
 	每个设备都有一个设备密码，设备需要设置密码后才能使用,该密码是设备的唯一凭证;
-	可调用 XlinkAgent setDeviceAuthorizeCode() 进行修改设备密码（也是通过该方法设置初始密码）
+	可调用 XlinkAgent setDeviceAccessKey() 进行修改设备密码（也是通过该方法设置初始密码）
 	修改设备密码成功后，服务器会清空以前所有的订阅关系，这时需要重新订阅设备才能使用公网进行控制设备
+    修改设备密码需要有内网环境(设备跟APP在同一局域网)
+    已经设置过AccessKey的设备需要硬件复位清除AccessKey后才能重新设置
 
 #### ③.设备的分享:
 
 	调用deviceTojson把需要分享的设备序列号成功json字符串，然后把该json字符串分享（分享方式有二维码，等等）给被分享人，
 	在被分享人中调用jsonToDevice把该字符串反序列化成XDevice实体类。
+    详细请查考文档:http://support.xlink.cn/hc/kb/article/108289/
 
 ### 2.设备的获取:
 
@@ -691,9 +695,9 @@ state 定义 | int实际值 |	说明
 	可以获取该设备的jsonObject对象，而后可转换为String字符串进行存储(云端/本地)
 	Demo程序的存储方式是数据库本地存储；
 
-#### ②.如果需要云端同步设备，可使用云智易数据服务集成接口进行云端同步设备
+#### ②.如果需要云端同步设备，可使用云智易Http接口, 使用用户扩展属性和设备扩展属性进行同步
 
-	(详情请查阅文档 云智易RESTful Service(数据服务集成接口))
+	(详情请查阅文档 http://support.xlink.cn/hc/kb/article/89925/  )
 	注意：在app运行周期过程中，设备的属性可能会被更改（如 deviceID, 设备版本号等信息）;
 	当退出程序之前，需要重新调用deviceToJson 接口，获取最新的设备json对象;
 	然后匹配下之前的设备json对象，如果有修改，则需要把最新的设备json对象替换。            
@@ -715,12 +719,11 @@ state 定义 | int实际值 |	说明
 		* 连接设备成功
 		* 控制设备
 
-注：参数里oldAuthorize可随便填入4位以上字符串
 
 (2). 序列化接口不提供存储设备密码，设备密码存储由第三方自行决定，可参考Demo;
 
 	如果设备安全等级不高，上述步骤可由APP自动实现；
-	（Demo就是这种方式：扫描设备成功后，判断isInit==false则设置内置的设备密码“8888”，然后连接设备都是传入8888进行连接）
+	（Demo就是这种方式：扫描设备成功后，判断isInit==false则设置内置的设备密码，然后连接设备都是传入进行连接）
 
 #### ②. 如果使用 XlinkAgent  JsonToDevice(JSONObject jsonObject) 方法获取的设备实例需要调用：
 
@@ -745,9 +748,9 @@ state 定义 | int实际值 |	说明
 
 #### ①. 数据透传:
 
-	XlinkNetListener  onRecvPipeData(XDevice xdevice, byte[] data)
+	XlinkNetListener  onRecvPipeData(XDevice device, byte flags, byte[] data);
 	该接口回调出设备对当前app发送的数据。
-	XlinkNetListener onRecvPipeSyncData(XDevice xdevice, byte[] data)
+	XlinkNetListener onRecvPipeSyncData(XDevice device, byte flags, byte[] data);
 	该接口回调出设备对所以在线订阅过xdevice的app发送的数据
 
 注意：有可能回调出来的XDevice 对象只有 deviceId一个属性,是因为在sdk内部未找到当前XDevice实例,只能把带deviceId一个属性的设备回调出来
@@ -781,7 +784,30 @@ String  getMacAddress
 
 	说明：返回该设备mac地址,唯一的设备标识量
 
+String  getAccessKey
+
+	说明：返回该设备密码,扫描回调中获取的对象此属性才准确
+    
 其他不必要属性请见XDevice API文档
+
+### 2.EventNotify属性：
+ * byte notyfyFlags:
+        bit0:来自server的事件
+        bit1:来自其他device的事件
+        bit2:来自其他APP的事件
+        bit3:收到事件后要不要应答, 默认都不需要应答
+        bit4-7:预留 Reserved
+ * int formId :发送者ID 如果是服务端发送的消息, id为0
+ * int messageType:
+        1:设备端点变化发送的通知
+        2:设备端点变化引起的警报
+        3:设备管理员推送的分享消息
+        4:厂商推送的消息广播
+        5:设备属性变化通知
+        当 messageType=1 or 2 时,
+        notifyData: 前2个字节为字符串长度,后面的所有数据为UTF8格式的字符串
+ * byte[] notifyData 推送数据
+
 
 
 ## 七.监听器返回Code说明
@@ -847,7 +873,7 @@ XlinkCode 常量|	INT返回值|	说明
 
 > messageId：跟调用sendPipe接口返回的 msgId 一一对应
 
-### 5.SetDeviceAuthorizeListener  onSetLocalDeviceAuthorizeCode(XDevice device, int code,messageId);
+### 5.SetDeviceAccessKeyListener  onSetLocalDeviceAccessKey(XDevice device, int code,messageId);
 
 #### 说明：
 	设置设备密码

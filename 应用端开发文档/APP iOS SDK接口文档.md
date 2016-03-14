@@ -15,9 +15,9 @@
 
 	> 数据端点：用于对设备运行状态的监控和调试，除有特殊需求，一般开发者不用处理。
 
-3. 新建AccessKey生成自己的账号体系.
+3. 进入管理台系统设置\帐号信息，得到企业ID
 
-	> 同时拥有AccessKeyID和AccessKeySecret才可以注册和使用云端账号。
+	> 企业ID为用户注册、认证须使用的必要字段。
 
 ### 3. 配置程序
 * XLINKSDK采用原生ObjectC程序编写，提供的是静态链接库方式集成；
@@ -79,7 +79,7 @@ libxlinksdklib. a库文件，是区分模拟器和实机的，并且debug和rele
 ### 2.使用
 
 * 在企业管理平台/开发者服务/Accesskey下新建Accesskey，得到AccessKeyID和AccessKeySecret。
-* 查看云智易RESTfulService-用户身份集成接口.pdf文件，并参考Demo程序中的HttpRequest类注册登录流程（替换HttpRequest.m中的accesskeyId和secretKey两个宏定义为自己的AccessKeyID和AccessKeySecret）。
+* 查看云智易RESTfulService-用户身份集成接口文档，并参考Demo程序中的HttpRequest类注册登录流程（替换HttpRequest.h中的CorpId宏定义为自己的企业ID）。
 
 ### 3.注意事项
 
@@ -213,7 +213,35 @@ device | 设备实体
 
 > 扫描结果通过onGotDeviceByScan异步返回。
 
-### 5. 通过本地通讯设置设备授权码
+### 5. 通过本地通讯设置设备授权码(v2版本使用)
+
+#### 函数：
+
+```
+-(int)setAccessKey:(NSNumber *)accessKey withDevice:(DeviceEntity *)device;
+```
+
+#### 说明：
+
+* 设置内网中设备的授权码，仅能设置初始化状态（没有被设置过授权码）下的设备
+
+#### 参数：
+
+| 参数 | 说明 |
+| --- | --- |
+| accessKey | 授权码(9位纯数字) |
+| device | 设备实体 |
+
+#### 返回值：
+
+| 值 | 说明 |
+| --- | --- |
+| 0 | 成功 |
+| 其它 | 失败 |
+
+>设置结果通过onSetDeviceAccessKey返回。
+
+### 5. 通过本地通讯设置设备授权码(v2版本已淘汰)
 
 #### 函数：
 
@@ -242,7 +270,7 @@ device | 设备实体
 
 >设置结果通过onSetLocalDeviceAuthorizeCode返回。
 
-### 6. 通过云端设置设备授权码
+### 6. 通过云端设置设备授权码(v2版本已淘汰)
 
 #### 函数：
 
@@ -275,7 +303,7 @@ device | 设备实体
 
 #### 函数：
 ```
- -(int)connectDevice:(DeviceEntity*)device andAuthKey:(NSString*)authKey;
+ -(int)connectDevice:(DeviceEntity *)device andAuthKey:(NSNumber *)authKey;
 ```
 
 #### 说明：
@@ -479,7 +507,26 @@ device | 设备实体
 
 > 如果扫描到了多个设备，该回调会多次调用;
 
-### 4. onSetLocalDeviceAuthorizeCode
+### 4. onSetDeviceAccessKey(v2版本使用)
+
+#### 函数：
+```
+-(void)onSetDeviceAccessKey:(DeviceEntity *)device withResult:(unsigned char)result withMessageID:(unsigned short)messageID;
+```
+
+#### 说明：
+
+* 内网中设置用户访问授权码的结果回调。
+
+#### 参数：
+
+| 参数 | 说明 |
+| --- | --- |
+| device | 设备实体;
+| result | 设置结果;
+| messageID | 消息ID，用于定位消息。APP可以忽略;
+
+### 4. onSetLocalDeviceAuthorizeCode(v2版本已淘汰)
 
 #### 函数：
 ```
@@ -498,7 +545,7 @@ device | 设备实体
 | result | 设置结果;
 | messageID | 消息ID，用于定位消息。APP可以忽略;
 
-### 5. onSetDeviceAuthorizeCode
+### 5. onSetDeviceAuthorizeCode(v2版本已淘汰)
 
 #### 函数：
 
@@ -745,7 +792,7 @@ APP开发者只用关心几个属性即可；
 * 如果APP有公网环境，调用connectDevice函数后，SDK会先在内网尝试连接设备，如果内网的环境下，无法和设备进行通讯;就会尝试在云端通道下和设备进行通讯。云端通讯的前提，需要在云端和设备产生一个订阅关系。订阅动作是需要进行设备授权认证的，只有设备授权成功以后，才可以订阅完成。所以，订阅过程是需要保证设备在线的。
 * 订阅动作是由函数内部实现，开发者不用手动进行订阅动作。
 * 订阅成功以后，就可以通过云端和设备进行通讯。
-* 当设备的授权码被改变后，设备会清除云端中所有的订阅关系;所以这时APP就需要再次进行认证和订阅，这个过程对于APP来说，也就是重新再调用一次connectDevice函数;同时带上新的授权码即可。
+* 当设备被重置后，设备会清除云端中所有的订阅关系;
 
 ### connectDevice函数：
 * SDK为了简化开发复杂度，APP开发者只需要统一的调用connectDevice便可以完成云端或者是内网的识别;
