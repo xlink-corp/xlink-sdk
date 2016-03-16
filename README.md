@@ -28,7 +28,7 @@
 
 ### 接入综述
 
-1. 云智易平台APP开发集成分为两大部分，一部分是原生SDK集成，主要是用来进行设备扫描、发现控制以及APP连接云端，实现云端通讯功能。一部分是RESTFul API部分，提供用来进行用户注册、认证、以及设备分享等管理功能的实现。
+1. 云智易平台APP开发集成分为两大部分，一部分是原生SDK集成，主要是用来进行设备扫描、发现控制以及APP连接云端，实现云端通讯功能。一部分是RESTFul API部分，提供用来进行[用户注册](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#email_register)、[认证](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#user_auth)、以及[设备分享](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E8%AE%BE%E5%A4%87%E5%88%86%E4%BA%AB%E6%8E%A5%E5%8F%A3.md)等功能的实现。
 
 ### 基本接入流程
 
