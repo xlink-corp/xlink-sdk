@@ -53,6 +53,7 @@
 ## 数据转发
 
 平台可以把设备数据，通过设备数据转发的功能，抛给外部的服务程序。具体的接口如下：
+
 1. [设备数据转发配置接口](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/设备数据转发配置接口.md)
 2. [数据转发服务器验证规则](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/数据转发服务器验证规则.md)
 3. [设备数据转发流出数据格式](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/设备数据转发流出数据格式.md)
