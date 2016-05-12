@@ -50,3 +50,15 @@
 2. 通过平台的授权管理，创建一个AccessID和Key，通过平台[授权接口](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E6%8E%88%E6%9D%83%E7%AE%A1%E7%90%86.md#auth)，获取到访问云智易平台能力的token。
 3. 在通过平台对应的接口，完成各种平台对接动作。
 
+## 数据转发
+
+平台可以把设备数据，通过设备数据转发的功能，抛给外部的服务程序。具体的接口如下：
+1. [设备数据转发配置接口](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/设备数据转发配置接口.md)
+2. [数据转发服务器验证规则](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/数据转发服务器验证规则.md)
+3. [设备数据转发流出数据格式](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/设备数据转发流出数据格式.md)
+
+### 使用流程：
+1. 按照[数据转发服务器验证规则](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/数据转发服务器验证规则.md)准备好数据转发接收服务程序，并且部署到可以访问的地址。
+2. 进入管理台，在需要转发数据的产品的数据转发配置中，添加配置规则（这个动作可以通过[设备数据转发配置接口](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/设备数据转发配置接口.md)由程序实现）。关键是配置好程序的接收回调地址。
+3. 设备端通过XLINK SDK，发送PIPE_SYNC或其他设备数据，平台就会收到设备数据，并且按照前面配置好的转发规则，将设备数据发送到对应的回调地址。
+4. 接收程序通过[设备数据转发流出数据格式](https://github.com/xlink-corp/xlink-sdk/blob/master/物联平台管理接口文档/设备数据转发流出数据格式.md)接口中描述的格式规范，处理设备数据。
