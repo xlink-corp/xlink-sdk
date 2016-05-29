@@ -32,13 +32,13 @@ Copyright©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 硬件SDK提供了常用的wifi模组SDK以及例程，如：汉枫的LPB100、LPT100和LPT200等，其他模组或者芯片型号可联系我司获得。
 
-设备SDK下载地址：[硬件SDK下载](https://raw.githubusercontent.com/xlink-corp/xlink-sdk/master/设备端开发文档/1.XlinkSDK规范/SDK及固件)。
+设备SDK下载地址：[硬件SDK下载](https://github.com/xlink-corp/xlink-sdk/tree/master/设备端开发文档/1.XlinkSDK规范/SDK及固件)。
 
 ### 硬件SDK接入流程
 
 接入流程示意图如下图所示：
 
-[](https://raw.githubusercontent.com/xlink-corp/xlink-sdk/master/设备端开发文档/1.XlinkSDK规范/images/硬件接入流程图.jpg)
+![](https://raw.githubusercontent.com/xlink-corp/xlink-sdk/master/设备端开发文档/1.XlinkSDK规范/images/硬件接入流程图.jpg)
 
 详情请查看[SDK使用流程](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/2.SDK使用流程.md)。
 
