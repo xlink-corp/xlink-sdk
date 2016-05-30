@@ -940,12 +940,13 @@ SERVER_CODE_SERVER_ERROR|4|服务器内部错误
 * 对应于login，当app从xlink服务掉线时，会回调该方法。云端连接会自己断线重连(网络异常，心跳异常才会，其他异常需要处理)，不用重复调用Login()方法
 
 **返回值:**
-XlinkCode 常量|int实际值|说明
----- | ---- | ----
-CLOUD_STATE_DISCONNECT|-1|网络问题导致和服务器连接中端(不需要处理，会自动重连)
-CLOUD_KEEPALIVE_ERROR|-2|和服务器心跳异常，导致从服务器掉线(不需要处理，会自动重连)
-CLOUD_SERVICE_KILL|-3|XlinkTcpServrce服务被异常杀死（如360等安全软件）.（需要重新调用login函数）
-CLOUD_USER_EXTRUSION|-4|该用户在其他地方登录(提示用户，帐号被挤)
+
+| XlinkCode 常量 | int实际值 | 说明 |
+| ---- | ---- | ---- |
+| `CLOUD_STATE_DISCONNECT` | -1 | 网络问题导致和服务器连接中端(不需要处理，会自动重连) |
+| `CLOUD_KEEPALIVE_ERROR` | -2 | 和服务器心跳异常，导致从服务器掉线(不需要处理，会自动重连) |
+| `CLOUD_SERVICE_KILL` | -3 |XlinkTcpServrce服务被异常杀死（如360等安全软件）.（需要重新调用login函数）| 
+| `CLOUD_USER_EXTRUSION` | -4 | 该用户在其他地方登录(提示用户，帐号被挤) |
 
 
 ##### onLocalDisconnect(int code);
@@ -955,11 +956,12 @@ CLOUD_USER_EXTRUSION|-4|该用户在其他地方登录(提示用户，帐号被�
 * 本地服务断开
 
 **返回值：**
-XlinkCode 常量|int实际值|说明
----- | ---- | ----
-LOCAL_THREAD_ERROR|-1|无物理网络
-LOCAL_SERVICE_KILL|-2|XlinkUdpServrce服务被异常杀死（如360等安全软件),需要重新调用start函数。
-...|...|...
+
+| XlinkCode 常量 | int实际值 | 说明 |
+| ---- | ---- | ---- |
+| `LOCAL_THREAD_ERROR` | -1 | 无物理网络 |
+| `LOCAL_SERVICE_KILL` | -2 | XlinkUdpServrce服务被异常杀死（如360等安全软件),需要重新调用start函数。 |
+| ... | ... | ... |
 
 ##### onRecvPipeData(XDevice device, byte flags, byte[] data);
 
