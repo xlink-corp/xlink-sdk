@@ -912,13 +912,13 @@ XlinkCode常量 | int实际值 | 说明
 XlinkCode 常量|int实际值|说明|
 ---- | ---- | ---- |
 SUCCEED|0|登录服务器成功|
-CLOUD_CONNECT_ERROR`|-1|连接公网服务器失败（解析域名失败/无网络连接/网络响应超时）
-CLOUD_CONNECT_NO_NETWORK`|-2|无物理网络连接
-TIMEOUT`|-100|登录服务器超时（原因：手机网络不稳定)
-SERVER_CODE_INVALID_PARAM`|1|参数错误（sdk内部错误）
-SERVER_CODE_INVALID_KEY`|2|app key不正确
-SERVER_CODE_UNAVAILABLE_ID`|3|非法的 appid
-SERVER_CODE_SERVER_ERROR`|4|服务器内部错误
+CLOUD_CONNECT_ERROR|-1|连接公网服务器失败（解析域名失败/无网络连接/网络响应超时）
+CLOUD_CONNECT_NO_NETWORK|-2|无物理网络连接
+TIMEOUT|-100|登录服务器超时（原因：手机网络不稳定)
+SERVER_CODE_INVALID_PARAM|1|参数错误（sdk内部错误）
+SERVER_CODE_INVALID_KEY|2|app key不正确
+SERVER_CODE_UNAVAILABLE_ID|3|非法的 appid
+SERVER_CODE_SERVER_ERROR|4|服务器内部错误
 ... | ...	| ...
 
 ##### onDisconnect(int code)
