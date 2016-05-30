@@ -298,11 +298,11 @@
 ```
 
 	**IOS 调用示例**
-	
+
 	```
 	//登录函数
 	-(int)loginWithAppID:(int)appId andAuthStr:(NSString *)authStr;
-	
+
 	//回调函数
 	-(void)onLogin:(int)result;
 	```
@@ -347,11 +347,11 @@ SDK封装了内网发现功能，可以使用SDK方法扫描发现内网连接�
     使用内网发现功能扫描设备会自动将发现的设备加入到SDK并初始化， 如果通过Json等方式添加设备，还需要调用SDK的 XlinkAgent.getInstance().initDevice(xDevice)进行初始化到SDK中。
 	```
 	**IOS 调用示例**
-	
+
 	```
 	//扫描函数
 	-(int)scanByDeviceProductID:(NSString *)productID;
-	
+
 	//回调函数，没扫描到一个设备都会回调一次
 	-(void)onGotDeviceByScan:(DeviceEntity *)device;
 	```
