@@ -62,7 +62,7 @@
 1. 打开云智易开发者网站：[http://www.xlink.cn](http://www.xlink.cn )
 2. 点击免费注册按钮
 3. 输入注册信息进行注册
-4. 输入注册的账号，登录企业管理后台，在右上角账号信息中可以查看企业ID，==此ID在后续步骤中需要使用==。
+4. 输入注册的账号，登录企业管理后台，在右上角账号信息中可以查看企业ID，此ID在后续步骤中需要使用。
 
 ![](image/企业ID.png)
 
@@ -75,7 +75,7 @@
 
 ###2.1.3 添加设备数据端点
 1. 点击企业管理后台左侧上一步添加的产品列表
-2. 在概览中可以查看产品PID和产品密匙，==产品PID和产品密匙在后续步骤中需要使用==
+2. 在概览中可以查看产品PID和产品密匙，产品PID和产品密匙在后续步骤中需要使用
 3. 切换到数据端点标签，点击添加数据端点按钮，根据设备属性进行数据端点的添加。
 
 ###2.2  <a name="setp1" >Setp 1 下载SDK工具包</a>
@@ -415,23 +415,23 @@ SKD会根据网络连接情况自适应内外网络环境，会自动选择速�
 
         }
 	```
-	
+
 	**IOS 调用示例**
-	
+
 	```
 	//连接设备函数
 	-(void)onGotDeviceByScan:(DeviceEntity *)device;
-	
+
 	//回调函数
 	-(void)onConnectDevice:(DeviceEntity *)device andResult:(int)result andTaskID:(int)taskID ;
-	
+
 	//设备的连接状态在device的属性里面
 	//isConnected;  设备是否连接上
 	//isConnecting; 设备是否正在连接
 	//isLANOnline;  局域网是否在线
 	//isWANOnline;  广域网是否在线
 	```
-	
+
 ###2.8 <a name="setp7" >Setp 7 设备控制&接收设备数据</a>
 
 1. 设备连接成功后，即可对设备进行控制和获取设备的属性等信息。 设备控制可通过透传数据包，或者设置设备属性（数据端点）等方式。
@@ -492,19 +492,19 @@ int ret = XlinkAgent.getInstance().sendPipeData(device.getXDevice(), data, pipeL
         }
     };
 	```
-	
+
 	**IOS 调用示例**
-	
+
 	```
 	//局域网发包函数
 	-(int)sendLocalPipeData:(DeviceEntity *)device andPayload:(NSData *)payload;
-	
+
 	//云端发包函数
 	-(int)sendPipeData:(DeviceEntity *)device andPayload:(NSData *)payload;
-	
+
 	//局域网收包回调
 	-(void)onRecvLocalPipeData:(DeviceEntity *)device withPayload:(NSData *)data;
-	
+
 	//云端收包回调
 	-(void)onRecvPipeData:(DeviceEntity *)device withPayload:(NSData *)payload;
 	```
@@ -897,8 +897,8 @@ _ _ _
 
 XlinkCode常量 | int实际值 | 说明
 ---- | ---- | ----
-`SUCCEED`|0|成功
-`LOCAL_CONNECT_ERROR`	|-1	|绑定端口失败
+SUCCEED|0|成功
+LOCAL_CONNECT_ERROR|-1	|绑定端口失败
 ...|...|...
 
 ##### onLogin(int code)
@@ -912,13 +912,13 @@ XlinkCode常量 | int实际值 | 说明
 XlinkCode 常量|int实际值|说明|
 ---- | ---- | ---- |
 SUCCEED|0|登录服务器成功|
-CLOUD_CONNECT_ERROR`|-1|连接公网服务器失败（解析域名失败/无网络连接/网络响应超时）
-CLOUD_CONNECT_NO_NETWORK`|-2|无物理网络连接
-TIMEOUT`|-100|登录服务器超时（原因：手机网络不稳定)
-SERVER_CODE_INVALID_PARAM`|1|参数错误（sdk内部错误）
-SERVER_CODE_INVALID_KEY`|2|app key不正确
-SERVER_CODE_UNAVAILABLE_ID`|3|非法的 appid
-SERVER_CODE_SERVER_ERROR`|4|服务器内部错误
+CLOUD_CONNECT_ERROR|-1|连接公网服务器失败（解析域名失败/无网络连接/网络响应超时）
+CLOUD_CONNECT_NO_NETWORK|-2|无物理网络连接
+TIMEOUT|-100|登录服务器超时（原因：手机网络不稳定)
+SERVER_CODE_INVALID_PARAM|1|参数错误（sdk内部错误）
+SERVER_CODE_INVALID_KEY|2|app key不正确
+SERVER_CODE_UNAVAILABLE_ID|3|非法的 appid
+SERVER_CODE_SERVER_ERROR|4|服务器内部错误
 ... | ...	| ...
 
 ##### onDisconnect(int code)
@@ -930,10 +930,10 @@ SERVER_CODE_SERVER_ERROR`|4|服务器内部错误
 **返回值:**
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ----
-CLOUD_STATE_DISCONNECT`|-1|网络问题导致和服务器连接中端(不需要处理，会自动重连)
-CLOUD_KEEPALIVE_ERROR`|-2|和服务器心跳异常，导致从服务器掉线(不需要处理，会自动重连)
-CLOUD_SERVICE_KILL`|-3|XlinkTcpServrce服务被异常杀死（如360等安全软件）.（需要重新调用login函数）
-CLOUD_USER_EXTRUSION`|-4|该用户在其他地方登录(提示用户，帐号被挤)
+CLOUD_STATE_DISCONNECT|-1|网络问题导致和服务器连接中端(不需要处理，会自动重连)
+CLOUD_KEEPALIVE_ERROR|-2|和服务器心跳异常，导致从服务器掉线(不需要处理，会自动重连)
+CLOUD_SERVICE_KILL|-3|XlinkTcpServrce服务被异常杀死（如360等安全软件）.（需要重新调用login函数）
+CLOUD_USER_EXTRUSION|-4|该用户在其他地方登录(提示用户，帐号被挤)
 
 
 ##### onLocalDisconnect(int code);
@@ -945,8 +945,8 @@ CLOUD_USER_EXTRUSION`|-4|该用户在其他地方登录(提示用户，帐号被
 **返回值：**
 XlinkCode 常量|int实际值|说明
 ---- | ---- | ----
-`LOCAL_THREAD_ERROR`|-1|无物理网络
-`LOCAL_SERVICE_KILL`|-2|XlinkUdpServrce服务被异常杀死（如360等安全软件),需要重新调用start函数。
+LOCAL_THREAD_ERROR|-1|无物理网络
+LOCAL_SERVICE_KILL|-2|XlinkUdpServrce服务被异常杀死（如360等安全软件),需要重新调用start函数。
 ...|...|...
 
 ##### onRecvPipeData(XDevice device, byte flags, byte[] data);
@@ -993,11 +993,11 @@ XlinkCode 常量|int实际值|说明
 
 type 定义|具体int值|说明
 ---- | ---- | ----
-`POINT_TYPE_BOOLEAN`|1|布尔值
-`POINT_TYPE_BYTE`|2|byte单字节
-`POINT_TYPE_SHORT`|3|int16 (short)
-`POINT_TYPE_INT`|4|int32 (int)
-`POINT_TYPE_STRING`|5|string
+POINT_TYPE_BOOLEAN|1|布尔值
+POINT_TYPE_BYTE|2|byte单字节
+POINT_TYPE_SHORT|3|int16 (short)
+POINT_TYPE_INT|4|int32 (int)
+POINT_TYPE_STRING|5|string
 
 
 ##### onDeviceStateChanged(XDevice xdevice, int state);
@@ -1016,9 +1016,9 @@ type 定义|具体int值|说明
 
 state 定义 | int实际值 |	说明
 -----|-----|-----
-`DEVICE_CHANGED_CONNECTING`|	-1|	设备重新连接中
-`DEVICE_CHANGED_OFFLINE`|	-2|	设备掉线
-`DEVICE_CHANGED_CONNECT_SUCCEED`|	-3|	设备重新连接成功
+DEVICE_CHANGED_CONNECTING|	-1|	设备重新连接中
+DEVICE_CHANGED_OFFLINE|	-2|	设备掉线
+DEVICE_CHANGED_CONNECT_SUCCEED|	-3|	设备重新连接成功
 ...|	...|	...
 
 ##### onEventNotify(EventNotify eventNotify);
@@ -1429,9 +1429,9 @@ result结果：
 
 | 定义 | 值 | 说明 |
 | --- | --- | --- |
-`CODE_SUCCEED` | 0 | 登录成功;
-`CODE_SERVER_KICK_DISCONNECT` | 13 | 被踢下线;
-`CODE_STATE_OFFLINE` | -101 | 与服务器socket连接断开;
+CODE_SUCCEED| 0 | 登录成功;
+CODE_SERVER_KICK_DISCONNECT | 13 | 被踢下线;
+CODE_STATE_OFFLINE | -101 | 与服务器socket连接断开;
 
 ##### 3. onGotDeviceByScan
 
@@ -1800,17 +1800,16 @@ A: 设备需要在线并且连接上云端才能订阅
 
 XlinkCode常量|int实际值|说明|使用的函数
 ---- | ---- | ---- |-----
-`SUCCEED`|0|调用方法成功|ALL
-`NO_INIT`|-1|未初始化SDK/未调用init(Context mContext)函数|ALL
-`NO_HANDSHAKE`|-2|未和设备在局域网内连接成功|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData()
-`ERROR_DEVICE`|-3|错误的设备（有传入设备参数的方法都有该错误码）|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData(),subscribeDevice()
-`NO_CONNECT_SERVER`|-4|未连接服务器/未绑定UDP端口|scanDeviceByProductID函数回调该code是未调用start方法  
-`NO_DEVICE`|-6|该设备在sdk未找到（操作设备前，需要调用initDevice(XDevice device)）|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData(),subscribeDevice()
-`ALREADY_EXIST`|-7|任务重复，正在执行中，不允许重复调用；函数有: start  login connectDevice|start(), login(),connectDevice()
-`INVALID_PARAM`|-8|参数有误（参数为空/密码长度太长/等等...）|所有带参数的函数
-`INVALID_DEVICE_ID`|-9|无效的设备ID|所有带XDevice参数的函数
-`NETWORD_UNAVAILABLE`|-10	|网络不可用|所有有联网操作的方法
-`INVALID_POINT`|-11|非法的数据端点（1.该设备数据端点索引越界；2.value类型不匹配； 3.未添加正确的数据模版；|setDataPoint()
+SUCCEED|0|调用方法成功|ALL`NO_INIT|-1|未初始化SDK/未调用init(Context mContext)函数|ALL
+NO_HANDSHAKE|-2|未和设备在局域网内连接成功|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData()
+ERROR_DEVICE|-3|错误的设备（有传入设备参数的方法都有该错误码）|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData(),subscribeDevice()
+NO_CONNECT_SERVER|-4|未连接服务器/未绑定UDP端口|scanDeviceByProductID函数回调该code是未调用start方法
+NO_DEVICE|-6|该设备在sdk未找到（操作设备前，需要调用initDevice(XDevice device)）|connectDevice(),setDeviceAuthorizeCode()，setDataPoint()，sendPipeData(),subscribeDevice()
+ALREADY_EXIST|-7|任务重复，正在执行中，不允许重复调用；函数有: start  login connectDevice|start(), login(),connectDevice()
+INVALID_PARAM|-8|参数有误（参数为空/密码长度太长/等等...）|所有带参数的函数
+INVALID_DEVICE_ID|-9|无效的设备ID|所有带XDevice参数的函数
+NETWORD_UNAVAILABLE|-10	|网络不可用|所有有联网操作的方法
+INVALID_POINT|-11|非法的数据端点（1.该设备数据端点索引越界；2.value类型不匹配； 3.未添加正确的数据模版；|setDataPoint()
 ...	| ... | ... | ...
 
 ## 四、设备分享
