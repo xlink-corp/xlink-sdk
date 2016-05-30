@@ -357,6 +357,7 @@ SDK封装了内网发现功能，可以使用SDK方法扫描发现内网连接�
 	```
 
 ###2.7 <a name="setp6" >Setp 6 连接设备</a>
+
 1. 连接设备用于探测设备状态，并与之建立网络通道。外网连接需要先订阅设备（SDK内部会自动订阅，如果连接返回设备订阅关系错误如设备重置过AccessKey等情况，则需要手动调用订阅方法进行订阅）。
 SKD会根据网络连接情况自适应内外网络环境，会自动选择速度快的网络进行设备连接。
 
@@ -371,8 +372,9 @@ SKD会根据网络连接情况自适应内外网络环境，会自动选择速�
         if (ret < 0) {// 调用设备失败
             //返回小于0 表示扫描失败， 具体错误码参见API文档附录
         }
-```
-```
+	```
+
+	```
     //根据上一步内网发现的设备，使用AccesKey进行设备连接 如设备未设置AccessKey，连接前需要先进行AccessKey设置。
     //需要在同一个局域网并且设备未设置AccssKey才能设置成功
 	XlinkAgent.getInstance().setDeviceAccessKey(device, key, new SetDeviceAccessKeyListener() {
@@ -387,6 +389,7 @@ SKD会根据网络连接情况自适应内外网络环境，会自动选择速�
          }
      });
 	```
+	
 	```
 	 /**
      * 连接设备回调。该回调在主程序，可直接更改ui
@@ -448,8 +451,8 @@ SDK
 	**Android  调用示例**
 
 	```
-//需要连接成功后才能发送数据，SDK和云端将发送的数据透传到设备端
-int ret = XlinkAgent.getInstance().sendPipeData(device.getXDevice(), data, pipeListener);
+	//需要连接成功后才能发送数据，SDK和云端将发送的数据透传到设备端
+	int ret = XlinkAgent.getInstance().sendPipeData(device.getXDevice(), data, pipeListener);
         if (ret < 0) {
             switch (ret) {
                 case XlinkCode.NO_CONNECT_SERVER:
@@ -470,6 +473,7 @@ int ret = XlinkAgent.getInstance().sendPipeData(device.getXDevice(), data, pipeL
               //发送数据成功
         }
 	```
+	
 	```
    //发送成功后再收到设备相应时回回调
     private SendPipeListener pipeListener = new SendPipeListener() {
