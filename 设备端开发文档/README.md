@@ -58,9 +58,9 @@ SDK主循环|void XlinkSystemLoop(xsdk_time_t c_time, x_int32 timeout_ms)
 
 数据端点有强大的功能，主要功能：可映射设备运行状态到平台，可通过数据端点设置设备参数或控制设备，设备可通过数据端点将需要存储的数据存储到服务器，设备也可将需要报警的信息通过数据端点推送到用户手上。
 
-主要使用流程如下图：
+主要流程如下图：
 
-![]()
+![](https://raw.githubusercontent.com/xlink-corp/xlink-sdk/master/设备端开发文档/1.XlinkSDK规范/images/数据端点交互过程.jpg)
 
 数据端点的数据格式、支持的数据类型以及对应接口的使用请参考[数据端点使用](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/4.数据端点文档.md)文档。
 
