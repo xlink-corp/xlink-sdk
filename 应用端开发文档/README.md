@@ -118,57 +118,65 @@
 1. 在AndroidManifest.xml文件中application 标签下配置添加：
 
 	**Android 代码范例**
-```
-	<!-- XLINK 内网服务 -->
-	<service android:name="io.xlink.wifi.sdk.XlinkUdpService" />
-	<!-- XLINK 公网服务 -->
-	<service android:name="io.xlink.wifi.sdk.XlinkTcpService" />
-```
+	
+	```
+		<!-- XLINK 内网服务 -->
+		<service android:name="io.xlink.wifi.sdk.XlinkUdpService" />
+		<!-- XLINK 公网服务 -->
+		<service android:name="io.xlink.wifi.sdk.XlinkTcpService" />
+	```
 
 2. 添加sdk所需要权限
 
 	**Android 代码范例**
-```
-	<!-- 联网权限 -->
-	<uses-permission android:name="android.permission.INTERNET" />
-	<!-- 网络状态 -->
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<!-- wifi状态 -->
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<!-- wifi状态改变 -->
-	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
-```
+		
+	```
+		<!-- 联网权限 -->
+		<uses-permission android:name="android.permission.INTERNET" />
+		<!-- 网络状态 -->
+		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		<!-- wifi状态 -->
+		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+		<!-- wifi状态改变 -->
+		<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+	```
 
 3. 创建自定义Application 实现XlinkNetListener接口，并在AndroidManifest.xml中修改android:name为新建的Application
 
 	**Android 代码范例**
-```
-public class MyApp extends Application implements XlinkNetListener
-```
-```
- <application
-        android:name="io.xlink.wifi.pipe.MyApp"
-        ...
- </application>
-```
+	
+	```
+	public class MyApp extends Application implements XlinkNetListener
+	```
+
+	```
+	 <application
+	        android:name="io.xlink.wifi.pipe.MyApp"
+	        ...
+	 </application>
+	```
+
 4. 在自定义Application 下的onCreate()函数调用XlinkAgent.init进行SDK初始化化
 
 	**Android 代码范例**
-```
-// 初始化sdk
- XlinkAgent.init(this);
-//参数会被长期引用，最好使用application 的 context。
-```
+	
+	```
+	// 初始化sdk
+	 XlinkAgent.init(this);
+	//参数会被长期引用，最好使用application 的 context。
+	```
+
 5. 注册SDK回调监听器。至少需要注册一个监听器，可注册多个。
 
 * 注册SDK通用监听器是为了能让APP收到来自SDK的响应事件，包含了登录、接收设备数据等回调接口。该监听器是SDK使用中十分重要的一个监听器，与SDK相关的操作都会在这里会回调，如果没有正确注册通用监听器，将无法正常使用SDK。
 
 	**Android 代码范例**
-```
-//设置SDK回调监听器
-XlinkAgent.getInstance().addXlinkListener(this);
-//可以在该监听器中直接更新UI
-```
+	
+	```
+	//设置SDK回调监听器
+	XlinkAgent.getInstance().addXlinkListener(this);
+	//可以在该监听器中直接更新UI
+	```
 
 **IOS**
 
