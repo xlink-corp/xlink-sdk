@@ -733,21 +733,21 @@ _ _ _
 
 * 通过productid扫描内网内所有对应的设备;需开启wifi 并连接到设备所在的wifi网络
 
-** 参数：**
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
 |productid | 设备的产品id|
 |ScanDeviceListener | listener 监听器|
 
-** 返回值：**
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
 | = 0 | 调用成功|
 | < 0 | 调用失败,失败code参见 同步错误码|
 
-** 对应回调:**
+**对应回调:**
 
    	ScanDeviceListener.onGotDeviceByScan(XDevice device)
 在扫描回调中, 可以通过device.getAccessKey()属性判断设备是否已设置设备授权码, 如果没设置,需要设置一下. 后面的用户通过判断是否设置AccessKey以及AccessKey是否一致,来控制是否需要把此设备添加到APP中
@@ -763,7 +763,7 @@ _ _ _
 * 修改设备密码(授权码)，必须在内网环境才能设置
 * 已经设置过AccessKey的设备需要硬件复位清除AccessKey后才能重新设置
 
-** 参数：**
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -771,14 +771,14 @@ _ _ _
 | accessKey | 设备密码(授权码) 支持9位数字
 | listener | 监听器
 
-** 返回值：**
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
 | = 0 | 调用成功 |
 | < 0 | 调用失败,失败code参见 同步错误码 |
 
-** 结果回调：**
+**结果回调：**
 
 	SetDeviceAccessKeyListener.onSetLocalDeviceAccessKey(XDevice device, int code, int messageId)
 
@@ -799,14 +799,14 @@ _ _ _
 | accessKey | 设备授权码 | 
 | connectListener | 监听器 | 
 
-** 返回值：**
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
 | = 0 | 调用成功 |
 | < 0 | 调用失败,失败code参见 同步错误码 |
 
-** 结果回调：**
+**结果回调：**
 
     ConnectDeviceListener.onConnectDevice(XDevice xDeivce, int ret)
 
@@ -826,14 +826,14 @@ _ _ _
 | xdevice| XDevice实体对象
 | dataPionts | 需要设置的数据端点列表|
 
-** 返回值：**
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
 | = 0 | 调用成功 |
 | < 0 | 调用失败,失败code参见 同步错误码 |
 
-** 结果回调：**
+**结果回调：**
 
 	SetDataPointListener.onSetDataPoint();
 
@@ -843,7 +843,7 @@ _ _ _
 
 ##### int subscribeDevice(XDevice device, int accessKey, SubscribeDeviceListener listener)
 
-** 方法说明：**
+**方法说明：**
 
 * 订阅设备(必须有公网环境)(如果在公网环境下使用
 * 公网环境调用 XlinkAgent.getInstance().getconnectDevice()会自动调用该函数;
@@ -858,14 +858,14 @@ _ _ _
 | accessKey | 设备授权码
 | listener | 监听器
 
-** 返回值：**
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
 | = 0 | 调用成功；
 | < 0 | app本地错误;详情参见同步错误码;
 
-** 结果回调：**
+**结果回调：**
 
 	onSubscribeDevice()
 
@@ -878,14 +878,14 @@ _ _ _
 
 * 向设备发送pipe数据包.
 
-** 参数：**
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
 | DeviceObject | Device实体对象
 | byte[] | Pipe数据
 
-** 返回值：**
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -893,7 +893,7 @@ _ _ _
 | < 0 | app本地错误;详情参见同步错误码;
 
 
-** 结果回调：**
+**结果回调：**
 
 	onSendPipeData
 
@@ -1755,7 +1755,7 @@ A: 设备需要在线并且连接上云端才能订阅
 
 ### 3.4 附录
 
-** 设备和用户的关系:**
+**设备和用户的关系:**
 
 * ①.内网模式:
 
@@ -1794,7 +1794,7 @@ A: 设备需要在线并且连接上云端才能订阅
 
 	XlinkAgent  JsonToDevice(JSONObject jsonObject) 把jsonObject 反序列化成设备实例
 
-** 设备的存储:**
+**设备的存储:**
 
 *  ①.SDK不提供存储设备,SDK有提供了设备序列化接口:
 
