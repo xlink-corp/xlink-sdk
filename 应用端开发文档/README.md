@@ -273,17 +273,19 @@
 	用户验证成功后，需要使用“user_id”和“authorize”调用SDK登录函数登录云端后才能使用远程设备连接、控制功能。否则只能使用内网服务。
 
 	**Android  调用示例**
-```
+	```
     //启用内网服务， 设备发现，设置AccessKey等依赖此服务
      XlinkAgent.getInstance().start();
-```
-```
+	```
+
+	```
     //登录SDK 启用云端远程服务
     XlinkAgent.getInstance().login(appid, authKey);
     //返回值 int  code ：见附录
     //登录结果通过注册的监听器onLogin（int code）方法返回。
-```
-```
+	```
+
+	```
     // 回调登录xlink状态
     @Override
     public void onLogin(int code) {
@@ -295,7 +297,7 @@
             XlinkUtils.shortTips("连接到服务器失败，请检查网络连接");
         }
     }
-```
+	```
 
 	**IOS 调用示例**
 
@@ -346,6 +348,7 @@ SDK封装了内网发现功能，可以使用SDK方法扫描发现内网连接�
 
     使用内网发现功能扫描设备会自动将发现的设备加入到SDK并初始化， 如果通过Json等方式添加设备，还需要调用SDK的 XlinkAgent.getInstance().initDevice(xDevice)进行初始化到SDK中。
 	```
+
 	**IOS 调用示例**
 
 	```
