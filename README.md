@@ -15,8 +15,8 @@
 ### 接入综述
 
 1. 开发者可以通过[SDK介绍](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/1.SDK介绍.md)了解SDK的基本概念。
-2. 通过[接入流程](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/2.接入流程.md)了解硬件接入的具体流程。
-3. 开发者可以通过[C语言接口](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/3.C语言接口.md)完成对具体硬件的功能开发。
+2. 通过[SDK使用流程](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/2.SDK使用流程.md)了解硬件接入的具体流程。
+3. 开发者可以通过[C语言接口](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/3.硬件SDK接口文档.md)完成对具体硬件的功能开发。
 
 ## APP开发
 
