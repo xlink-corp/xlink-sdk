@@ -80,7 +80,7 @@ onDisconnect(int code);|监听和云端服务器连接状态回调
 onRecvPipeData (XDevice device,byte flags, byte[] data);|	收到设备发送Pipe数据
 onRecvPipeSyncData(XDevice device, byte flags,byte[] data);|收到设备发送同步Pipe数据
 onDeviceStateChanged(XDevice xdevice, int state);|设备状态改变
-onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设备数据端点改变
+onDataPointUpdate(XDevice xDevice, int key, Object , int channel, int type);|设备数据端点改变（V2版本SDK已废弃）
 onEventNotify(EventNotify eventNotify)|应用内推送回调
 
 注意事项:
@@ -122,6 +122,7 @@ onEventNotify(EventNotify eventNotify)|应用内推送回调
 * 如该设备未定义数据端点也需要这样设置： XlinkAgent.setDataTemplate(“该设备的产品id”,“[]”);
 * 该设备的产品id 可在企业管理平台查看；
 * SDK支持多产品ID；
+* **V2版本SDK已废弃数据端点功能**
 
 ## 三.登录/注册 厂商自己的用户体系
 
@@ -257,7 +258,7 @@ false | 添加设备失败，设备属性错误
 #### 说明：
 
 * 添加数据模版,在企业管理台定义的设备数据端点
-
+* **V2版本SDK已废弃数据端点功能**
 #### 参数：
 
 | 值 | 说明 |
@@ -602,6 +603,7 @@ XlinkCode 常量|int实际值|说明
 #### 说明：
 
 * 设备数据节点发生改变，会回调此方法
+* **V2版本SDK已废弃数据端点功能**
 
 #### 参数 :
 
@@ -867,7 +869,8 @@ XlinkCode 常量|	INT返回值|	说明
 
 #### 说明
 	设置设备数据端点
-	
+	注：V2版本SDK已废弃数据端点功能
+
 #### code定义：
 > 跟SendPipeListener 一样
 
