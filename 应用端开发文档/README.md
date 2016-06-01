@@ -1,8 +1,41 @@
 # **云智易手机APP SDK 集成指南**
 
-[TOC]
 
-##一、简介
+- [一、简介](#Introduction)
+	- [平台简介](#Platform_Introduction)
+	- [APP SDK简介](#sdk_Introduction)
+	- [集成流程](#Integration_Processes)
+- [二、轻松集成](#integrated)
+    - [集成准备](#ready)
+    - [Setp1 下载SDK](#setp1)
+    - [Setp2 开发环境配置](#setp2)
+    - [Setp3 初始化SDK](#setp3)
+    - [Setp4 注册、登录用户账号](#setp4)
+    - [Setp5 添加设备](#setp5)
+    - [Setp6 连接设备](#setp6)
+    - [Setp7 设备控制 & 接收设备数据](#setp7)
+- [三、API文档](#api)
+	- [3.1 概述](#3.1 概述)
+	- [3.2 接口介绍](#3.2 接口介绍)
+	- [3.3 常见问题](#3.3 常见问题)
+	- [3.4 附录](#3.4 附录)
+- [四、设备分享](#四、设备分享)
+	- [4.1、功能描述](#4.1、功能描述)
+	- [4.2、分享流程](#4.2、分享流程)
+	- [4.3、使用步骤](#4.3、使用步骤)
+	- [4.4、调用接口](#4.4、调用接口)
+		- [4.4.1、分享设备](#4.4.1、分享设备)
+		- [4.4.2、取消分享](#4.4.2、取消分享)
+		- [4.4.3、接受分享](#4.4.3、接受分享)
+		- [4.4.4、拒绝接受分享](#4.4.4、拒绝接受分享)
+		- [4.4.5、获取分享列表](#4.4.5、获取分享列表)
+		- [4.4.6、管理员或用户删除这条分享请求记录](#4.4.6、管理员或用户删除这条分享请求记录)
+		- [4.4.7、附录](#4.4.7、附录)
+	- [4.5、注意事项](#4.5、注意事项)
+- [五、术语表](#Glossary)
+
+
+## 一、<a name="Introduction">简介</a>
 
 - [平台简介](#Platform_Introduction)
 - [APP SDK简介](#sdk_Introduction)
@@ -43,7 +76,8 @@
 
 注：如果只需测试内网设备通信，可以跳过注册、登录用户账号以及SDK登录过程。
 
-##二、轻松集成
+##二、<a name="integrated">轻松集成</a>
+
 
 - [集成准备](#ready)
 - [Setp1 下载SDK](#setp1)
@@ -525,7 +559,14 @@ SDK
 	```
 
 
-##三、API文档
+##三、<a name="api">API文档</a>
+
+
+- [3.1 概述](#3.1 概述)
+- [3.2 接口介绍](#3.2 接口介绍)
+- [3.3 常见问题](#3.3 常见问题)
+- [3.4 附录](#3.4 附录)
+
 
 ### 3.1 概述
 
@@ -1089,15 +1130,15 @@ DEVICE_CHANGED_CONNECT_SUCCEED|	-3|	设备重新连接成功
 -(int)start
 ```
 
-##### 说明：
+**说明：**
 
 开始初始化操作监听的app本地UDP端口用于SDK监听WiFi设备数据回包，从休眠恢复之后，需要再次调用stop和start
 
-##### 参数：
+**参数：**
 
 * 无
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1110,17 +1151,17 @@ DEVICE_CHANGED_CONNECT_SUCCEED|	-3|	设备重新连接成功
 -(int)initDevice:(DeviceEntity*)device;
 ```
 
-##### 说明：
+**说明：**
 
 * 初始化（更新）某个设备的基本信息，用在从APP缓存设置到SDK中时使用。
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
 device | 设备实体
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1131,15 +1172,15 @@ device | 设备实体
 
 ##### 3. 连接到云端
 
-##### 函数： 
+**函数：**
 
 	-(int)loginWithAppID:(int)appId andAuthStr:(NSString*)authStr;
 
-##### 说明：
+**说明：**
 
 * APP登录到云端，登录到云端以后，才可以使用云端的功能。
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1159,16 +1200,16 @@ device | 设备实体
 -(int)scanByDeviceProductID:(NSString*)productID;
 ```
 
-##### 说明：
+**说明：**
 
 * 通过产品ID扫描本地内网设备
 
-##### 参数：
+**参数：**
 | 参数 | 说明 |
 | --- | --- |
 | productID | 产品ID |
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1179,17 +1220,17 @@ device | 设备实体
 
 ##### 5. 通过本地通讯设置设备授权码(v2版本使用)
 
-##### 函数：
+**函数：**
 
 ```
 -(int)setAccessKey:(NSNumber *)accessKey withDevice:(DeviceEntity *)device;
 ```
 
-##### 说明：
+**说明：**
 
 * 设置内网中设备的授权码，仅能设置初始化状态（没有被设置过授权码）下的设备
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1207,17 +1248,17 @@ device | 设备实体
 
 ##### 5. 通过本地通讯设置设备授权码(v2版本已淘汰)
 
-##### 函数：
+**函数：**
 
 ```
 -(int)setLocalDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthCode:(NSString*)oldAuth andNewAuthCode:(NSString*)newAuth;
 ```
 
-##### 说明：
+**说明：**
 
 * 设置内网中设备的授权码
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1225,7 +1266,7 @@ device | 设备实体
 | oldAuth | 旧密码，如果设备本身并没有设置授权码的话，该参数置为@"" |
 | newAuth | 新密码 |
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1236,17 +1277,17 @@ device | 设备实体
 
 ##### 6. 通过云端设置设备授权码(v2版本已淘汰)
 
-##### 函数：
+**函数：**
 
 ```
 -(int)setDeviceAuthorizeCode:(DeviceEntity*)device andOldAuthKey:(NSString*)oldAuth andNewAuthKey:(NSString*)newAuth;
 ```
 
-##### 说明：
+**说明：**
 
 * 通过云端设置设备的授权码
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1254,7 +1295,7 @@ device | 设备实体
 | oldAuth | 旧密码，如果设备本身并没有设置授权码的话，该参数置为@"";
 | newAuth | 新密码; 
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1265,50 +1306,50 @@ device | 设备实体
 
 ##### 7. 连接一个设备
 
-##### 函数：
+**函数：**
 
 ```
  -(int)connectDevice:(DeviceEntity *)device andAuthKey:(NSNumber *)authKey;
 ```
-##### 说明：
+**说明：**
 
 * 控制设备之前，先要去连接设备；
 * 该函数会自动识别设备是本地可用还是云端可用；
 
-参数：
+**参数：**
 
 	device设备实体;
 	authKey设备授权码;
 
-返回值：
+**返回值：**
 
 	0成功;
 	其他失败;
 
-备注：
+**备注：**
 
 	连接结果通过onConnectDevice回调
 
 ##### 8.发送本地透传数据
 
-##### 函数：
+**函数：**
 
 ```
  -(int)sendLocalPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
 ```
 
-##### 说明：
+**说明：**
 
 * 向内网中的设备发送透传数据
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
 device | 设备实体;
 payload | 数据值，二进制的。
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1319,24 +1360,24 @@ payload | 数据值，二进制的。
 
 ##### 9. 通过云端发送透传数据
 
-##### 函数：
+**函数：**
 
 ```
 -(int)sendPipeData:(DeviceEntity*)device andPayload:(NSData*)payload;
 ```
 
-##### 说明：
+**说明：**
 
 * 通过云向设备发送透传数据
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
 device | 设备实体
 payload | 数据值，二进制的
 
-##### 返回值：
+**返回值：**
 | 值 | 说明 |
 | --- | --- |
 0 | 成功
@@ -1346,23 +1387,23 @@ payload | 数据值，二进制的
 
 ##### 10. 探测云端设备状态
 
-##### 函数：
+**函数：**
 
 ```
  -(int)probeDevice:(DeviceEntity*)device;
 ```
 
-##### 说明：
+**说明：**
 
 * 探测设备状态
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
 device ｜ 设备实体
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1372,21 +1413,21 @@ device ｜ 设备实体
 
 ##### 11. 获取SDK中所有设备列表
 
-##### 函数：
+**函数：**
 
 ```
  -(NSArray*)getAllDevice;
 ```
 
-##### 说明：
+**说明：**
 
 * 得到所有缓存的设备列表，返回的NSArray中包含的是DeviceEntity对象
 
-##### 参数：
+**参数：**
 
 * 无
 
-##### 返回值：
+**返回值：**
 
 | 值 | 说明 |
 | --- | --- |
@@ -1394,21 +1435,21 @@ NSArray | DeviceEntity * 实体的队列
 
 ##### 12. 释放SDK
 
-##### 函数：
+**函数：**
 
 ```
 -(void)stop;
 ```
 
-##### 说明：
+**说明：**
 
 * 释放SDK，清理本地资源。在退出程序，或者从休眠恢复之后，都需要再次调用stop和start
 
-##### 参数：
+**参数：**
 
 * 无
 
-返回值：
+**返回值：**
 
 * 无
 
@@ -1420,31 +1461,31 @@ NSArray | DeviceEntity * 实体的队列
 -(void)onStart;
 ```
 
-##### 说明：
+**说明：**
 
 * SDK的start接口结果回调
 
-参数：
+**参数：**
 
 * 无
 
 ##### 2. onLogin
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onLogin:(int)result;
 ```
 
-##### 说明：
+**说明：**
 
 * 登录状态回调
 
-参数：
+**参数：**
 
 * 无
 
-result结果：
+**result结果：**
 
 | 定义 | 值 | 说明 |
 | --- | --- | --- |
@@ -1454,17 +1495,17 @@ CODE_STATE_OFFLINE | -101 | 与服务器socket连接断开;
 
 ##### 3. onGotDeviceByScan
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onGotDeviceByScan:(DeviceEntity*)device;
 ```
 
-##### 说明：
+**说明：**
 
 * SDK扫描到的设备结果回调;
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1474,17 +1515,17 @@ device | 设备实体
 
 ##### 4. onSetDeviceAccessKey(v2版本使用)
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onSetDeviceAccessKey:(DeviceEntity *)device withResult:(unsigned char)result withMessageID:(unsigned short)messageID;
 ```
 
-##### 说明：
+**说明：**
 
 * 内网中设置用户访问授权码的结果回调。
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1494,17 +1535,17 @@ device | 设备实体
 
 ##### 4. onSetLocalDeviceAuthorizeCode(v2版本已淘汰)
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onSetLocalDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 ```
 
-##### 说明：
+**说明：**
 
 * 内网中设置用户访问授权码的结果回调。
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1514,17 +1555,17 @@ device | 设备实体
 
 ##### 5. onSetDeviceAuthorizeCode(v2版本已淘汰)
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onSetDeviceAuthorizeCode:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 ```
 
-##### 说明：
+**说明：**
 
 * 云端设置授权结果回调
 
-##### 参数：
+**参数：**
 | 参数 | 说明 |
 | --- | --- |
 | device | 设备实体
@@ -1533,17 +1574,17 @@ device | 设备实体
 
 ##### 6. onSendLocalPipeData
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onSendLocalPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 ```
 
-##### 说明：
+**说明：**
 
 * 发送本地透传消息结果回调
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1553,17 +1594,17 @@ device | 设备实体
 
 ##### 7. onSendPipeData
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onSendPipeData:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 ```
 
-##### 说明：
+**说明：**
 
 * 发送云端透传数据结果
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1573,17 +1614,17 @@ device | 设备实体
 
 ##### 8. onRecvLocalPipeData
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onRecvLocalPipeData:(DeviceEntity*)device withPayload:(NSData*)data;
 ```
 
-##### 说明：
+**说明：**
 
 * 接收到设备发送过来的透穿消息
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1592,17 +1633,17 @@ device | 设备实体
 
 ##### 9. onRecvPipeData
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onRecvPipeData:(DeviceEntity*)device withPayload:(NSData*)payload;
 ```
 
-##### 说明：
+**说明：**
 
 * 接收到云端设备发送回来的透传数据
 
-##### 参数：
+**参数：**
 | 参数 | 说明 |
 | --- | --- |
 | device | 设备实体;
@@ -1610,17 +1651,17 @@ device | 设备实体
 
 ##### 10. onRecvPipeSyncData
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onRecvPipeSyncData:(DeviceEntity*)device withPayload:(NSData*)payload;
 ```
 
-##### 说明：
+**说明：**
 
 * 接收到云端设备发送的广播透传数据
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1629,17 +1670,17 @@ device | 设备实体
 
 ##### 11. onDeviceProbe
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onDeviceProbe:(DeviceEntity*)device withResult:(int)result withMessageID:(int)messageID;
 ```
 
-##### 说明：
+**说明：**
 
 * 云端探测返回回调
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1649,15 +1690,15 @@ device | 设备实体
 
 ##### 12. onConnectDevice
 
-##### 函数：
+**函数：**
 ```
 -(void)onConnectDevice:(DeviceEntity*)device andResult:(int)result andTaskID:(int)taskID;
 ```
-##### 说明：
+**说明：**
 
 * 连接设备结果回调
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1667,17 +1708,17 @@ device | 设备实体
 
 ##### 13. onDeviceStateChanged
 
-##### 函数：
+**函数：**
 
 ````
 -(void)onDeviceStatusChanged:(DeviceEntity*)device;
 ````
 
-##### 说明：
+**说明：**
 
 * 设备上下线状态回调
 
-##### 参数：
+**参数：**
 
 | 参数 | 说明 |
 | --- | --- |
@@ -1685,18 +1726,18 @@ device | 设备实体
 
 ##### 14. onDataPointUpdata
 
-##### 函数：
+**函数：**
 
 ```
 -(void)onDataPointUpdata:(DeviceEntity*)device withIndex:(int)index withDataBuff:(NSData*)dataBuff
 ```
 
-##### 说明：
+**说明：**
 
 * 数据端点数据回调;
 * **V2版本SDK已废弃数据端点功能**
 
-##### 参数：
+**参数：**
 | 参数 | 说明 |
 | --- | --- |
 | device | 设备实体
@@ -1833,6 +1874,22 @@ INVALID_POINT|-11|非法的数据端点（1.该设备数据端点索引越界；
 ...	| ... | ... | ...
 
 ## 四、设备分享
+
+
+
+- [4.1、功能描述](#4.1、功能描述)
+- [4.2、分享流程](#4.2、分享流程)
+- [4.3、使用步骤](#4.3、使用步骤)
+- [4.4、调用接口](#4.4、调用接口)
+	- [4.4.1、分享设备](#4.4.1、分享设备)
+	- [4.4.2、取消分享](#4.4.2、取消分享)
+	- [4.4.3、接受分享](#4.4.3、接受分享)
+	- [4.4.4、拒绝接受分享](#4.4.4、拒绝接受分享)
+	- [4.4.5、获取分享列表](#4.4.5、获取分享列表)
+	- [4.4.6、管理员或用户删除这条分享请求记录](#4.4.6、管理员或用户删除这条分享请求记录)
+	- [4.4.7、附录](#4.4.7、附录)
+- [4.5、注意事项](#4.5、注意事项)
+
 
 ### 4.1、功能描述
 - 通过分享接口，可以把自己已订阅的设备分享给他人使用，分享后也能够通过接口取消之前分享的权限，实现设备的权限发放与收回。被分享者也能够通过接口接受或拒绝他人分享过来的设备。
@@ -2194,7 +2251,7 @@ Content
 2. 用户在分享设备之前，必须先订阅此设备。
 
 
-##五、术语表
+##五、<a name="Glossary">术语表</a>
 | 术语 | 解释 |
 |--------|--------|
 |产品|即企业要开发、生产、销售的一款设备，对应到企业管理后台的产品管理|
