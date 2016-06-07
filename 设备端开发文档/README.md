@@ -68,7 +68,7 @@ SDK主循环|void XlinkSystemLoop(xsdk_time_t c_time, x_int32 timeout_ms)
 
 通常在数据透传上使用，因为对设备的操作需要一个通讯协议来支持，硬件通讯协调提供作为参考或使用。
 
-详情请查看[硬件通讯协议规范](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/3.硬件SDK接口文档.md)。
+详情请查看[硬件通讯协议规范](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/2.设备通讯协议规范.md)。
 
 ### 常见问题
 
