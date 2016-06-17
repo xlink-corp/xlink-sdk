@@ -1,4 +1,4 @@
-©2016  **云智易** 物联云平台（http://www.xlink.cn）
+©2016  **云智易**物联云平台（http://www.xlink.cn）
 
 # Windows APP SDK集成文档
 
@@ -19,7 +19,7 @@
 - **AppID**
   * APP登录到云端所使用的数字ID。用户在云智易平台通过[手机](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#4通过手机验证码注册新账号)或者[邮箱注册](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#1使用邮箱注册新账号)后，会得到这个数字ID。
 - **AppKey**
-  * APP通过AppID登录到云端所使用的凭证，也称为**authorize_code**；通过平台的[用户认证接口](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#5登录与认证)接口得到，
+  * APP通过AppID登录到云端所使用的凭证，也称为 **authorize_code** ；通过平台的[用户认证接口](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#5登录与认证)接口得到，
 - **ProductID**
   * 产品ID，所有连入云智易的设备，都属于某一个产品，ProductID也就是产品ID，是平台颁发的唯一ID，用来标识这个产品。APP需要通过产品ID才可以在内网内扫描和发现对应产品下的设备。
 - **设备MAC**
@@ -99,8 +99,8 @@
 ### SDK使用流程：
 
 1. 用户注册认证，获取AppID和AppKey
-  1. 使用平台[用户接口](#https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#用户身份接口)通过手机或邮件注册平台用户；
-  2. 使用平台[用户认证接口](#https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#5登录与认证)获取到AppID和AppKey
+  1. 使用平台[用户接口](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#用户身份接口)通过手机或邮件注册平台用户；
+  2. 使用平台[用户认证接口](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E6%8E%A5%E5%8F%A3.md#5登录与认证)获取到AppID和AppKey
 2. 使用SDK的[QueryNewXApp](#QueryNewXApp)获取到APP实例；
 3. 调用[StartXapp](#StartXapp)启动实例；
 4. 调用[XAppLogin](#XAppLogin)，使用AppID和AppKey登录到云端；
@@ -125,13 +125,13 @@
 ## **接口说明**
 
 * SDK提供的通讯函数都是异步函数，其返回结果都通过各种回调函数反馈。原则是：
-  1. APP主动发送的消息，结果反馈都是通过：**[OnXAppSendCallback](#OnXAppSendCallback)** 反馈；
-  2. Device主动发送给APP的消息，反馈都是通过：**[OnXAppRecvCallback](#OnXAppRecvCallback)** 反馈；
-  3. APP的运行状态，通过：**[OnXAppCallback](#OnXAppCallback)** 反馈；
-  4. 设备扫描结果通过：**[OnScanGotXDeviceCallback](#OnScanGotXDeviceCallback)** 反馈；
-  5. 设备数据端点变化，内网设备通过：**[OnRecvLocalXDeviceDataPointCallback](#OnRecvLocalXDeviceDataPointCallback)** 反馈；公网设备通过：**[OnRecvXDeviceDataPointCallback](#OnRecvXDeviceDataPointCallback)** 反馈；
+  1. APP主动发送的消息，结果反馈都是通过： **[OnXAppSendCallback](#OnXAppSendCallback)** 反馈；
+  2. Device主动发送给APP的消息，反馈都是通过： **[OnXAppRecvCallback](#OnXAppRecvCallback)** 反馈；
+  3. APP的运行状态，通过： **[OnXAppCallback](#OnXAppCallback)** 反馈；
+  4. 设备扫描结果通过： **[OnScanGotXDeviceCallback](#OnScanGotXDeviceCallback)** 反馈；
+  5. 设备数据端点变化，内网设备通过： **[OnRecvLocalXDeviceDataPointCallback](#OnRecvLocalXDeviceDataPointCallback)** 反馈；公网设备通过： **[OnRecvXDeviceDataPointCallback](#OnRecvXDeviceDataPointCallback)** 反馈；
 
-### **<a name="QueryNewXApp">1. QueryNewXApp**
+### <a name="QueryNewXApp">**1. QueryNewXApp**</a>
 
 #### 说明
 
@@ -156,7 +156,7 @@ int	QueryNewXApp();
 | `> 0` | 成功；并且返回实例ID |
 | `< 0` | 失败 |
 
-### **<a name="FreeXAppByXID">2. FreeXAppByXID**
+### <a name="FreeXAppByXID">**2. FreeXAppByXID**</a>
 
 #### 说明
 
@@ -181,7 +181,7 @@ xid | 整形 | 实例ID
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="StartXApp">3. StartXApp**
+### <a name="StartXApp">**3. StartXApp**</a>
 
 #### 说明
 
@@ -206,7 +206,7 @@ xid | 整形 | 实例ID
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="StopXApp">4. StopXApp**
+### <a name="StopXApp">**4. StopXApp**</a>
 
 #### 说明
 
@@ -231,7 +231,7 @@ xid | 整形 | 实例ID
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="ScanDeviceByProductID">5. ScanDeviceByProductID**
+### <a name="ScanDeviceByProductID">**5. ScanDeviceByProductID**</a>
 
 #### 说明
 
@@ -255,7 +255,7 @@ product_id | 字符串 | 产品ID
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="ScanDeviceByMac">6. ScanDeviceByMac**
+### <a name="ScanDeviceByMac">**6. ScanDeviceByMac**</a>
 
 #### 说明
 
@@ -282,7 +282,7 @@ mac | 字符串 | 设备MAC
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="SetDeviceAccessKey">7. SetDeviceAccessKey**
+### <a name="SetDeviceAccessKey">**7. SetDeviceAccessKey**</a>
 
 #### 说明
 
@@ -310,7 +310,7 @@ access_key | 整形 | AccessKey
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="HandShakeWithDevice">8. HandShakeWithDevice**
+### <a name="HandShakeWithDevice">**8. HandShakeWithDevice**</a>
 
 #### 说明
 
@@ -339,7 +339,7 @@ access_key | 整形 | AccessKey
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="SendLocalPipeData">9. SendLocalPipeData**
+### <a name="SendLocalPipeData">**9. SendLocalPipeData**</a>
 
 #### 说明
 
@@ -369,7 +369,7 @@ len | 整形 | 数据长度
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
 
-### **<a name="ProbeLocalDevice">10. ProbeLocalDevice**
+### <a name="ProbeLocalDevice">**10. ProbeLocalDevice**</a>
 
 #### 说明
 
@@ -395,7 +395,7 @@ mac | 字符串 | 设备MAC
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
 
-### **<a name="XAppLogin">11. XAppLogin**
+### <a name="XAppLogin">**11. XAppLogin**</a>
 
 #### 说明
 
@@ -423,7 +423,7 @@ app_key | 整形 | AppKey
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="SubscribeDeviceWithAccessKey">12. SubscribeDeviceWithAccessKey**
+### <a name="SubscribeDeviceWithAccessKey">**12. SubscribeDeviceWithAccessKey**</a>
 
 #### 说明
 
@@ -451,7 +451,7 @@ access_key | 整形 | AccessKey
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="SendCloudPipeData">13. SendCloudPipeData**
+### <a name="SendCloudPipeData">**13. SendCloudPipeData**</a>
 
 #### 说明
 
@@ -479,7 +479,7 @@ len | 整形 | 数据长度
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="ProbeCloudDevice">14. ProbeCloudDevice**
+### <a name="ProbeCloudDevice">**14. ProbeCloudDevice**</a>
 
 #### 说明
 
@@ -505,7 +505,7 @@ device_id | 整形 | 设备ID
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="SetXAppCallback">15. SetXAppCallback**
+### <a name="SetXAppCallback">**15. SetXAppCallback**</a>
 
 #### 说明
 
@@ -530,7 +530,7 @@ lpScanGotDeviceCallback | 函数指针 | [OnScanGotXDeviceCallback](#OnScanGotXD
 无
 ```
 
-### **<a name="SetXAppDataPointCallback">16. SetXAppDataPointCallback**
+### <a name="SetXAppDataPointCallback">**16. SetXAppDataPointCallback**</a>
 
 #### 说明
 
@@ -554,7 +554,7 @@ lpLocalDataPointCallback | 函数指针 |  [OnRecvLocalXDeviceDataPointCallback]
 
   无
 
-### **<a name="AddXAppDevice">17. AddXAppDevice**
+### <a name="AddXAppDevice">**17. AddXAppDevice**</a>
 
 #### 说明
 
@@ -583,7 +583,7 @@ device_id | 整形 | DeviceID，可以为0
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="AddXAppDeviceDataPoint">18. AddXAppDeviceDataPoint</a>**
+### <a name="AddXAppDeviceDataPoint">**18. AddXAppDeviceDataPoint**</a>
 
 #### 说明
 
@@ -612,7 +612,7 @@ type | 整形 | 数据端点类型，见数据[端点类型附录](#data_ponit_t
 `= 0` | 成功
 `< 0` | 失败，详见[通用错误码](#error_code)附录
 
-### **<a name="SetXAppDeviceDataPoint">19. SetXAppDeviceDataPoint**
+### <a name="SetXAppDeviceDataPoint">**19. SetXAppDeviceDataPoint**</a>
 
 #### 说明
 
@@ -644,7 +644,7 @@ len | 整形 | 端点值长度
 
 ## **回调说明**
 
-### **<a name="OnXAppCallback">1. OnXAppCallback**
+### <a name="OnXAppCallback">**1. OnXAppCallback**</a>
 
 #### 说明
 
@@ -664,7 +664,7 @@ xid | 整形 | 实例ID
 param0：参数 | 可变类型 | 不同的事件，值不同
 param1：参数 | 可变类型 | 不同的事件，值不同
 
-### **<a name="OnXAppSendCallback">2. OnXAppSendCallback**
+### <a name="OnXAppSendCallback">**2. OnXAppSendCallback**</a>
 
 #### 说明
 
@@ -686,7 +686,7 @@ param0：参数 | 可变类型 | 不同的事件，值不同
 param1：参数 | 可变类型 | 不同的事件，值不同
 param2：参数 | 可变类型 | 不同的事件，值不同
 
-### **<a name="OnXAppRecvCallback">3. OnXAppRecvCallback**
+### <a name="OnXAppRecvCallback">**3. OnXAppRecvCallback**</a>
 
 #### 说明
 
@@ -708,7 +708,7 @@ param0：参数 | 可变类型 | 不同的事件，值不同
 param1：参数 | 可变类型 | 不同的事件，值不同
 param2：参数 | 可变类型 | 不同的事件，值不同
 
-### **<a name="OnScanGotXDeviceCallback">4. OnScanGotXDeviceCallback**
+### <a name="OnScanGotXDeviceCallback">**4. OnScanGotXDeviceCallback**</a>
 
 #### 说明
 
@@ -730,7 +730,7 @@ product_id | 字符串 | 产品ID
 mac | 字符串 | 设备MAC
 nAccessKey | 整形 | AccessKey只有通过ScanByPid扫描到时才会反馈，其他-1或0
 
-### **<a name="OnRecvXDeviceDataPointCallback">5. OnRecvXDeviceDataPointCallback**
+### <a name="OnRecvXDeviceDataPointCallback">**5. OnRecvXDeviceDataPointCallback**</a>
 
 #### 说明
 
@@ -752,7 +752,7 @@ index | 整形 | 端点索引
 type | 整形 | 端点类型
 data | 可变类型 | 数据端点值
 
-### **<a name="OnRecvLocalXDeviceDataPointCallback">6. OnRecvLocalXDeviceDataPointCallback**
+### <a name="OnRecvLocalXDeviceDataPointCallback">**6. OnRecvLocalXDeviceDataPointCallback**</a>
 
 #### 说明
 
@@ -777,7 +777,7 @@ data | 可变类型 | 数据端点值
 
 ## 附录
 
-### <a name="app_event">1. APP状态回调值</a>
+### <a name="app_event">**1. APP状态回调值**</a>
 
 定义 | 枚举值 | 说明
 ------- | --- | ---
@@ -789,7 +789,7 @@ E_APP_PING | 6 | APP与云端服务器心跳状态, parma0: 0 : 表示发送, 1 
 E_DEVICE_CONNECTED | 10 | // APP从局域网连接上某个设备；param0:(int)session_id or (int)device_id；
 E_DEVICE_DISCONNECT | 11 | APP与这个局域网设备的连接断开；(int)session_id
 
-### <a name="send_event">2. APP发送指令结果回调</a>
+### <a name="send_event">**2. APP发送指令结果回调**</a>
 
 定义 | 枚举值 | 说明
 ------- | --- | ---
@@ -797,13 +797,13 @@ public const int E_APP_SEND_ACCESS_KEY | 100 | 设置设备AccessKey结果；( c
 E_APP_SEND_HANDSHAKE | 101 | APP发送HANDSHAKE包的应答 param0:(char * )mac, param1:(int)session_id; param2:(int)device_id; 如果SessionID为0，param2表示错误Code`
 E_APP_SEND_LOCAL_PIPE | 102 | APP发送本地透传指令结果，param0：(int)messgeid; param1:(int)result;
 E_APP_SEND_LOCAL_SET | 103 | 设备发送本地SET指令结果，param0：(int)messgeid; param1:(int)result;
-E_APP_SEND_LOCAL_PING | 104	| APP向设备发送本地PING指令应答，param0:(char*)mac;  param1:(int)sessionId;
+E_APP_SEND_LOCAL_PING | 104	| APP向设备发送本地PING指令应答，param0:(char * )mac;  param1:(int)sessionId;
 E_APP_SEND_SUBSCRIPTION | 105 | APP发送设备订阅应答；param0:(char*)mac; param1:(uint)msgId & code; param2:(int)deviceId
 E_APP_SEND_PROBE | 106 | APP发送设备探测包应答；param0:(int)device_id; param:(int)message_id; param2:(int)code
 E_APP_SEND_PIPE | 107 | APP发送云端透传指令结果，param0：(int)messgeid; param1:(int)result;
 E_APP_SEND_SET | 108 | APP发送SET指令结果，param0:(int)device_id; param1：(int)messgeid; param2:(int)result;
 
-### <a name="recv_event">3. APP接收数据回调</a>
+### <a name="recv_event">**3. APP接收数据回调**</a>
 
 定义 | 枚举值 | 说明
 ------- | --- | ---
@@ -811,7 +811,7 @@ E_APP_RECV_PIPE | 200 | APP接收设备发送的透传指令。param0:(int)devic
 E_APP_RECV_PIPE_SYNC | 201 | APP接收设备发送的广播型收透传指令。param0:(int)device_id; param1:(const char * )data;param2:(int)data len
 E_APP_RECV_PIPE_LOCAL | 202 | 设备接收本地APP发送的透传指令。param0:( char *  )mac;param1:(const char * )data;param2:(int)data len;
 
-### <a name="datapoint_type">4. 数据端点类型</a>
+### <a name="datapoint_type">**4. 数据端点类型**</a>
 
 定义 | 枚举值 | 说明
 ------- | --- | ---
@@ -821,7 +821,7 @@ E_DP_TYPE_INT16 | 2 | 短整形
 E_DP_TYPE_INT32 | 3 | 长整形
 E_DP_TYPE_STRING | 5 | 字符串
 
-### <a name="error_code">5. 通用错误码</a>
+### <a name="error_code">**5. 通用错误码**</a>
 
 定义 | 枚举值 | 说明
 ------- | --- | ---
@@ -835,3 +835,5 @@ ERROR_UNIMPLEMENTED | -400 | 功能未实现
 ERROR_DEVICE_NOT_EXISTS | -404 | 设备不存在
 ERROR_APP_NOT_EXISTS | -404 | APP不存在
 ERROR_SESSION_ID_NOT_EXISTS | -404 | SessionID不存在
+
+©2016  **云智易**物联云平台（http://www.xlink.cn）
