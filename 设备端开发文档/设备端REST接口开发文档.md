@@ -21,7 +21,8 @@
 2. [设备认证](#device_auth)
 3. [刷新凭证](#refresh_token)
 4. [获取数据端点列表](#datapoint_list)
-5. [错误码说明](#error_code)
+5. [XFile文件服务](#xfile)
+6. [错误码说明](#error_code)
 
 
 ## 接口详情
@@ -144,10 +145,15 @@ Content
 
 本接口详情见[文档](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3.md#listProductDataPoint)
 
+### <a name="xfile">5. XFile文件服务</a>
+
+	XFfile文件服务XLINK提供的通用文件上传下载服务，终端可以通过上传文件得到一个文件下载地址。
+
+详情文档见[XFile服务](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/XFile%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3.md)
 
 
 
-### <a name="error_code">5. 错误码说明***</a>
+### <a name="error_code">6. 错误码说明***</a>
 
 详情请见[文档](https://github.com/xlink-corp/xlink-sdk/blob/master/%E5%BA%94%E7%94%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/%E5%BA%94%E7%94%A8%E7%AB%AFRESTful%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E9%94%99%E8%AF%AF%E7%A0%81%E8%AF%B4%E6%98%8E.md)
 
