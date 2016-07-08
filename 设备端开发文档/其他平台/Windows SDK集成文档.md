@@ -50,6 +50,7 @@
 7. StopXDevice
 8. SendDevicePipeDataByXID
 9. SendDeviceSyncPipeDataByXID
+10. BroadcastDeviceLocalPipeDataByXID
 10. SetLogCallback
 11. SetXDeviceCallback
 
@@ -292,7 +293,33 @@ len | 整形 | 发送的数据长度
 `= 0` | 成功
 `< 0` | 失败
 
-### **10. SetLogCallback**
+### **10. BroadcastDeviceLocalPipeDataByXID**
+
+#### 说明
+
+* 在内网中广播PIPE数据，所有和本设备HANDSHAKE完成的设备的APP都会收到
+
+#### 函数
+
+    BroadcastDeviceLocalPipeDataByXID(int xid, const char * value, int len);
+
+#### 参数
+
+参数 | 类型 | 说明
+---- | --- | ----
+xid | 整形 | 设备实例ID
+value | 二进制数据 | 发送的数据
+len | 整形 | 发送的数据长度
+
+#### 返回值
+
+值 | 说明
+--- | ---
+`= 0` | 成功
+`< 0` | 失败
+
+
+### **11. SetLogCallback**
 
 #### 说明
 
@@ -314,7 +341,7 @@ lpLogCallback | 函数指针 | 回调函数。回调函数类型定义见后面�
 --- | ---
 na | na
 
-### **11. SetXDeviceCallback**
+### **12. SetXDeviceCallback**
 
 #### 说明
 
