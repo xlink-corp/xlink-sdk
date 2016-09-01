@@ -3,6 +3,7 @@
 # 接口概览
 
 1. [Home管理](#home_manager)
+
 	1.1 [创建Home](#add_home)
 	1.2 [修改Home](#update_home)
 	1.3 [删除Home](#delete_home)
@@ -19,6 +20,7 @@
 	1.14 [获取Home中的设备列表](#get_home_device_list)
 	1.15 [修改用户和设备的权限](#update_device_authority)
 2. [Home Inbox管理](#inbox_manager)
+
 	2.1 
 3. [附录](#appendix)
 
