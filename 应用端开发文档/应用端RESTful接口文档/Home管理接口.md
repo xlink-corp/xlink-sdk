@@ -753,7 +753,7 @@ create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 title | 是 | 消息标题
 content | 是 | 消息内容
 
-### <a name="home_inbox_list">Home成员查看Inbox消息列表</a>
+### <a name="home_inbox_list">2.2 Home成员查看Inbox消息列表</a>
 
 
 **Request**
@@ -825,7 +825,8 @@ create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 title | 是 | 消息标题
 content | 是 | 消息内容
 
-### <a name="home_inbox_delete">Home成员删除Inbox消息</a>
+
+### <a name="home_inbox_delete">2.3 Home成员删除Inbox消息</a>
 
 	Home成员只能删除本人发送的Inbox消息，管理员或以上可以删除任意Inbox消息
 
@@ -853,6 +854,8 @@ Header
 Content
 
 	无
+
+
 
 ## <a name="appendix">附录</a> ##
 
