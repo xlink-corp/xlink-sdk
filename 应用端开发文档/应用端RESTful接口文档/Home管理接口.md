@@ -1,5 +1,7 @@
 # Home管理接口文档
 
+	Home解决用户在设备使用过程的家庭场景需求，具体有Home家庭的创建管理、家庭消息盒子等内容。
+
 # 接口概览
 
 ## 1.[Home管理](#home_manager)
@@ -35,7 +37,11 @@
 
 ## 2.[Home Inbox管理](#inbox_manager)
 
-**2.1**
+**2.1 [Home成员发送消息到Inbox](#home_inbox_add)**
+
+**2.2 [Home成员查看Inbox消息列表](#home_inbox_list)**
+
+**2.3 [Home成员删除Inbox消息](#home_inbox_delete)**
  
 ### 3.[附录](#appendix)
 
@@ -687,9 +693,166 @@ Content
 	
 	Home下的消息盒子系统，Home下所有成员共享所有消息，每个成员只可以删除自己所发的消息，管理员或以上权限成员拥有最高权限。
 
+### <a name ="home_inbox_add">2.1 Home成员发送消息到Inbox</a>
+
+**Request**
+
+URL
+
+	/v2/home/{home_id}/inbox/message_add
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+	
+Content
+
+	{
+		"type":"消息类型，见附录",
+	    "title": "消息标题",
+	    "content": "消息内容"
+	}
 
 
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+type | 是 | 消息类型，见[附录](#inbox_message_type) 
+title| 是 | 消息标题
+content | 是 | 消息内容 
 
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+	    "id": "消息ID",
+	    "home_id": "家庭ID",
+	    "type": "消息类型,见附录",
+	    "creator": "消息创建者ID",
+	    "creator_type": "消息创建者类型，设备、用户",
+		"create_time": "创建时间",
+	    "title": "消息标题",
+	    "content": "消息内容"
+	}
+
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | 消息ID
+home_id | 是 | 家庭ID
+type | 是 | 消息类型，见[附录](#inbox_message_type)
+creator | 是 | 创建者ID
+creator_type | 是 | 消息创建者类型，设备、用户,见[附录](#creator_type)
+create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
+title | 是 | 消息标题
+content | 是 | 消息内容
+
+### <a name="home_inbox_list">Home成员查看Inbox消息列表</a>
+
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/inbox/messages
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+	    "offset": "请求的偏移量",
+	    "limit": "请求的数量上限",
+	    "query": {
+	        "filed1": {
+	            "$in": [
+	                "字段值",
+	                "字段值"
+	            ]
+	        },
+	        "filed2": {
+	            "$lt": "字段值"
+	        }
+	    },
+	    "order": {
+	        "filed1": "desc",
+	        "filed2": "asc"
+	    }
+	}
+
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+	    "count": "总数量",
+	    "list": [
+	        {
+	            "id": "消息ID",
+	            "home_id": "家庭ID",
+	            "type": "消息类型,见附录",
+	            "creator": "消息创建者ID",
+	            "creator_type": "消息创建者类型，设备、用户",
+	            "create_time": "创建时间",
+	            "title": "消息标题",
+	            "content": "消息内容"
+	        }
+	    ]
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | 消息ID
+home_id | 是 | 家庭ID
+type | 是 | 消息类型，见[附录](#inbox_message_type)
+creator | 是 | 创建者ID
+creator_type | 是 | 消息创建者类型，设备、用户,见[附录](#creator_type)
+create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
+title | 是 | 消息标题
+content | 是 | 消息内容
+
+### <a name="home_inbox_delete">Home成员删除Inbox消息</a>
+
+	Home成员只能删除本人发送的Inbox消息，管理员或以上可以删除任意Inbox消息
+
+**Request**
+
+URL
+
+	DELETE /v2/home/{home_id}/inbox/message/{message_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
 
 ## <a name="appendix">附录</a> ##
 
@@ -711,3 +874,17 @@ Content
 已接受 | 1 
 已拒绝 | 2 
 已失效 | 3
+
+
+### <a name="inbox_message_type">消息类型</a>
+
+消息类型 | 枚举值
+---- | ---- 
+1 | 普通消息
+
+### <a name="creator_type">消息创建者类型</a>
+
+消息创建者类型 | 枚举值
+---- | ---- 
+用户 | 1 
+设备 | 2
