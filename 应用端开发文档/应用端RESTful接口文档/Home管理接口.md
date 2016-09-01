@@ -4,26 +4,40 @@
 
 ## 1.[Home管理](#home_manager)
 **1.1 [创建Home](#add_home)**
+
 **1.2 [修改Home](#update_home)**
+
 **1.3 [删除Home](#delete_home)**
+
 **1.4 [邀请Home的成员](#add_home_member)**
+
 **1.5 [用户获取接收到Home邀请的记录列表](#get_invitee_list)**
+
 **1.6 [用户获取发出的邀请记录列表](#get_inviter_list)**
+
 **1.7 [用户接受邀请](#home_member_invite_accept)**
+
 **1.8 [用户拒绝邀请](#home_member_invite_deny)**
+
 **1.9 [删除Home的成员](#delete_home_member)**
+
 **1.10 [修改Home的成员](#update_home_member)**
+
 **1.11 [用户获取Home列表](#get_home_list)**
+
 **1.12 [设备设置归属于Home](#set_device_home_id)**
+
 **1.13 [将设备从home中移除](#delete_device_home_id)**
+
 **1.14 [获取Home中的设备列表](#get_home_device_list)**
+
 **1.15 [修改用户和设备的权限](#update_device_authority)**
 
 ## 2.[Home Inbox管理](#inbox_manager)
 
 **2.1**
  
-## 3.[附录](#appendix)
+### 3.[附录](#appendix)
 
 
 # 接口详情
