@@ -244,6 +244,9 @@ Content
 	            "home_id": "Home ID",
 	            "invitee": "被邀请者用户ID",
 	            "inviter": "邀请者用户ID",
+				"role":"被邀请者的角色类型",
+				"authority":"被邀请者对设备的控制权限",
+				"expire_time":"被邀请者的到期时间"
 	            "status": "邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见附录",
 	            "end_time": "邀请记录有效截止时间",
 	            "create_time": "创建时间"
@@ -261,6 +264,9 @@ inviter | 是 | 邀请者用户ID
 status | 是 | 邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见[附录](#invite_status)
 end_time | 是 | 邀请记录有效截止时间， 例：2014-10-09T08:15:40.843Z
 create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
+role | 是 | home成员的角色类型,见[home成员类型](#home_member_role_type)
+authority | 否 | 对设备的控制权限，**R可读，W可写，RW可读可写；默认为RW**；
+expire_time | 否 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
 
 
 ### <a name="get_inviter_list">1.6 用户获取发出的邀请记录列表</a>
