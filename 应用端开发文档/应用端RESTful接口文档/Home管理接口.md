@@ -216,6 +216,9 @@ Content
 		"expire_time":"home成员的到期时间"
 	}
 
+		
+	}
+
 字段 | 是否必须 | 描述
 ---- | ---- | ----
 account |是 | 用户注册的账号
@@ -345,7 +348,6 @@ end_time | 是 | 邀请记录有效截止时间， 例：2014-10-09T08:15:40.843
 create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 
 
-
 ### <a name ="home_member_invite_accept">1.7 用户接受邀请</a>
 
 	接收到home管理员发送的邀请后，用户响应邀请。
@@ -354,7 +356,7 @@ create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 
 URL
 
-	PSOT /v2/home/{home_id}/user_accept
+	POST /v2/home/{home_id}/user_accept
 
 Header
 
@@ -389,7 +391,7 @@ Content
 
 URL
 
-	PSOT /v2/home/{home_id}/user_deny
+	POST /v2/home/{home_id}/user_deny
 
 Header
 
@@ -472,9 +474,7 @@ Content
 
 字段 | 是否必须 | 描述
 ---- | ---- | ----
-account |是 | 用户注册的账号
 role | 是 | home成员的角色类型,见[home成员类型](#home_member_role_type)
-authority | 否 | 对设备的控制权限，**R可读，W可写，RW可读可写；默认为RW**；
 expire_time | 否 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
 
 **Response**
@@ -567,8 +567,16 @@ Header
 Content
 
 	{
-	    "device_id": "设备ID"
+	    "device_id": "设备ID",
+		"authority":"权限类型",
+		"sub_role":"用户和设备的订阅关系"
 	}
+
+字段|是否必须|描述
+---- | ---- | ----
+device_id | 是 | 设备ID
+authority | 是 | 对设备的控制权限，**R可读，W可写，RW可读可写**
+sub_role | 是 | 用户和设备的订阅关系；0：管理员；1：普通用户
 
 **Response**
 
