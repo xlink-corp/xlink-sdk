@@ -35,6 +35,10 @@
 
 **1.15 [修改用户和设备的权限](#update_device_authority)**
 
+**1.16 [设置home的扩展属性](#set_home_property)**
+
+**1.17 [获取home的扩展属性列表](#home_property_list)**
+
 ## 2.[Home Inbox管理](#inbox_manager)
 
 **2.1 [Home成员发送消息到Inbox](#home_inbox_add)**
@@ -704,6 +708,87 @@ Header
 Content
 
 	无
+
+### **<a name="set_home_property">16.设置home的扩展属性</a>**
+
+    home的管理员可以为home添加扩展属性
+
+
+
+**Request**
+
+URL
+
+    POST /v2/home/{home_id}/property
+
+Header
+
+    Content-Type:"application/json"
+    Access-Token:"调用凭证"
+Content
+
+    {
+    "{key}":{
+			"name":"扩展属性的名称",
+			"value":"扩展属性的值"
+			}
+    "{key}":{
+			"name":"扩展属性的名称",
+			"value":"扩展属性的值"
+			}
+    }
+
+>注意：扩展属性字段{key}不得包含小数点、空字符，不能以美元符号（$）开头。
+
+**Response**
+
+Header
+
+    HTTP/1.1 200 OK
+
+Content
+
+    无
+
+### **<a name="home_property_list">17.获取home的扩展属性列表</a>**
+
+    home的成员可以获取设备扩展属性列表。
+
+
+**Request**
+
+URL
+
+    GET /v2/home/{home_id}/property
+
+Header
+
+    Content-Type:"application/json"
+    Access-Token:"调用凭证"
+
+Content
+
+    无
+
+**Response**
+
+Header
+
+    HTTP/1.1 200 OK
+
+Content
+
+    {
+    "{key}":{
+			"name":"扩展属性的名称",
+			"value":"扩展属性的值"
+			}
+    "{key}":{
+			"name":"扩展属性的名称",
+			"value":"扩展属性的值"
+			}
+    }
+
 
 
 ## <a name="inbox_manager">2. Inbox管理</a>
