@@ -231,7 +231,13 @@ Header
 
 Content
 
-	无
+	{
+		"invite_id" : "邀请ID"
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ----
+invite_id | 是 | 邀请ID
 
 ### <a name="get_invitee_list">1.5 用户获取接收到Home邀请的记录列表</a>
 
