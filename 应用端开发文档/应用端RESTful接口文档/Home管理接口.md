@@ -85,7 +85,7 @@ Content
 			{
 				"user_id":"用户Id",				
 				"role":"角色类型",	
-				"expire_time":"到期是时间",			
+				"expire_time":"到期的时间",			
 			}
 		],
 		"creator":"创建者Id",
@@ -141,7 +141,7 @@ Content
 			{
 				"user_id":"用户Id",				
 				"role":"角色类型",	
-				"expire_time":"到期是时间",			
+				"expire_time":"到期的时间",			
 			}
 		],
 		"creator":"创建者Id",
@@ -524,7 +524,7 @@ Content
 	                {
 	                    "user_id": "用户Id",
 	                    "role": "角色类型",
-	                    "expire_time": "到期是时间"
+	                    "expire_time": "到期的时间"
 	                }
 	            ],
 	            "creator": "创建者Id",
