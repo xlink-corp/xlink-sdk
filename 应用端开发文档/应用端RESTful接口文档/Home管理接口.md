@@ -251,7 +251,7 @@ invite_id | 是 | 邀请ID
 
 URL
 
-	GET /v2/home/invitee_list?user_id={user_id}
+	GET /v2/homes/invitee_list?user_id={user_id}
 
 Header
 
@@ -276,6 +276,7 @@ Content
 	        {
 	            "_id": "标识ID",
 	            "home_id": "Home ID",
+				"home_name":"Home名称",
 	            "invitee": "被邀请者用户ID",
 	            "inviter": "邀请者用户ID",
 				"role":"被邀请者的角色类型",
@@ -293,6 +294,7 @@ Content
 ---- | ---- | ---- 
 id | 是 | 邀请记录ID
 home_id | 是 | 家庭ID
+home_name | 是 | Home名称
 invitee | 是 | 被邀请这用户ID
 inviter | 是 | 邀请者用户ID
 status | 是 | 邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见[附录](#invite_status)
@@ -309,7 +311,7 @@ expire_time | 否 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
 
 URL
 
-	GET /v2/home/inviter_list?user_id={user_id}
+	GET /v2/homes/inviter_list?user_id={user_id}
 
 Header
 
@@ -334,6 +336,7 @@ Content
 	        {
 	            "_id": "标识ID",
 	            "home_id": "Home ID",
+				"home_name":"Home名称",
 	            "invitee": "被邀请者用户ID",
 	            "inviter": "邀请者用户ID",
 	            "status": "邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见附录",
@@ -348,6 +351,7 @@ Content
 ---- | ---- | ---- 
 id | 是 | 邀请记录ID
 home_id | 是 | 家庭ID
+home_name | 是 | Home名称
 invitee | 是 | 被邀请这用户ID
 inviter | 是 | 邀请者用户ID
 status | 是 | 邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见[附录](#invite_status)
@@ -363,7 +367,7 @@ create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 
 URL
 
-	POST /v2/home/{home_id}/user_accept
+	POST /v2/homes/{home_id}/user_accept
 
 Header
 
