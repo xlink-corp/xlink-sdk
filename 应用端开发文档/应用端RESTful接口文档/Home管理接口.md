@@ -220,14 +220,16 @@ Content
 		"role":"home成员的角色类型",
 		"authority":"对设备的控制权限",
 		"expire_time":"home成员的到期时间"
+		"mode":"邀请方式"
 	}
 
 字段 | 是否必须 | 描述
 ---- | ---- | ----
-account |是 | 用户注册的账号
+account |否 | 用户注册的账号，使用二维码邀请时可以省略
 role | 是 | home成员的角色类型,见[home成员类型](#home_member_role_type)
 authority | 否 | 对设备的控制权限，**R可读，W可写，RW可读可写；默认为RW**；
 expire_time | 否 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
+mode | 是 | 邀请方式，枚举值，见[附录](#invite_mode)
 
 **Response**
 
@@ -1028,3 +1030,11 @@ Content
 ---- | ---- 
 用户 | 1 
 设备 | 2
+
+
+**<a name="share_mode">邀请方式</a>**
+
+值 | 类型 | 说明
+---- | ---- | ----
+1| int | 通过用户ID分享
+2 | int | 二维码方式分享
