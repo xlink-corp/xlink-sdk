@@ -46,6 +46,8 @@
 **2.2 [Home成员查看Inbox消息列表](#home_inbox_list)**
 
 **2.3 [Home成员删除Inbox消息](#home_inbox_delete)**
+
+**2.4 [Home创建者删除所有Inbox消息](#home_inbox_all_delete)**
  
 ### 3.[附录](#appendix)
 
@@ -941,6 +943,35 @@ content | 是 | 消息内容
 URL
 
 	DELETE /v2/home/{home_id}/inbox/message/{message_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
+
+### <a name="home_inbox_all_delete">2.4 Home创建者删除所有Inbox消息</a>
+
+	home的管理员删除所有消息
+
+**Request**
+
+URL
+
+	DELETE /v2/home/{home_id}/inbox/all_messages
 
 Header
 
