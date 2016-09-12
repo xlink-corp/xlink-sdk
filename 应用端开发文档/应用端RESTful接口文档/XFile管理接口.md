@@ -6,7 +6,7 @@
 # **接口概览**
 1. [XFile上传](#upload)
 2. [XFile下载](#download)
-3. [获取xfile文档列表(未实现)](#get_xfile_list)
+3. [获取xfile文档列表](#get_xfile_list)
 
 
 # **接口详情**
@@ -86,7 +86,7 @@ Content
     	"url":"云服务器商对应的资源地址"
 	}
 
-### **<a name="get_xfile_list">获取xfile文档列表(未实现)</a>**
+### **<a name="get_xfile_list">获取xfile文档列表</a>**
 
 	获取上传文件的列表
 
@@ -144,6 +144,7 @@ query | 否 | 查询条件，可以根据不同字段加上不同的比较指令
 			    "md5" : "文件MD5",
 			    "size" : 5839,
 			    "ower" : "文件上传者",
+				"ower_type":"上传者类型"
 			    "public_read" : true,
 			    "create_time" : "创建时间",
 			    "xlink_url" : "云智易链接地址",
