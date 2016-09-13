@@ -113,3 +113,9 @@ MAC | 模拟设备的MAC地址，必须使用已经添加到管理台，进行�
 
 * XLINK设备模拟器是XLINK针对Windows下XLINK设备SDK的一个应用实现，XLINK可以提供Windows下的设备SDK，厂商可以根据自己的需求对设备模拟器进行二次开发。
 * XLINK设备模拟器采用.Net制作，也是为了方便厂商能够快速的进行二次开发，XLINK可以提供设备模拟器的工程源码，厂商可以作为参考，也可在源码工程上直接进行修改。
+
+## 下载地址
+
+版本 | 下载地址 
+--- | ---
+Win32 | [下载地址](https://raw.githubusercontent.com/xlink-corp/xlink-sdk/master/%E7%A1%AC%E4%BB%B6%E6%A8%A1%E6%8B%9F%E5%99%A8_v3/win32/XlinkDeviceSimulator_v3.zip) |
