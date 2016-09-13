@@ -44,7 +44,7 @@
 * WpfXDeviceEmu.ini中包含了程序运行的基本环境的配置，如下：
 	
 ```
-[Application]ApiHost=http://api.xlink.cnServerHost=cm.xlink.cn:23778[Product]ProductID=160fa2aefc86b000160fa2aefc86b001ProductKey=5db1fdd114763c5f9dc0ee046501a778MAC=1122334455667788	
+[Application]ApiHost=http://api.xlink.cnServerHost=cm.xlink.cn:23778[Product]ProductID=160fa2aefc86b000160fa2aefc86b001ProductKey=5db1fdd114763c5f9dc0ee996599a778MAC=1122334455667788	
 ```
 
 条目 | 说明 
