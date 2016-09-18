@@ -846,10 +846,10 @@ Content
 
 字段 | 是否必须 | 描述
 ---- | ---- | ----
-device_id | 是 | 设备Id
-user_name | 是 | 用户昵称
+
 user_id |是 | home成员的用户id
 role | 是 | home角色类型,见[home成员类型](#home_member_role_type)
+device_id | 是 | 设备Id
 sub_role | 是 | 用户和设备的订阅关系；0：管理员；1：普通用户
 authority | 是 | 设备权限类型
 
