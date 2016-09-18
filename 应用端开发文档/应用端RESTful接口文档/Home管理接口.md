@@ -39,6 +39,8 @@
 
 **1.17 [获取home的扩展属性列表](#home_property_list)**
 
+**1.18 [获取home成员的设备权限列表](#home_member_device_authority_list)**
+
 ## 2.[Home Inbox管理](#inbox_manager)
 
 **2.1 [Home成员发送消息到Inbox](#home_inbox_add)**
@@ -797,6 +799,58 @@ Content
 			}
     }
 
+### **<a name="home_member_device_authority_list">18.获取home成员的设备权限列表</a>**
+
+	超级管理员管理员可以获取home所有成员的设备权限信息，其他成员能获取自己对应的设备权限信息。
+
+**Request**
+
+URL
+
+	GET /v2/homes/{home_id}/device_authority?device_id={device_id}
+
+字段 | 是否必须 | 描述
+---- | ---- | ----
+device_id |否 | 设备id。如果为空，则返回所有设备的权限信息。
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	[    {
+			"device_id":"设备ID",	
+	        "user_list": [
+	                {
+					"user_id":"home成员的用户id",
+					"user_name":"用户昵称",
+	        		"role": "home角色类型",
+					"authority":"设备权限类型"
+	                }
+	            ]
+	     }
+	 ]
+
+
+字段 | 是否必须 | 描述
+---- | ---- | ----
+device_id | 是 | 设备Id
+user_name | 是 | 用户昵称
+user_id |是 | home成员的用户id
+role | 是 | home角色类型,见[home成员类型](#home_member_role_type)
+authority | 是 | 设备权限类型
 
 
 ## <a name="inbox_manager">2. Inbox管理</a>
