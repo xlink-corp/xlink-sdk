@@ -807,11 +807,11 @@ Content
 
 URL
 
-	GET /v2/homes/{home_id}/device_authority?device_id={device_id}
+	GET /v2/homes/{home_id}/device_authority?user_id={user_id}
 
 字段 | 是否必须 | 描述
 ---- | ---- | ----
-device_id |否 | 设备id。如果为空，则返回所有设备的权限信息。
+user_id |否 | 用户id。如果为空，则返回所有home成员的设备权限信息。
 
 Header
 
@@ -831,12 +831,12 @@ Header
 Content
 
 	[    {
-			"device_id":"设备ID",	
-	        "user_list": [
+			"user_id":"home成员的用户id",
+		    "role": "home角色类型",
+	        "device_list": [
 	                {
-					"user_id":"home成员的用户id",
-					"user_name":"用户昵称",
-	        		"role": "home角色类型",
+					"device_id":"设备ID",
+					"sub_role":"用户和设备的订阅关系"
 					"authority":"设备权限类型"
 	                }
 	            ]
@@ -850,6 +850,7 @@ device_id | 是 | 设备Id
 user_name | 是 | 用户昵称
 user_id |是 | home成员的用户id
 role | 是 | home角色类型,见[home成员类型](#home_member_role_type)
+sub_role | 是 | 用户和设备的订阅关系；0：管理员；1：普通用户
 authority | 是 | 设备权限类型
 
 
