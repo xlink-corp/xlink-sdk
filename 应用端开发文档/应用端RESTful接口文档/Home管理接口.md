@@ -863,7 +863,7 @@ authority | 是 | 设备权限类型
 
 URL
 
-	/v2/home/{home_id}/inbox/message_add
+	POST /v2/home/{home_id}/inbox/message_add
 
 Header
 
