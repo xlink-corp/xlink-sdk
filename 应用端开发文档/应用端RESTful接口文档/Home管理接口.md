@@ -676,7 +676,10 @@ Content
 	            "firmware_mod": "固件型号",
 	            "firmware_version": "固件版本号",
 	            "product_id": "所属的产品ID",
-	            "access_key": "设备访问码"
+	            "access_key": "设备访问码",
+                "role":"用户和设备角色",
+                "authority" : "设备权限",
+				"source":"产生订阅的来源"
 	        }
 	    ]
 	}
