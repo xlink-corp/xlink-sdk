@@ -667,6 +667,7 @@ Content
 	        {
 	            "id": "设备ID",
 	            "mac": "设备MAC地址",
+				"name":"设备名称",
 	            "is_active": "是否激活",
 	            "active_date": "激活时间",
 	            "is_online": "是否在线",
