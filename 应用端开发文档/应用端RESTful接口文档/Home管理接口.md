@@ -41,6 +41,8 @@
 
 **1.18 [获取home成员的设备权限列表](#home_member_device_authority_list)**
 
+**1.19 [删除home成员的邀请记录](#delete_inviter_list)**
+
 ## 2.[Home Inbox管理](#inbox_manager)
 
 **2.1 [Home成员发送消息到Inbox](#home_inbox_add)**
@@ -667,6 +669,7 @@ Content
 	        {
 	            "id": "设备ID",
 	            "mac": "设备MAC地址",
+				"name":"设备名称",
 	            "is_active": "是否激活",
 	            "active_date": "激活时间",
 	            "is_online": "是否在线",
@@ -676,7 +679,10 @@ Content
 	            "firmware_mod": "固件型号",
 	            "firmware_version": "固件版本号",
 	            "product_id": "所属的产品ID",
-	            "access_key": "设备访问码"
+	            "access_key": "设备访问码",
+                "role":"用户和设备角色",
+                "authority" : "设备权限",
+				"source":"产生订阅的来源"
 	        }
 	    ]
 	}
@@ -851,6 +857,36 @@ role | 是 | home角色类型,见[home成员类型](#home_member_role_type)
 device_id | 是 | 设备Id
 sub_role | 是 | 用户和设备的订阅关系；0：管理员；1：普通用户
 authority | 是 | 设备权限类型
+
+### <a name="delete_inviter_list">1.19 删除home成员的邀请记录</a>
+
+	用户通过本接口删除自己邀请或者邀请自己的记录。
+
+**Request**
+
+URL
+
+	DELETE /v2/homes/invitation/delete
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"id_list":["记录ID1","记录ID2"...]
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
 
 
 ## <a name="inbox_manager">2. Inbox管理</a>
