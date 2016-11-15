@@ -300,6 +300,7 @@ end_time | 是 | 任务结束执行时间
 | Dealer | 5 | 经销商列表 |
 | Warranty | 6 | 维保列表 |
 | DeviceSessionLog | 7 | 设备上下线 |
+| DeviceSessionLog | 8 | 微信设备列表 |
 
 ### **<a name="export_task_status">2.导出任务状态</a>**
 
