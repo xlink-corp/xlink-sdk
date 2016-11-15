@@ -43,6 +43,8 @@
 
 **1.19 [删除home成员的邀请记录](#delete_inviter_list)**
 
+**1.20 [取消home成员邀请](#home_invite_cancel)**
+
 ## 2.[Home Inbox管理](#inbox_manager)
 
 **2.1 [Home成员发送消息到Inbox](#home_inbox_add)**
@@ -887,6 +889,34 @@ Header
 
 Content
 
+### <a name="home_invite_cancel">1.20 取消home成员邀请</a>
+
+	邀请者可以取消邀请动作
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/invite_cancel
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"invite_id" : "邀请ID"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
 
 
 ## <a name="inbox_manager">2. Inbox管理</a>
@@ -1106,6 +1136,7 @@ Content
 已接受 | 1 
 已拒绝 | 2 
 已失效 | 3
+已取消 | 4
 
 
 ### <a name="inbox_message_type">消息类型</a>
