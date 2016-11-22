@@ -377,7 +377,7 @@ create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 
 URL
 
-	POST /v2/homes/{home_id}/user_accept
+	POST /v2/home/{home_id}/user_accept
 
 Header
 
