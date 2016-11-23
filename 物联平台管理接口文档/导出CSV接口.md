@@ -63,9 +63,9 @@ Content
 name | 是 | 导出任务名称
 describe | 是 | 导出任务描述
 type | 是 | 导出任务类型, 见[附录](#export_task_type)
-params | 是 | 导出任务参数, 用于查询需要导出数据
-query | 否 | 当导出任务为设备列表时, 必须指定产品id, 且以$in出现只取一个
-extend | 否 | 额外条件, app_id:目前仅用于维保列表, 用于查找创建访问node服务的token;product_id目前仅用于设备列表
+params | 是 | 导出任务参数, 用于查询需要导出数据; 导出聚合设备列表时, 请参照***产品与设备管理接口***中的***设备聚合接口***整个请求条件
+query | 否 | 当导出任务为设备列表时, 必须指定产品id, 且以$in出现只取一个; 当
+extend | 否 | 额外条件, app_id:目前仅用于维保列表, 用于查找创建访问node服务的token;product_id目前仅用于设备列表/聚合设备列表
 
 **Response**
 
@@ -300,7 +300,9 @@ end_time | 是 | 任务结束执行时间
 | Dealer | 5 | 经销商列表 |
 | Warranty | 6 | 维保列表 |
 | DeviceSessionLog | 7 | 设备上下线 |
-| DeviceSessionLog | 8 | 微信设备列表 |
+| WechatAuthDevice | 8 | 微信设备列表 |
+| DeviceAggregate | 9 | 设备聚合列表 |
+
 
 ### **<a name="export_task_status">2.导出任务状态</a>**
 
