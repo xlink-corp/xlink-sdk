@@ -545,7 +545,9 @@ Content
 	                {
 	                    "user_id": "用户Id",
 	                    "role": "角色类型",
-	                    "expire_time": "到期的时间"
+	                    "expire_time": "到期的时间",
+						"email":"用户邮箱",
+						"phone":"用户手机"
 	                }
 	            ],
 	            "creator": "创建者Id",
@@ -569,6 +571,8 @@ creator | 是 | home的创建者Id
 update_time |是 | 最近一次的修改时间，例：2014-10-09T08:15:40.843Z
 create_time |是 | 创建时间，例：2014-10-09T08:15:40.843Z
 version |是 | 数据的版本号
+phone | 是 | 用户手机
+email | 是 | 用户邮箱
 
 ### <a name ="set_device_home_id">1.12 设置设备归属于Home</a>
 
