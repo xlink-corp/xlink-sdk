@@ -302,6 +302,7 @@ end_time | 是 | 任务结束执行时间
 | DeviceSessionLog | 7 | 设备上下线 |
 | WechatAuthDevice | 8 | 微信设备列表 |
 | DeviceAggregate | 9 | 设备聚合列表 |
+| BroadcastTaskList | 10 | 推送历史列表 |
 
 
 ### **<a name="export_task_status">2.导出任务状态</a>**
