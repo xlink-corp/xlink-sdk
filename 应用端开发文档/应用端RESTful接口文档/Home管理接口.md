@@ -294,7 +294,8 @@ Content
 				"expire_time":"被邀请者的到期时间"
 	            "status": "邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见附录",
 	            "end_time": "邀请记录有效截止时间",
-	            "create_time": "创建时间"
+	            "create_time": "创建时间",
+				"invitee_account":"被邀请者的账号"
 	        }
 	    ]
 	}
@@ -313,6 +314,7 @@ create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 role | 是 | home成员的角色类型,见[home成员类型](#home_member_role_type)
 authority | 否 | 对设备的控制权限，**R可读，W可写，RW可读可写；默认为RW**；
 expire_time | 否 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
+invitee_account | 否 | 被邀请者的账号
 
 
 ### <a name="get_inviter_list">1.6 用户获取发出的邀请记录列表</a>
@@ -351,7 +353,8 @@ Content
 	            "inviter": "邀请者用户ID",
 	            "status": "邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见附录",
 	            "end_time": "邀请记录有效截止时间",
-	            "create_time": "创建时间"
+	            "create_time": "创建时间",
+				"invitee_account":"被邀请者的账号"
 	        }
 	    ]
 	}
@@ -367,6 +370,7 @@ inviter | 是 | 邀请者用户ID
 status | 是 | 邀请状态，等待接受，已接受，已拒绝，已失效，具体枚举值见[附录](#invite_status)
 end_time | 是 | 邀请记录有效截止时间， 例：2014-10-09T08:15:40.843Z
 create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
+invitee_account | 否 | 被邀请者的账号
 
 
 ### <a name ="home_member_invite_accept">1.7 用户接受邀请</a>
