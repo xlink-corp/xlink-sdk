@@ -53,8 +53,7 @@ Content
 		    }
 		},
 		"extend":{
-			"app_id":"目前仅用于维保列表, 用于查找创建访问node服务的token",
-			"product_id":"目前仅用于设备列表"
+			"拓展参数"
 		}
 	}
 
@@ -63,9 +62,9 @@ Content
 name | 是 | 导出任务名称
 describe | 是 | 导出任务描述
 type | 是 | 导出任务类型, 见[附录](#export_task_type)
-params | 是 | 导出任务参数, 用于查询需要导出数据; 导出聚合设备列表时, 请参照***产品与设备管理接口***中的***设备聚合接口***整个请求条件
-query | 否 | 当导出任务为设备列表时, 必须指定产品id, 且以$in出现只取一个; 当
-extend | 否 | 额外条件, app_id:目前仅用于维保列表, 用于查找创建访问node服务的token;product_id目前仅用于设备列表/聚合设备列表
+params | 是 | 导出任务参数, 用于查询需要导出数据; 备注:导出聚合设备列表时, 请参照***产品与设备管理接口***中的***设备聚合接口***整个请求条件
+query | 否 | 当导出任务为设备列表时, 必须指定产品id, 且以$in出现只取一个;
+extend | 否 | 额外条件, 见[附录](#export_task_extend)
 
 **Response**
 
@@ -303,6 +302,7 @@ end_time | 是 | 任务结束执行时间
 | WechatAuthDevice | 8 | 微信设备列表 |
 | DeviceAggregate | 9 | 设备聚合列表 |
 | BroadcastTaskList | 10 | 推送历史列表 |
+| DeviceQrcode | 11 | 设备二维码 | 
 
 
 ### **<a name="export_task_status">2.导出任务状态</a>**
@@ -314,3 +314,119 @@ end_time | 是 | 任务结束执行时间
 | Exported | 3 | 导出完成 |
 | Invalid | 4 | 无效导出 |
 | Expired | 5 | 过期 |
+
+
+### **<a name="export_task_extend">3.导出任务拓展属性</a>**
+
+
+* Device设备列表拓展属性:
+
+	```
+	{
+		"extend":{
+			"product_id":"目前仅用于设备列表"
+		}
+	}
+	```
+
+* User用户列表拓展属性:
+	
+	
+	```
+	{
+		"extend":{
+		}
+	}
+	```
+
+* Alert告警信息列表拓展属性:
+
+	```
+	{
+		"extend":{
+		}
+	}
+	```
+
+* Heavybuyer大客户列表拓展属性:
+
+	```
+	{
+		"extend":{
+		}
+	}
+	```
+
+* Dealer经销商列表拓展属性:
+
+	```
+	{
+		"extend":{
+		}
+	}
+	```
+
+* Warranty维保列表拓展属性:
+
+	```
+	{
+		"extend":{
+			"app_id":"目前仅用于维保列表, 用于查找创建访问node服务的token"
+		}
+	}
+	```	
+
+* DeviceSessionLog设备上下线拓展属性:
+
+	```
+	{
+		"extend":{
+		}
+	}
+	```
+
+* WechatAuthDevice微信设备列表拓展属性:
+
+	```
+	{
+		"extend":{
+		}
+	}
+	```
+
+* DeviceAggregate设备聚合列表拓展属性:
+	
+	```
+	{
+		"extend":{
+			"product_id":"目前仅用于设备列表"
+		}
+	}
+	```
+
+* BroadcastTaskList推送历史列表拓展属性:
+
+	
+
+* DeviceQrcode设备二维码拓展属性:
+
+	```
+	{
+		"extend":{
+			"custom_field": [
+		        "id",
+		        "mac",
+		        "pid",
+		        "sn"
+		    ],
+		    "custom_property": {
+		        "{key}": "{value}"
+		    },
+			"format":{
+				"prefix":"前缀字符串",
+				"suffix":"后缀字符串",
+				"encode":"对二维码数据进行编码，不包括前缀后缀"
+			}
+		}
+	}
+	```
