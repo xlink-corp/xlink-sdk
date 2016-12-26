@@ -63,7 +63,6 @@ name | 是 | 导出任务名称
 describe | 是 | 导出任务描述
 type | 是 | 导出任务类型, 见[附录](#export_task_type)
 params | 是 | 导出任务参数, 用于查询需要导出数据; 备注:导出聚合设备列表时, 请参照***产品与设备管理接口***中的***设备聚合接口***整个请求条件
-query | 否 | 当导出任务为设备列表时, 必须指定产品id, 且以$in出现只取一个;
 extend | 否 | 额外条件, 见[附录](#export_task_extend)
 
 **Response**
@@ -302,7 +301,8 @@ end_time | 是 | 任务结束执行时间
 | WechatAuthDevice | 8 | 微信设备列表 |
 | DeviceAggregate | 9 | 设备聚合列表 |
 | BroadcastTaskList | 10 | 推送历史列表 |
-| DeviceQrcode | 11 | 设备二维码 | 
+| DeviceQrcodeList | 11 | 设备二维码 | 
+| SalesmanList | 12 | 业务员列表 | 
 
 
 ### **<a name="export_task_status">2.导出任务状态</a>**
@@ -324,7 +324,7 @@ end_time | 是 | 任务结束执行时间
 	```
 	{
 		"extend":{
-			"product_id":"目前仅用于设备列表"
+			"product_id":"产品ID"
 		}
 	}
 	```
@@ -371,7 +371,7 @@ end_time | 是 | 任务结束执行时间
 	```
 	{
 		"extend":{
-			"app_id":"目前仅用于维保列表, 用于查找创建访问node服务的token"
+			"app_id":"目前用于维保列表, 用于查找创建访问node服务的token"
 		}
 	}
 	```	
@@ -399,7 +399,7 @@ end_time | 是 | 任务结束执行时间
 	```
 	{
 		"extend":{
-			"product_id":"目前仅用于设备列表"
+			"product_id":"产品ID"
 		}
 	}
 	```
@@ -426,7 +426,18 @@ end_time | 是 | 任务结束执行时间
 				"prefix":"前缀字符串",
 				"suffix":"后缀字符串",
 				"encode":"对二维码数据进行编码，不包括前缀后缀"
-			}
+			},
+			"product_id":"产品ID"
 		}
 	}
 	```
+
+* SalesmanList业务员列表拓展属性:
+
+	```
+	{
+		"extend":{
+			"app_id":"目前用于业务员列表, 用于查找创建访问node服务的token"
+		}
+	}
+	```	
