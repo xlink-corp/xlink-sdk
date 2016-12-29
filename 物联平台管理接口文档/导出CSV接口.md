@@ -303,6 +303,7 @@ end_time | 是 | 任务结束执行时间
 | BroadcastTaskList | 10 | 推送历史列表 |
 | DeviceQrcodeList | 11 | 设备二维码 | 
 | SalesmanList | 12 | 业务员列表 | 
+| SalesRecordList | 13 | 业务员销售列表 |
 
 
 ### **<a name="export_task_status">2.导出任务状态</a>**
@@ -441,3 +442,13 @@ end_time | 是 | 任务结束执行时间
 		}
 	}
 	```	
+
+* SalesRecordList业务员销售列表:
+
+	```
+	{
+		"extend":{
+			"app_id":"目前用于业务员销售列表, 用于查找创建访问node服务的token"
+		}
+	}
+	```
