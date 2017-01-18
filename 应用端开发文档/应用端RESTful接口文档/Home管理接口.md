@@ -45,6 +45,8 @@
 
 **1.20 [取消home成员邀请](#home_invite_cancel)**
 
+**1.21 [查看home日志](#get_home_log)**
+
 ## 2.[Home Inbox管理](#inbox_manager)
 
 **2.1 [Home成员发送消息到Inbox](#home_inbox_add)**
@@ -922,6 +924,73 @@ Header
 
 Content
 
+	无
+
+### <a name="get_home_log">1.21 查看home日志</a>
+
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/logs
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+	    "offset": "请求的偏移量",
+	    "limit": "请求的数量上限",
+	    "query": {
+	        "filed1": {
+	            "$in": [
+	                "字段值",
+	                "字段值"
+	            ]
+	        },
+	        "filed2": {
+	            "$lt": "字段值"
+	        }
+	    },
+	    "order": {
+	        "filed1": "desc",
+	        "filed2": "asc"
+	    }
+	}
+
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+	    "count": "总数量",
+	    "list": [
+	        {
+	            "id": "消息ID",
+	            "type": "日志类型,见附录",
+	            "manipulator": "操作者的ID",
+	            "target": "被操作的设备/用户的ID",
+	            "create_time": "创建时间",
+	        }
+	    ]
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | 消息ID
+type | 是 | home日志类型，见[附录](#home_log_type)
+manipulator | 是 | 操作者的ID
+target | 否 | 被操作的设备/用户的ID
+create_time | 是 | 创建时间，例：2014-10-09T08:15:40.843Z
 
 ## <a name="inbox_manager">2. Inbox管理</a>
 	
@@ -1156,6 +1225,17 @@ Content
 用户 | 1 
 设备 | 2
 
+### <a name="home_log_type">home日志类型</a>
+
+消息创建者类型 | 枚举值
+---- | ---- 
+新增home | 1
+home属性发生变化 | 2
+删除home | 3
+home成员加入 | 4
+home成员移除 | 5
+home设备加入 | 6
+home设备移除 | 7
 
 **<a name="share_mode">邀请方式</a>**
 
