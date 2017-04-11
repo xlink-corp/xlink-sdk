@@ -56,7 +56,38 @@
 **2.3 [Home成员删除Inbox消息](#home_inbox_delete)**
 
 **2.4 [Home创建者删除所有Inbox消息](#home_inbox_all_delete)**
+
+## 3.[Home room管理](#room_manager)
+
+**3.1 [新建一个room](#home_room_add)**
+
+**3.2 [修改room](#home_room_update)**
+
+**3.3 [删除一个room](#home_room_delete)**
+
+**3.4 [查询room的详细信息](#home_room_device)**
+
+**3.5 [room添加一个设备](#room_device_add)**
+
+**3.6 [rome移除设备](#room_device_remove)**
+
+## 4.[Home zone管理](#zone_manager)
  
+**4.1 [新建一个zone](#home_zone_add)**
+
+**4.2 [修改zone名称](#home_zone_update)**
+
+**4.3 [删除zone](#home_zone_delete)**
+
+**4.4 [查询zone的详细信息](#home_zone_rooms)**
+
+**4.5 [添加一个room到zone中](#zone_room_add)**
+
+**4.6 [移除room](#zone_room_remove)**
+
+
+
+
 ### 3.[附录](#appendix)
 
 
@@ -522,7 +553,19 @@ Content
 
 URL
 
-	GET /v2/homes?user_id={user_id}
+	GET /v2/homes?user_id={user_id}&field=<field1>,<field2>
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+user_id | 否 | 指定某一个用户
+field | 否 | 显示额外信息，值与值之间用逗号(,)隔开.
+
+> field的值：
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+room | 否 | 显示room的信息
+zone | 否 | 显示zone的信息
 
 Header
 
@@ -559,7 +602,21 @@ Content
 	            "creator": "创建者Id",
 	            "create_time": "创建时间",
 	            "update_time": "最近一次的修改时间",
-	            "version": "数据的版本号"
+	            "version": "数据的版本号",
+				"zones":[
+					{
+						"id":"zone的ID",
+						"name":"zone的名称",
+						"roomIds":["roomId1","roomId2"]
+					}
+				],
+				"rooms":[
+					{
+						"id":"room的ID",
+						"name":"room的名称",
+						"deviceIds":["deviceId1","deviceId2"]
+					}
+				]
 	        }
 	    ]
 	}
@@ -579,6 +636,8 @@ create_time |是 | 创建时间，例：2014-10-09T08:15:40.843Z
 version |是 | 数据的版本号
 phone | 是 | 用户手机
 email | 是 | 用户邮箱
+zones | 否 | zone的列表，只有field上填zone才会显示
+rooms | 否 | room的列表，只有field上填room才会显示
 
 ### <a name ="set_device_home_id">1.12 设置设备归属于Home</a>
 
@@ -1191,6 +1250,403 @@ Content
 
 	无
 
+## <a name="room_manager">3 room管理</a>
+
+### <a name="home_room_add">3.1 新建一个room</a>
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/room
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"name":"room名称"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+		"id":"room的ID",
+		"name":"room的名称"
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | room的ID
+name | 是 | room的名称
+
+### <a name="home_room_update">3.2 修改room</a>
+
+**Request**
+
+URL
+
+	PUT /v2/home/{home_id}/room/{room_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"name":"room名称"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+		"id":"room的ID",
+		"name":"room的名称"
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | room的ID
+name | 是 | room的名称
+
+
+### <a name="home_room_delete">3.3 删除一个room</a>
+
+**Request**
+
+URL
+
+	DELTE /v2/home/{home_id}/room/{room_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
+
+### <a name="home_room_device">3.4 查询room的详细信息</a>
+
+**Request**
+
+URL
+
+	GET /v2/home/{home_id}/room/{room_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+		"id":"room的ID",
+		"name":"room的名称",
+		"zone_id":"zone的ID",
+		"zone_name":"zone的名称",
+		"device_ids":["device_id1","device_id2","device_id3"]
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | room的ID
+name | 是 | room的名称
+zone_id | 否 | room的ID
+zone_name | 否 | zone的名称
+device_ids | 否 | room拥有的设备列表
+
+### <a name="home_room_add">3.5 room添加一个设备</a>
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/room/{room_id}/device_add
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"device_id":"设备ID"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
+
+
+### <a name="room_device_remove">3.6 room移除一个设备</a>
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/room/{room_id}/device_remove
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"device_id":"设备ID"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
+
+## <a name="zone_manager">Home zone管理</a>
+ 
+### <a name="home_zone_add">4.1 新建一个zone</a>
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/zone
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"name":"zone的名称"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+		"id":"zone的ID"
+		"name":"zone的名称"
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | zone的ID
+name | 是 | zone的名称
+
+### <a name="home_zone_update">4.2 修改zone</a>
+
+**Request**
+
+URL
+
+	PUT /v2/home/{home_id}/zone/{zone_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{
+		"name":"zone的名称"
+	}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+		"id":"zone的ID"
+		"name":"zone的名称"
+	}
+
+字段 | 是否必须 | 描述
+---- | ---- | ---- 
+id | 是 | zone的ID
+name | 是 | zone的名称
+
+### <a name="home_zone_delete">4.3 删除zone</a>
+
+**Request**
+
+URL
+
+	DELETE /v2/home/{home_id}/zone/{zone_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
+
+### <a name="home_zone_rooms">4.4 查询zone的详细信息</a>
+
+**Request**
+
+URL
+
+	GET /v2/home/{home_id}/zone/{zone_id}
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	无
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	{
+		"id":"zone的ID",
+		"name":"zone的名称",
+		"rooms":[
+			{"id":"room的ID",
+			 "name":"room的名称",
+			 "devices":["deviceId1","deviceId2"]
+			}
+		]
+	}
+
+
+### <a name="zone_room_add">4.5 添加room到zone中</a>
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/zone/{zone_id}/room_add
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{"room_id":"room的ID"}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
+
+### <a name="zone_room_remove">4.6 移除room</a>
+
+**Request**
+
+URL
+
+	POST /v2/home/{home_id}/zone/{zone_id}/room_remove
+
+Header
+
+	Content-Type:"application/json"
+	Access-Token:"调用凭证"
+
+Content
+
+	{"room_id":"room的ID"}
+
+**Response**
+
+Header
+
+	HTTP/1.1 200 OK
+
+Content
+
+	无
 
 
 ## <a name="appendix">附录</a> ##
