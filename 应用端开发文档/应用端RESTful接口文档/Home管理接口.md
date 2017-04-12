@@ -146,34 +146,7 @@ Header
 
 Content
 
-	{
-	    "id":"home的Id",
-		"name":"home的名称",
-		"user_list":[
-			{
-				"user_id":"用户Id",				
-				"role":"角色类型",	
-				"expire_time":"到期的时间",			
-			}
-		],
-		"creator":"创建者Id",
-		"create_time":"创建时间",
-		"update_time":"最近一次的修改时间",
-		"version":"数据的版本号"
-	}
-
-字段 | 是否必须 | 描述
----- | ---- | ----
-id |是 | home的Id
-name | 是	| home的名称
-user_list | 是 | 属于home的成员列表
-user_list.user_id | 是 | 用户Id
-user_list.expire_time | 是 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
-user_list.role | 是 | home成员的角色类型,见[home成员类型](#home_member_role_type)
-creator | 是 | home的创建者Id
-update_time |是 | 最近一次的修改时间，例：2014-10-09T08:15:40.843Z
-create_time |是 | 创建时间，例：2014-10-09T08:15:40.843Z
-version |是 | 数据的版本号
+	无
 
 ### <a name ="delete_home">1.3 删除Home</a>
 
