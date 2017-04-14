@@ -10,7 +10,7 @@
 **1.2 [修改Home](#update_home)**
 
 **1.3 [删除Home](#delete_home)**
-
+用户获取Home列表
 **1.4 [邀请Home的成员](#add_home_member)**
 
 **1.5 [用户获取接收到Home邀请的记录列表](#get_invitee_list)**
@@ -607,14 +607,14 @@ Content
 					{
 						"id":"zone的ID",
 						"name":"zone的名称",
-						"roomIds":["roomId1","roomId2"]
+						"room_ids":["roomId1","roomId2"]
 					}
 				],
 				"rooms":[
 					{
 						"id":"room的ID",
 						"name":"room的名称",
-						"deviceIds":["deviceId1","deviceId2"]
+						"device_ids":["deviceId1","deviceId2"]
 					}
 				]
 	        }
@@ -1382,8 +1382,7 @@ Content
 	{
 		"id":"room的ID",
 		"name":"room的名称",
-		"zone_id":"zone的ID",
-		"zone_name":"zone的名称",
+		"zone_ids":["zoneId1","zoneId2"],
 		"device_ids":["device_id1","device_id2","device_id3"]
 	}
 
@@ -1391,8 +1390,7 @@ Content
 ---- | ---- | ---- 
 id | 是 | room的ID
 name | 是 | room的名称
-zone_id | 否 | room的ID
-zone_name | 否 | zone的名称
+zone_ids | 否 | room所属的zone的ID
 device_ids | 否 | room拥有的设备列表
 
 ### <a name="home_room_add">3.5 room添加一个设备</a>
@@ -1585,12 +1583,7 @@ Content
 	{
 		"id":"zone的ID",
 		"name":"zone的名称",
-		"rooms":[
-			{"id":"room的ID",
-			 "name":"room的名称",
-			 "devices":["deviceId1","deviceId2"]
-			}
-		]
+		"room_ids":["roomId1","roomId2","roomId3"]
 	}
 
 
