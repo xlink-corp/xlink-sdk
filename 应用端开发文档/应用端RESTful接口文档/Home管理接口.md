@@ -493,8 +493,7 @@ Content
 
 URL
 
-	GET /v2/homes?user_id={user_id}
-
+	GET /v2/homes?user_id={user_id}&field=<field1>,<field2>&version={version}
 Header
 
 	Content-Type:"application/json"
@@ -545,9 +544,9 @@ user_list.user_id | 是 | 用户Id
 user_list.expire_time | 是 | home成员的到期时间，例：2014-10-09T08:15:40.843Z
 user_list.role | 是 | home成员的角色类型,见[home成员类型](#home_member_role_type)
 creator | 是 | home的创建者Id
-update_time |是 | 最近一次的修改时间，例：2014-10-09T08:15:40.843Z
+update_time |否 | 最近一次的修改时间，例：2014-10-09T08:15:40.843Z
 create_time |是 | 创建时间，例：2014-10-09T08:15:40.843Z
-version |是 | 数据的版本号
+version |是 | 数据的版本号，用于比较app本地数据和云端数据版本，当app上传版本号大于等于云端的版本号时（即本地数据和云端数据一致时），不返回room、zone信息
 phone | 是 | 用户手机
 email | 是 | 用户邮箱
 
