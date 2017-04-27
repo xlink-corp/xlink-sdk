@@ -553,12 +553,13 @@ Content
 
 URL
 
-	GET /v2/homes?user_id={user_id}&field=<field1>,<field2>
+	GET /v2/homes?user_id={user_id}&field=<field1>,<field2>&version={version}
 
 字段 | 是否必须 | 描述
 ---- | ---- | ---- 
 user_id | 否 | 指定某一个用户
 field | 否 | 显示额外信息，值与值之间用逗号(,)隔开.
+version | 否 | 设备列表的版本号，起始版本默认为0。如果请求的版本号为最新，这不会返回room和zone的信息。
 
 > field的值：
 
