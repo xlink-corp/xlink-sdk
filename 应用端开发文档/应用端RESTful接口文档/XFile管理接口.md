@@ -25,9 +25,13 @@ URL
 | 字段 | 是否必须 | 描述 |
 | --- | --- | --- |
 | content | 是 | 请求参数,文件类型type和公共读public_read的base64,如base64({"type":"jpg","public_read":true,"file_name":"文件名称"}) |
-| type|是| 文件类型,比如jpg,apk|
+| type|是| 文件类型,比如jpg,apk,xlink定义的类型等。|
 | public_read | 否 | 公共读,true or false|
 | file_name | 否 | 文件名称|
+|access_token | 否 | 微信用户的调用凭证 。当type是微信图片时，是必需的。
+| media_id | 否 | 文件的ID。当type是微信图片时，是必需的。
+
+> xlink定义的类型：<br>微信图片："weixin/{文件类型}"。比如：weixin/jpg。
 
 Header
 
