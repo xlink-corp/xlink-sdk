@@ -10,7 +10,7 @@
 **1.2 [修改Home](#update_home)**
 
 **1.3 [删除Home](#delete_home)**
-用户获取Home列表
+
 **1.4 [邀请Home的成员](#add_home_member)**
 
 **1.5 [用户获取接收到Home邀请的记录列表](#get_invitee_list)**
