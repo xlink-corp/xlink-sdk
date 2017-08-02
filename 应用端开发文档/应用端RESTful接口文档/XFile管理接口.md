@@ -25,7 +25,7 @@ URL
 | 字段 | 是否必须 | 描述 |
 | --- | --- | --- |
 | content | 是 | 请求参数,文件类型type和公共读public_read的base64,如base64({"type":"jpg","public_read":true,"file_name":"文件名称"}) |
-| type|是| 文件类型,比如jpg,apk|
+| type|是| 文件类型,比如jpg,apk等。|
 | public_read | 否 | 公共读,true or false|
 | file_name | 否 | 文件名称|
 

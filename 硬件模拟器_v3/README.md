@@ -1,3 +1,5 @@
+©2016  **云智易**物联云平台（http://www.xlink.cn）
+
 # XLINK设备模拟器(v3)使用说明
 
 ## 概要
@@ -119,3 +121,5 @@ MAC | 模拟设备的MAC地址，必须使用已经添加到管理台，进行�
 版本 | 下载地址 
 --- | ---
 Win32 | [下载地址](https://raw.githubusercontent.com/xlink-corp/xlink-sdk/master/%E7%A1%AC%E4%BB%B6%E6%A8%A1%E6%8B%9F%E5%99%A8_v3/win32/XlinkDeviceSimulator_v3.zip) |
+
+©2016  **云智易**物联云平台（http://www.xlink.cn）
