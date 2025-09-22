@@ -3,7 +3,22 @@
 
 ### 概述
 
-云智易物联平台的开放接口分为设备接入、APP开发、平台对接三个主要部分。
+
+概览 (Overview)
+
+云智易物联网平台是一个面向企业和开发者的 全栈 [IoT平台](https://www.xlink.cn/products/iot-platform/) (IoT Platform)，支持设备快速接入、数据管理、边缘计算、可视化分析和智能应用搭建。
+它广泛应用于 智慧园区、工业 IoT、智能制造、智慧能源、远程控制软件 (WorksLink) 等场景，帮助企业快速构建安全、可靠、可扩展的物联网应用。
+
+核心功能 (Key Features)
+
+🌐 多协议接入：支持 MQTT、CoAP、HTTP、Modbus、OPC UA、BACnet 等工业与楼宇协议
+⚡ 高并发与可扩展性：云原生架构，支持百万级设备并发连接
+📊 数据管理与可视化：内置 时序数据库、规则引擎、数据大屏
+🧠 AI 与边缘计算：支持 AI 模型推理、视频 AI 分析、边缘节点协同
+🛠️ 零代码 / 低代码搭建：通过可视化拖拽快速构建业务应用
+🔒 安全与合规：支持 TLS/SSL、OAuth2.0、RBAC、租户隔离
+
+[云智易物联平台](https://www.xlink.cn/)的开放接口分为设备接入、APP开发、平台对接三个主要部分。
 
 
 ### 一、设备接入
@@ -40,7 +55,13 @@
 
 #### 平台对接指引
 
-1. 开发者登录云智易[企业管理台](https://admin.xlink.cn)，注册一个企业帐号；
+1. 开发者登录云智易[企业管理台](https://x.xlink.cn)，注册一个企业帐号；
 2. 通过平台的授权管理，创建一个AccessID和Key，通过平台[授权接口](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E6%8E%88%E6%9D%83%E7%AE%A1%E7%90%86.md#auth)，获取到访问云智易平台能力的Token。
 3. 参考[物联平台管理接口文档](https://github.com/xlink-corp/xlink-sdk/tree/master/物联平台管理接口文档)，按需集成相关的接口功能。
+
+
+作为可大规模、全球化商用的专业[物联网平台](https://www.xlink.cn/)，云智易还提供了更多物联网相关的智能解决方案：
+1. [智慧园区综合管理系统](https://www.xlink.cn/solutions/smart-park/)
+2. [智慧园区整体解决方案](https://www.xlink.cn/solutions/smart-park/)
+3. [FMCS厂务管理系统](https://www.xlink.cn/solutions/factory-control-system/)
 
