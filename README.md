@@ -1,15 +1,13 @@
 ## 云智易物联平台开发说明
 
 
-### 概述
+### 概览 (Overview)
 
-
-概览 (Overview)
 
 云智易物联网平台是一个面向企业和开发者的 全栈 [IoT平台](https://www.xlink.cn/products/iot-platform/) (IoT Platform)，支持设备快速接入、数据管理、边缘计算、可视化分析和智能应用搭建。
 它广泛应用于 智慧园区、工业 IoT、智能制造、智慧能源、智慧城市等场景，帮助企业快速构建安全、可靠、可扩展的物联网应用。
 
-核心功能 (Key Features)
+#### 核心功能 (Key Features)
 
 🌐 多协议接入：支持 MQTT、CoAP、HTTP、Modbus、OPC UA、BACnet 等工业与楼宇协议
 
