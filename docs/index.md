@@ -21,7 +21,7 @@
 
 🔒 安全与合规：支持 TLS/SSL、OAuth2.0、RBAC、租户隔离
 
-[云智易物联网平台](https://www.xlink.cn/)的开放接口分为设备接入、APP开发、平台对接三个主要部分。
+云智易物联网平台的开放接口分为设备接入、APP开发、平台对接三个主要部分。
 
 
 ### 一、设备接入
@@ -32,7 +32,7 @@
 
 1. 开发者可以通过标准的MQTT协议快速接入云智易物联网平台；
 2. 对于暂时没有设备，想体验接入的开发者，可以通过[mqtt client](https://mqtt-client.app/)在线工具，实现快速接入并体验云智易物联网平台的相关功能。
-3. 除了MQTT，还支持CoAP、HTTP，TCP/UPP，GB28181、LoRAWAN等众多协议，详细信息欢迎访问云智易[物联网平台](https://www.xlink.cn/)官方网站了解。
+3. 除了MQTT，还支持CoAP、HTTP，TCP/UPP，GB28181、LoRAWAN等众多协议，详细信息欢迎访问[云智易物联网平台](https://www.xlink.cn/)官方网站了解。
 
 
 ### 二、平台Open API对接
