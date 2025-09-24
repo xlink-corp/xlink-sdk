@@ -31,7 +31,7 @@
 #### 设备接入指引
 
 1. 开发者可以通过标准的MQTT协议快速接入云智易物联网平台；
-2. 对于暂时没有设备，想体验接入的开发者，可以通过[mqtt client](https://mqtt-client.app/)在线工具，实现快速接入并体验云智易物联网平台的相关功能。
+2. 对于暂时没有设备，想体验接入的开发者，可以通过[mqtt client在线调试工具](https://mqtt-client.app/)，实现快速接入并体验云智易物联网平台的相关功能。
 3. 除了MQTT，还支持CoAP、HTTP，TCP/UPP，GB28181、LoRAWAN等众多协议，详细信息欢迎访问[云智易物联网平台](https://www.xlink.cn/)官方网站了解。
 
 
@@ -51,4 +51,5 @@
 1. [智慧园区综合管理系统](https://www.xlink.cn/solutions/smart-park/)
 2. [智慧园区整体解决方案](https://www.xlink.cn/solutions/smart-park/)
 3. [FMCS厂务管理系统](https://www.xlink.cn/solutions/factory-control-system/)
+4. [智慧城市物联感知平台](https://www.xlink.cn/products/city/)
 
