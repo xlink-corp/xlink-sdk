@@ -26,18 +26,17 @@
 
 ### 一、设备接入
 
-使用云智易提供的嵌入式SDK，可以方便地将设备接入到云端平台，实现远程控制、远程管理、数据采集、OTA等相关的功能。
+使用云智易提供的嵌入式SDK，可以方便地将设备接入到物联网云平台，实现远程控制、远程管理、数据采集、OTA等相关的功能。
 
 #### 设备接入指引
 
-1. 开发者可以通过[嵌入式SDK介绍](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/1.SDK介绍.md)了解SDK的基本概念；
-2. 通过[嵌入式SDK使用流程](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/2.SDK使用流程.md)了解硬件接入的具体流程；
-3. 开发者可以通过[C语言集成接口](https://github.com/xlink-corp/xlink-sdk/blob/master/设备端开发文档/1.XlinkSDK规范/3.硬件SDK接口文档.md)完成对具体硬件的功能开发。
+1. 开发者可以通过标准的MQTT协议快速接入云智易物联网平台；
+2. 对于暂时没有设备，想体验接入的开发者，可以通过[mqtt client](https://mqtt-client.app/)在线工具，实现快速接入并体验云智易物联网平台的相关功能。
+3. 除了MQTT，还支持CoAP、HTTP，TCP/UPP，GB28181、LoRAWAN等众多协议，详细信息欢迎访问云智易[物联网平台](https://www.xlink.cn/)官方网站了解。
 
 ### 二、APP开发
 
-
-通过云智易提供的APP SDK，开发者可以快速实现对物联设备的远程访问控制。
+通过云智易提供的APP SDK，开发者可以快速实现对物联设备的远程访问、设备控制和管理。
 云智易平台的APP SDK分为种类型的接口：
 
 * Android和iOS原生SDK，用于实现新设备的扫描、添加、访问和控制，及云端的连接和通讯等功能。
