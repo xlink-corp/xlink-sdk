@@ -53,7 +53,7 @@
 
 ### 三、平台对接
 
-云智易平台具备平台级的对接能力，提供了近200个RESTful接口。企业可以按需将云智易提供的物联网平台功能，如[设备管理](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3.md)、[用户管理](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3.md)、[设备控制](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E6%8E%A5%E5%8F%A3.md)、[数据收集](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%8E%A5%E5%8F%A3.md)，集成到自有的业务系统中。
+云智易平台具备平台级的对接能力，提供了近200个[Xlink Open API](https://xlink-corp.github.io/xlink-OpenAPI/) RESTful接口。企业可以按需将云智易提供的物联网平台功能，如[设备管理](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E4%BA%A7%E5%93%81%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3.md)、[用户管理](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3.md)、[设备控制](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E8%AE%BE%E5%A4%87%E6%8E%A7%E5%88%B6%E6%8E%A5%E5%8F%A3.md)、[数据收集](https://github.com/xlink-corp/xlink-sdk/blob/master/%E7%89%A9%E8%81%94%E5%B9%B3%E5%8F%B0%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%8E%A5%E5%8F%A3.md)，集成到自有的业务系统中。
 
 #### 平台对接指引
 
@@ -62,8 +62,5 @@
 3. 参考[物联平台管理接口文档](https://github.com/xlink-corp/xlink-sdk/tree/master/物联平台管理接口文档)，按需集成相关的接口功能。
 
 
-作为可大规模、全球化商用的专业[物联网平台](https://www.xlink.cn/)，云智易还提供了更多物联网相关的智能解决方案：
-1. [智慧园区综合管理系统](https://www.xlink.cn/solutions/smart-park/)
-2. [智慧园区整体解决方案](https://www.xlink.cn/solutions/smart-park/)
-3. [FMCS厂务管理系统](https://www.xlink.cn/solutions/factory-control-system/)
+作为可大规模、全球化商用的专业[物联网平台](https://www.xlink.cn/)，云智易还提供了更多物联网相关的智能场景应用，详细方案请访问云智易官方网站。
 
